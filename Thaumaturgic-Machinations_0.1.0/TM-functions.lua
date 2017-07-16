@@ -91,8 +91,8 @@ local item_AE = item .. "-aspect-extraction"
 			  {type="fluid", name=aspect, amount=count},
 			},
 			icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png", --CHANGE THIS
-			subgroup = "aspect extraction",
-			--order = "a[oil-processing]-a[basic-oil-processing]"
+			subgroup = "aspect-extraction",
+			order = item_AE,
 		}
 		end
 	end

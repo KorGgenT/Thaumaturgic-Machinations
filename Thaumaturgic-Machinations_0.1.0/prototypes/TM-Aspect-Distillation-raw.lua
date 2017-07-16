@@ -1,0 +1,1 @@
+TM.aspect_add_aspect("iron-ore", "Terra", 50)

@@ -10,6 +10,10 @@ data:extend(
   },
   {
     type = "recipe-category",
+    name = "pure-aspect-extraction"
+  },
+  {
+    type = "recipe-category",
     name = "seperate-aspect",
 	subgroup = "seperate-aspect",
   },
@@ -31,8 +35,14 @@ data:extend(
   },
   {
 	type = "item-subgroup",
-	name = "seperate-aspect",
+	name = "aspect-extraction",
 	group = "aspect",
 	order = "z",
+  },
+  {
+	type = "item-subgroup",
+	name = "seperate-aspect",
+	group = "aspect",
+	order = "b",
   },
 })

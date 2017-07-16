@@ -174,15 +174,15 @@ data:extend(
     },
     collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
     selection_box = {{-1, -1}, {1, 1}},
-    crafting_categories = {"thaumic-smelting"},
-    result_inventory_size = 2,
+    crafting_categories = {"pure-aspect-extraction"},
+    result_inventory_size = 0,
     energy_usage = "200kW",
     crafting_speed = 1,
     source_inventory_size = 1,
     energy_source =
     {
       type = "burner",
-      fuel_category = "chemical",
+      fuel_category = "Vis",
       effectivity = 1,
       fuel_inventory_size = 1,
       emissions = 0.01,
@@ -240,6 +240,16 @@ data:extend(
           }
         }]]--
       }
+    },
+    fluid_boxes =
+    {
+      {
+        production_type = "output",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="output", position = {0.5, -1.5} }}
+      },
     },
     working_visualisations =
       {
