@@ -3,6 +3,7 @@
 function TM.new_aspect_combine(recipe, aspect1, aspect2)
 local recipe_create = recipe .. "-create"
 local recipe_seperate = recipe .. "-seperate"
+local here = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/"
 
 data.raw.recipe[recipe_create] =
 {
@@ -20,7 +21,7 @@ data.raw.recipe[recipe_create] =
     {
       {type="fluid", name=recipe, amount=100},
     },
-    icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png", --CHANGE THIS
+    icon = here .. recipe .. ".png", -- the combination recipe is the same icon as the corresponding aspect
     subgroup = "combine-aspect",
     order = recipe,
 }
@@ -41,7 +42,7 @@ data.raw.recipe[recipe_seperate] =
 	  {type="fluid", name=aspect1, amount=100},
 	  {type="fluid", name=aspect2, amount=100}
     },
-    icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png", --CHANGE THIS
+    icon = here .. recipe .. ".png", --CHANGE THIS
     subgroup = "combine-aspect",
     order = recipe,
 }
@@ -97,21 +98,42 @@ local item_AE = item .. "-aspect-extraction"
 	end
 end
 
-function TM.IsPrimal(recipe)
+-- Checks if the string inputted is a primal aspect. (primal defined in master list)
+function TM.IsPrimal(aspect)
 for _,v in pairs(Primal) do
-	if recipe == v then
+	if aspect == v then
 	return true end
 return false end
 end
 
---[[
-function TM.recipe.get_aspect_tier(recipe)
+-- returns the tier of aspect inputted. expects a string. 
+function TM.get_aspect_tier(aspect)
 local tier = 0
 
-	if TM.IsPrimal(recipe) then
-	return tier end
-	
-	
+	if not TM.IsPrimal(aspect) then
+	local ing = data.raw.recipe[aspect .. "-create"].ingredients
+	return tier+math.max(TM.recipe.get_aspect_tier(ing[0]), TM.recipe.get_aspect_tier(ing[1]))
+	else return tier end
 
 end
-]]--
+
+-- assumes string input of item name
+function TM.get_aspect(item)
+	return data.raw.recipe[item .. "-aspect-extraction"].ingredients
+end
+
+--[[
+-- assumes string input of item name. also assumes item name and recipe name are the same. tries to assign all aspects of ingredients to item
+function TM.assign_intermediate_aspects(item)
+
+	for i, data.raw.recipe[item].ingredients in pairs do
+	
+		for j, TM.get_aspect(j.name) in pairs do
+			TM.aspect_add_aspect(item, j.name, j.count) 
+		end
+	
+	end
+
+end
+
+--]]

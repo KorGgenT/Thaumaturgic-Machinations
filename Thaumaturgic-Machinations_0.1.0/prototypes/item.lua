@@ -14,7 +14,7 @@ data:extend({
     order = "b[coal]",
     stack_size = 50
   },
-	{
+  {
     type = "item",
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
@@ -22,6 +22,17 @@ data:extend({
     subgroup = "smelting-machine",
     order = "a[stone-furnace]",
     place_result = "thaumic-stone-furnace",
+    stack_size = 50
+  },  
+  {
+    type = "item",
+    name = "crucible",
+	icon_size = 32,
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/Crucible.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    place_result = "crucible",
     stack_size = 50
   },  
 }

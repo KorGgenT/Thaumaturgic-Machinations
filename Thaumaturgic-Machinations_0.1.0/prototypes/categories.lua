@@ -10,11 +10,13 @@ data:extend(
   },
   {
     type = "recipe-category",
-    name = "seperate-aspect"
+    name = "seperate-aspect",
+	subgroup = "seperate-aspect",
   },
   {
     type = "recipe-category",
-    name = "combine-aspect"
+    name = "combine-aspect",
+	subgroup = "combine-aspect",
   },
   {
 	type = "item-group",
@@ -25,10 +27,12 @@ data:extend(
 	type = "item-subgroup",
 	name = "combine-aspect",
 	group = "aspect",
+	order = "a",
   },
   {
 	type = "item-subgroup",
 	name = "seperate-aspect",
 	group = "aspect",
+	order = "z",
   },
 })
