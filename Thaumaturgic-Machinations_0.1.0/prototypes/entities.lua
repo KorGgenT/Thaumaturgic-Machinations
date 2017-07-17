@@ -7,7 +7,7 @@ data:extend(
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "stone-furnace"},
+    minable = {mining_time = 1, result = "thaumic-stone-furnace"},
     max_health = 200,
     corpse = "medium-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
@@ -145,7 +145,7 @@ data:extend(
 	icon_size = 32,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/Crucible.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
-    minable = {mining_time = 1, result = "stone-furnace"},
+    minable = {mining_time = 1, result = "crucible"},
     max_health = 200,
     corpse = "medium-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
@@ -172,8 +172,8 @@ data:extend(
         percent = 30
       }
     },
-    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-1, -1}, {1, 1}},
+    collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
+    selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
     crafting_categories = {"pure-aspect-extraction"},
     result_inventory_size = 0,
     energy_usage = "200kW",
@@ -203,21 +203,23 @@ data:extend(
     layers =
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/Crucible_hr.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/1LpQSqUr.png",
         priority = "extra-high",
-        width = 214,
-        height = 224,
-		scale = 0.5,
-        frame_count = 1,
-        shift = {0.05, -0.12},
+        width = 300,
+        height = 250,
+		scale = 0.6,
+        frame_count = 19,
+		line_length = 6,
+        shift = {1, 0,},
         hr_version = {
-          filename = "__Thaumaturgic-Machinations__/graphics/entity/Crucible_hr.png",
+          filename = "__Thaumaturgic-Machinations__/graphics/entity/1LpQSqUr.png",
           priority = "extra-high",
-          width = 214,
-          height = 224,
-          frame_count = 1,
-          --shift = util.by_pixel(-0.25, 6),
-          scale = 0.5
+          width = 300,
+          height = 250,
+          frame_count = 19,
+		  line_length = 6,
+          --shift = {0.5,0.5},
+          scale = 0.6
           }
         },--[[
         {
@@ -248,9 +250,17 @@ data:extend(
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = -1,
-        pipe_connections = {{ type="output", position = {0.5, -1.5} }}
+        pipe_connections = {{ position = {1, -1.75} }}
+      },
+      {
+        production_type = "input",
+        pipe_covers = pipecoverspictures(),
+        base_area = 10,
+        base_level = -1,
+        pipe_connections = {{ type="input", position = {-1, 1.75} }}
       },
     },
+	pipe_covres = pipecoverspictures(),--[[
     working_visualisations =
       {
         {
@@ -284,7 +294,7 @@ data:extend(
           },
         light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
         }
-      },
+      },]]--
     --fast_replaceable_group = "furnace"
   },
 })

@@ -69,11 +69,37 @@ function TM.remove_ingredient(recipe, item)
 end
 
 -- Adds the ability to distill an additional aspect from the input item.
+-- (string, string, number)
 function TM.aspect_add_aspect(item, aspect, count)
 local item_AE = item .. "-aspect-extraction"
+--[[
+
+ERROR: attempt to access 'ing' ( a nil value )
+
+local ing = data.raw.recipe[item_AE].result
+local asex = false -- does the aspect exist in the recipe already?
+
+	if data.raw.recipe[item_AE] and ing then
+		
+		if not ing[2] then
+			if ing[1][1] == aspect then
+				data.raw.recipe[item_AE].result[1][2] = count + ing[1][2]
+				asex = true
+			end
+		else
+			for i,ing in pairs do
+				local j = 1
+				if ing[j][1] == item then
+					count = count + ing[i][2]
+					nasex = false
+				end
+				j=j+1
+			end 
+		end
+	end]]--
 
 	if data.raw.recipe[item_AE] and data.raw.item[item] then
-	table.insert(data.raw.recipe[item_AE].ingredients, {type="fluid", name=aspect, amount=count})
+	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count})
 		else if not data.raw.recipe[item_AE] and data.raw.item[item] then
 		data.raw.recipe[item_AE] =
 		{
@@ -122,18 +148,27 @@ function TM.get_aspect(item)
 	return data.raw.recipe[item .. "-aspect-extraction"].ingredients
 end
 
---[[
+
 -- assumes string input of item name. also assumes item name and recipe name are the same. tries to assign all aspects of ingredients to item
 function TM.assign_intermediate_aspects(item)
-
-	for i, data.raw.recipe[item].ingredients in pairs do
-	
-		for j, TM.get_aspect(j.name) in pairs do
+local ing = data.raw.recipe[item].ingredients
+if ing[2] then
+	for i,ing in pairs do
+	local aspect = TM.get_aspect(i.name)
+		for j,aspect in pairs do
 			TM.aspect_add_aspect(item, j.name, j.count) 
 		end
 	
 	end
-
+else
+	local aspect = data.raw.recipe[ing[1][1] .. "-aspect-extraction"].ingredients
+		if aspect[2] then
+			for j,aspect in pairs do
+				TM.aspect_add_aspect(item, ing[j][1], ing[j][2])
+			end
+		else
+			TM.aspect_add_aspect(item, aspect[1][1], aspect[1][2])
+		end
+end
 end
 
---]]
