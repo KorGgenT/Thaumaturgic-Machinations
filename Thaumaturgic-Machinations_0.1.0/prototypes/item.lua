@@ -14,7 +14,7 @@ data:extend({
     order = "b[coal]",
     stack_size = 50
   },
-	{
+  {
     type = "item",
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
@@ -24,5 +24,79 @@ data:extend({
     place_result = "thaumic-stone-furnace",
     stack_size = 50
   },  
+  {
+    type = "item",
+    name = "crucible",
+	icon_size = 32,
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/Crucible.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    place_result = "crucible",
+    stack_size = 50
+  },  
+  {
+    type = "item",
+	name = "air-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/air-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-air",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "all-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/all-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-all",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "earth-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/earth-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-earth",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "entropy-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/entropy-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-entropy",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "fire-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/fire-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-fire",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "law-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/law-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-law",
+	stack_size = 100,
+  },  
+  {
+    type = "item",
+	name = "water-shard",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/water-shard.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-resources",
+	order = "shard-water",
+	stack_size = 100,
+  },
 }
 )
