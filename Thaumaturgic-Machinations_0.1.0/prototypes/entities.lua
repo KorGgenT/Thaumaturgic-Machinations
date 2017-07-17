@@ -203,21 +203,21 @@ data:extend(
     layers =
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/1LpQSqUr.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
         priority = "extra-high",
-        width = 300,
-        height = 250,
+        width = 240,
+        height = 160,
 		scale = 0.6,
-        frame_count = 19,
-		line_length = 6,
+        frame_count = 72,
+		line_length = 8,
         shift = {1, 0,},
         hr_version = {
-          filename = "__Thaumaturgic-Machinations__/graphics/entity/1LpQSqUr.png",
+          filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
           priority = "extra-high",
-          width = 300,
-          height = 250,
-          frame_count = 19,
-		  line_length = 6,
+          width = 240,
+          height = 160,
+          frame_count = 72,
+		  line_length = 8,
           --shift = {0.5,0.5},
           scale = 0.6
           }
