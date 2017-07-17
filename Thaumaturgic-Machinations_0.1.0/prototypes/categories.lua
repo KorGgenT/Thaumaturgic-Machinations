@@ -14,6 +14,10 @@ data:extend(
   },
   {
     type = "recipe-category",
+    name = "aspect-crafting"
+  },
+  {
+    type = "recipe-category",
     name = "seperate-aspect",
 	subgroup = "seperate-aspect",
   },

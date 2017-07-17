@@ -90,9 +90,9 @@ log("adding aspect " .. aspect .. " to " .. item)
 
 	if data.raw.recipe[item_AE] and data.raw.item[item] and not asex then
 	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count})
-	log("item found. inserting...")
+	log(item_AE .. " found. inserting...")
 		else if not data.raw.recipe[item_AE] and data.raw.item[item] then
-		log("item not found. creating...")
+		log("creating recipe" .. item_AE)
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
@@ -135,23 +135,23 @@ local tier = 0
 
 end
 
--- assumes string input of item name
-function TM.get_aspect(item)
-	return data.raw.recipe[item .. "-aspect-extraction"].ingredients
-end
-
 
 -- assumes string input of item name. also assumes item name and recipe name are the same. tries to inherit aspects from ingredients
 function TM.assign_inherited_aspects(item)
 local inherit = false
 local inh_recipe = data.raw.recipe[item].ingredients
 log("assigning inherited aspects to " .. item)
-log(inh_recipe[1])
-log(inh_recipe.name)
 for index, value in pairs(inh_recipe) do
+	log("ingredient " .. value[1] .. " found")
 	if data.raw.recipe[value[1] .. "-aspect-extraction"] then
-		TM.aspect_add_aspect(item, value.name, value.amount)
-		log(value.amount .. " " .. value.name " added to " .. item)
+		log("recipe " .. value[1] .. "-aspect-extraction found")
+		local aspects = data.raw.recipe[value[1] .. "-aspect-extraction"].results
+		log("aspect amount " .. aspects[1].amount)
+		for index2, value2 in pairs(aspects) do
+			log("add " .. value2.amount .. " " .. value2.name)
+			TM.aspect_add_aspect(item, value2.name, value2.amount)
+		end
+		log("added to " .. item)
 		inherit = true
 	end
 
@@ -163,24 +163,5 @@ for index, value in pairs(inh_recipe) do
 	
 end
 
---[[local ing = data.raw.recipe[item].ingredients
-if ing[2] then
-	for i in pairs(ing) do
-	local aspect = TM.get_aspect(i.name)
-		for j in pairs(aspect) do
-			TM.aspect_add_aspect(item, j.name, j.count) 
-		end
-	
-	end
-else
-	local aspect = data.raw.recipe[ing[1][1] .. "-aspect-extraction"].ingredients
-		if aspect[2] then
-			for index,aspect in pairs(ing) do
-				TM.aspect_add_aspect(item, aspect[1], aspect[2])
-			end
-		else
-			TM.aspect_add_aspect(item, aspect[1][1], aspect[1][2])
-		end
-end]]--
 end
 

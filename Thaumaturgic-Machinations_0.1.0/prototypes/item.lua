@@ -26,6 +26,26 @@ data:extend({
   },  
   {
     type = "item",
+    name = "infused-thaumic-stone-furnace",
+    icon = "__base__/graphics/icons/stone-furnace.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "smelting-machine",
+    order = "a[stone-furnace]",
+    place_result = "infused-thaumic-stone-furnace",
+    stack_size = 50
+  },  
+  {
+    type = "item",
+    name = "temp-aspect-machine",
+    icon = "__base__/graphics/icons/chemical-plant.png",
+    flags = {"goes-to-quickbar"},
+    subgroup = "production-machine",
+    order = "e[chemical-plant]",
+    place_result = "temp-aspect-machine",
+    stack_size = 10
+  },
+  {
+    type = "item",
     name = "crucible",
 	icon_size = 32,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/Crucible.png",
@@ -96,6 +116,15 @@ data:extend({
 	flags = {"goes-to-main-inventory"},
 	subgroup = "raw-resource",
 	order = "shard-water",
+	stack_size = 100,
+  },
+  {
+    type = "item",
+	name = "vis-infused-brick",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-material",
+	order = "vis-infused-brick",
 	stack_size = 100,
   },
 }
