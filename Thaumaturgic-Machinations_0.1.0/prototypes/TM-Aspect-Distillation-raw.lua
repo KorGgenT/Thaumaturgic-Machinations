@@ -25,6 +25,6 @@ data:extend({
 }
 })
 
+TM.assign_inherited_aspects("iron-plate")
 TM.aspect_add_aspect("iron-plate", "Ordo", 50)
 TM.aspect_add_aspect("iron-plate", "Ordo", 50)
---TM.assign_intermediate_aspects("iron-plate")
