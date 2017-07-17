@@ -72,35 +72,27 @@ end
 -- (string, string, number)
 function TM.aspect_add_aspect(item, aspect, count)
 local item_AE = item .. "-aspect-extraction"
---[[
-
-ERROR: attempt to access 'ing' ( a nil value )
-
-local ing = data.raw.recipe[item_AE].result
 local asex = false -- does the aspect exist in the recipe already?
+log("adding aspect " .. aspect .. " to " .. item)
 
-	if data.raw.recipe[item_AE] and ing then
+	if data.raw.recipe[item_AE] and data.raw.recipe[item_AE].results then
+	local ing = data.raw.recipe[item_AE].results
+	log("result exists for " .. item_AE .. " , checking aspects...")
 		
-		if not ing[2] then
-			if ing[1][1] == aspect then
-				data.raw.recipe[item_AE].result[1][2] = count + ing[1][2]
+		for index,value in pairs(ing) do
+			if value.name == aspect then
+				value.amount = count + value.amount
 				asex = true
+				log(item .. "count increased by" .. count)
 			end
-		else
-			for i,ing in pairs do
-				local j = 1
-				if ing[j][1] == item then
-					count = count + ing[i][2]
-					nasex = false
-				end
-				j=j+1
-			end 
-		end
-	end]]--
+		end 
+	end
 
-	if data.raw.recipe[item_AE] and data.raw.item[item] then
+	if data.raw.recipe[item_AE] and data.raw.item[item] and not asex then
 	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count})
+	log("item found. inserting...")
 		else if not data.raw.recipe[item_AE] and data.raw.item[item] then
+		log("item not found. creating...")
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
@@ -149,13 +141,33 @@ function TM.get_aspect(item)
 end
 
 
--- assumes string input of item name. also assumes item name and recipe name are the same. tries to assign all aspects of ingredients to item
-function TM.assign_intermediate_aspects(item)
-local ing = data.raw.recipe[item].ingredients
+-- assumes string input of item name. also assumes item name and recipe name are the same. tries to inherit aspects from ingredients
+function TM.assign_inherited_aspects(item)
+local inherit = false
+local inh_recipe = data.raw.recipe[item].ingredients
+log("assigning inherited aspects to " .. item)
+log(inh_recipe[1])
+log(inh_recipe.name)
+for index, value in pairs(inh_recipe) do
+	if data.raw.recipe[value[1] .. "-aspect-extraction"] then
+		TM.aspect_add_aspect(item, value.name, value.amount)
+		log(value.amount .. " " .. value.name " added to " .. item)
+		inherit = true
+	end
+
+	if inherit then
+	log("no inherited aspects")
+	else
+	log("inheritance successful")
+	end
+	
+end
+
+--[[local ing = data.raw.recipe[item].ingredients
 if ing[2] then
-	for i,ing in pairs do
+	for i in pairs(ing) do
 	local aspect = TM.get_aspect(i.name)
-		for j,aspect in pairs do
+		for j in pairs(aspect) do
 			TM.aspect_add_aspect(item, j.name, j.count) 
 		end
 	
@@ -163,12 +175,12 @@ if ing[2] then
 else
 	local aspect = data.raw.recipe[ing[1][1] .. "-aspect-extraction"].ingredients
 		if aspect[2] then
-			for j,aspect in pairs do
-				TM.aspect_add_aspect(item, ing[j][1], ing[j][2])
+			for index,aspect in pairs(ing) do
+				TM.aspect_add_aspect(item, aspect[1], aspect[2])
 			end
 		else
 			TM.aspect_add_aspect(item, aspect[1][1], aspect[1][2])
 		end
-end
+end]]--
 end
 
