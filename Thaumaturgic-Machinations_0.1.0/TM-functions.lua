@@ -1,6 +1,7 @@
 
 -- The function below creates two recipes: a construction recipe, which makes an aspect out of two different aspects; and a seperation recipe, which does the reverse.
-function TM.new_aspect_combine(recipe, aspect1, aspect2)
+--(string, string, string, number) make sure the group/subgroups for the tier are defined!
+function TM.new_aspect_combine(recipe, aspect1, aspect2, tier)
 local recipe_create = recipe .. "-create"
 local recipe_seperate = recipe .. "-seperate"
 local here = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/"
@@ -22,7 +23,7 @@ data.raw.recipe[recipe_create] =
       {type="fluid", name=recipe, amount=100},
     },
     icon = here .. recipe .. ".png", -- the combination recipe is the same icon as the corresponding aspect
-    subgroup = "combine-aspect",
+    subgroup = "combine-aspect-" .. tier,
     order = recipe,
 }
 
@@ -43,7 +44,7 @@ data.raw.recipe[recipe_seperate] =
 	  {type="fluid", name=aspect2, amount=100}
     },
     icon = here .. recipe .. ".png", --CHANGE THIS
-    subgroup = "combine-aspect",
+    subgroup = "seperate-aspect-" .. tier,
     order = recipe,
 }
 

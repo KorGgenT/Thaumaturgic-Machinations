@@ -10,7 +10,7 @@ data:extend(
     flow_color = {r=1, g=1, b=0.4},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Aer.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -22,7 +22,7 @@ data:extend(
     flow_color = {r=0.2, g=0.8, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Aqua.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -34,7 +34,7 @@ data:extend(
     flow_color = {r=1, g=0, b=0},
     max_temperature = 1000,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Ignis.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.8,
 },
 {
@@ -46,7 +46,7 @@ data:extend(
     flow_color = {r=0.9, g=0.9, b=0.9},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Ordo.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -58,7 +58,7 @@ data:extend(
     flow_color = {r=0.2, g=0.2, b=0.2},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Perditio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -70,7 +70,7 @@ data:extend(
     flow_color = {r=0, g=1, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Terra.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 
@@ -85,7 +85,7 @@ data:extend(
     flow_color = {r=0.8, g=0.8, b=0.9},
     max_temperature = 0,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Gelum.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.4,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -97,7 +97,7 @@ data:extend(
     flow_color = {r=1, g=1, b=0.8},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Lux.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -109,7 +109,7 @@ data:extend(
     flow_color = {r=0.6, g=0.6, b=0.6},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Metallum.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -121,7 +121,7 @@ data:extend(
     flow_color = {r=0.4, g=0.4, b=0.4},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Mortuus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -133,7 +133,7 @@ data:extend(
     flow_color = {r=0.55, g=0.55, b=0.55},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Motus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -145,7 +145,7 @@ data:extend(
     flow_color = {r=0.2, g=0.4, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Permutatio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -157,7 +157,7 @@ data:extend(
     flow_color = {r=0.4, g=1, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Potentia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -169,7 +169,7 @@ data:extend(
     flow_color = {r=0.1, g=0.1, b=0.1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Vacuous.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -181,7 +181,7 @@ data:extend(
     flow_color = {r=1, g=0.2, b=0.6},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Vitae.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -193,7 +193,7 @@ data:extend(
     flow_color = {r=0, g=1, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Vitreus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 
@@ -208,7 +208,7 @@ data:extend(
     flow_color = {r=1, g=0.6, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Auram.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -220,7 +220,7 @@ data:extend(
     flow_color = {r=0.6, g=0.4, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Bestia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -232,7 +232,7 @@ data:extend(
     flow_color = {r=0.4, g=1, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Electrum.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -244,7 +244,7 @@ data:extend(
     flow_color = {r=0.3, g=0.3, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Examinis.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -256,7 +256,7 @@ data:extend(
     flow_color = {r=0.8, g=0, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Fames.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -268,7 +268,7 @@ data:extend(
     flow_color = {r=0.1, g=1, b=0.1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Herba.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -280,7 +280,7 @@ data:extend(
     flow_color = {r=0, g=0, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Instrumentum.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -292,7 +292,7 @@ data:extend(
     flow_color = {r=1, g=0.1, b=0.45},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Iter.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -304,7 +304,7 @@ data:extend(
     flow_color = {r=0.45, g=0.45, b=0.45},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Machina.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -316,7 +316,7 @@ data:extend(
     flow_color = {r=0.25, g=0.25, b=0.25},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Magneto.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -328,7 +328,7 @@ data:extend(
     flow_color = {r=0.5, g=1, b=0.1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Radio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -340,7 +340,7 @@ data:extend(
     flow_color = {r=0.75, g=0.75, b=0.75},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Spiritus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -352,7 +352,7 @@ data:extend(
     flow_color = {r=0.8, g=0.4, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Tempus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -364,7 +364,7 @@ data:extend(
     flow_color = {r=0, g=0, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Tenebrae.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -376,7 +376,7 @@ data:extend(
     flow_color = {r=1, g=0.75, b=0.5},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Vinculum.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -388,7 +388,7 @@ data:extend(
     flow_color = {r=0.5, g=0, b=0.8},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Vitium.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -400,7 +400,7 @@ data:extend(
     flow_color = {r=0.9, g=0.9, b=0.9},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Volatus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 
@@ -414,7 +414,7 @@ data:extend(
     flow_color = {r=0.3, g=0, b=0.5},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Alienis.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -426,7 +426,7 @@ data:extend(
     flow_color = {r=0.8, g=0.5, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Asidia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.2,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -438,7 +438,7 @@ data:extend(
     flow_color = {r=1, g=0.85, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Avaritia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -450,7 +450,7 @@ data:extend(
     flow_color = {r=1, g=0.3, b=0.3},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Aversio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -462,7 +462,7 @@ data:extend(
     flow_color = {r=1, g=0.7, b=0.7},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Cognitio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -474,7 +474,7 @@ data:extend(
     flow_color = {r=0, g=0.7, b=0.5},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Fabrico.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -486,7 +486,7 @@ data:extend(
     flow_color = {r=0.8, g=0.5, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Gula.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -498,7 +498,7 @@ data:extend(
     flow_color = {r=1, g=0.9, b=0.9},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Humanus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -510,7 +510,7 @@ data:extend(
     flow_color = {r=0.4, g=0.5, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Praemundio.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -522,7 +522,7 @@ data:extend(
     flow_color = {r=0, g=0.4, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Sensus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -534,7 +534,7 @@ data:extend(
     flow_color = {r=1, g=0, b=1},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Superbia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -546,7 +546,7 @@ data:extend(
     flow_color = {r=1, g=0.25, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Infernus.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -558,7 +558,7 @@ data:extend(
     flow_color = {r=0, g=0.9, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Invidia.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -570,7 +570,7 @@ data:extend(
     flow_color = {r=0.9, g=0, b=0},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Ira.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 {
@@ -582,7 +582,7 @@ data:extend(
     flow_color = {r=1, g=0.7, b=0.7},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Luxuria.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 --[[
@@ -595,7 +595,7 @@ data:extend(
     flow_color = {r=1, g=0.9, b=0.2},
     max_temperature = 100,
     icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Nebrisium.png",
-    pressure_to_speed_ratio = 1,
+    pressure_to_speed_ratio = 0.9,
     flow_to_energy_ratio = 0.59,
 },
 

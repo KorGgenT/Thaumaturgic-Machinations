@@ -355,7 +355,7 @@ data:extend(
           height = 160,
           frame_count = 72,
 		  line_length = 8,
-          --shift = {0.5,0.5},
+          shift = {1,0},
           scale = 0.6
           }
         },--[[
