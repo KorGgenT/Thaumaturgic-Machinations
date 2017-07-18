@@ -340,11 +340,11 @@ data:extend(
     layers =
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_lr_entity_spritesheet.png",
         priority = "extra-high",
-        width = 240,
-        height = 160,
-		scale = 0.6,
+        width = 120,
+        height = 80,
+		scale = 1.2,
         frame_count = 72,
 		line_length = 8,
         shift = {1, 0,},
