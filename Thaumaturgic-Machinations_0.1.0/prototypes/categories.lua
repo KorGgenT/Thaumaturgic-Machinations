@@ -10,6 +10,10 @@ data:extend(
   },
   {
     type = "recipe-category",
+    name = "thaumic-tree-farm"
+  },
+  {
+    type = "recipe-category",
     name = "pure-aspect-extraction"
   },
   {

@@ -144,6 +144,67 @@ data:extend({
 	},
 	result = "TM-lab",
 },
+{
+	type = "recipe",
+	name = "silverwood-seedling",
+	category = "aspect-crafting",
+	enabled = true,
+	energy_required = 1,
+	ingredients = {
+		{"raw-silverwood", 10},
+		{type="fluid", name="Permutatio", amount=100},
+		{type="fluid", name="Auram", amount=100},
+	},
+	result = "silverwood-seedling",
+	result_count = "10"
+},
+{
+	type = "recipe",
+	name = "grow-silverwood",
+	category = "thaumic-tree-farm",
+	enabled = true,
+	energy_required = 1000,
+	ingredients = {
+		{"silverwood-seedling", 1},
+		{type="fluid", name="Aqua", amount=200},
+		{type="fluid", name="Herba", amount=200},
+	},
+	result = "raw-silverwood",
+	result_count =100,
+	
+},
+{
+	type = "recipe",
+	name = "grow-wood",
+	category = "thaumic-tree-farm",
+	enabled = true,
+	energy_required = 20,
+	ingredients = {
+		{"seedling", 1},
+		{type="fluid", name="Aqua", amount=50},
+		{type="fluid", name="Herba", amount=10},
+	},
+	result = "raw-wood",
+	result_count = 4
+	
+},
+{
+	type = "recipe",
+	name = "refined-silverwood",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",
+	category = "aspect-crafting",
+	subgroup = "raw-material",
+	enabled = true,
+	energy_required = 1,
+	ingredients = {
+		{"raw-silverwood", 1},
+		{type="fluid", name="Lux", amount=200},
+	},
+	results = {
+		{type="fluid", name="Herba", amount=200},
+		{name="refined-silverwood", amount=1},
+	},
+},
 
 
 })

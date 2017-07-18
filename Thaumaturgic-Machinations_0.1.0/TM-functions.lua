@@ -118,6 +118,7 @@ log("adding aspect " .. aspect .. " to " .. item)
 end
 
 -- Checks if the string inputted is a primal aspect. (primal defined in master list)
+-- (string)
 function TM.IsPrimal(aspect)
 for _,v in pairs(Primal) do
 	if aspect == v then
@@ -137,7 +138,8 @@ local tier = 0
 end
 
 
--- assumes string input of item name. also assumes item name and recipe name are the same. tries to inherit aspects from ingredients
+-- assumes item name and recipe name are the same. tries to inherit aspects from ingredients
+-- (string)
 function TM.assign_inherited_aspects(item)
 local inherit = false
 local inh_recipe = data.raw.recipe[item].ingredients

@@ -3,6 +3,71 @@ data:extend(
 {
 
 {
+  type = "tree",
+  name = "silverwood-tree",
+  icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
+  flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+  minable =
+  {
+	mining_particle = "wooden-particle",
+	mining_time = 10,
+	result = "raw-silverwood",
+	count = 100
+  },
+  --corpse = "silverwood-tree-stump",
+  --remains_when_mined = "silverwood-tree-stump",
+  emissions_per_tick = -0.001,
+  max_health = 4000,
+  collision_box = {{0, -1}, {1, 5}},
+  selection_box = {{-5, -9}, {5, 5}},
+  drawing_box = {{-0.9, -3}, {0.9, 0.6}},
+  subgroup = "trees",
+  order = "z",
+  vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+  
+	autoplace =
+	{
+	  order = "a[doodad]-a[rock]",
+	  peaks =
+	  {
+		{
+		  influence = 0.0002
+		},
+		{
+		  influence = 0.002;
+		  min_influence = 0,
+		  elevation_optimal = 30000,
+		  elevation_range = 23000,
+		  elevation_max_range = 30000,
+		}
+	  }
+	},
+	
+  pictures =
+  {
+	{
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood_hr.png",
+		width = 1290,
+		scale = 0.7,
+		height = 907,
+		shift = {9,0},
+	},
+  },
+  --[[variations = {
+	trunk = {
+		filename = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
+		flags = { "mipmap" },
+		width = 1290,
+		height = 907,
+		frame_count = 1,
+		shift = {0,0}
+	},
+  },]]--
+  --colors = tree_data.colors,
+  darkness_of_burnt_tree = 0.2,
+},
+
+{
     type = "furnace",
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
@@ -397,42 +462,8 @@ data:extend(
         pipe_connections = {{ type="input", position = {-1, 1.75} }}
       },
     },
-	pipe_covres = pipecoverspictures(),--[[
-    working_visualisations =
-      {
-        {
-          north_position = {0.0, 0.0},
-          east_position = {0.0, 0.0},
-          south_position = {0.0, 0.0},
-          west_position = {0.0, 0.0},
-          animation =
-          {
-            filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
-            priority = "extra-high",
-            line_length = 8,
-            width = 20,
-            height = 49,
-            frame_count = 48,
-            axially_symmetrical = false,
-            direction_count = 1,
-            shift = util.by_pixel(2, 5.5),
-            hr_version = {
-              filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-fire.png",
-              priority = "extra-high",
-              line_length = 8,
-              width = 41,
-              height = 100,
-              frame_count = 48,
-              axially_symmetrical = false,
-              direction_count = 1,
-              shift = util.by_pixel(-0.75, 5.5),
-              scale = 0.5
-            }
-          },
-        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
-        }
-      },]]--
-    --fast_replaceable_group = "furnace"
+	pipe_covres = pipecoverspictures(),
+    --fast_replaceable_group = ""
   },
   {
     type = "assembling-machine",
@@ -725,5 +756,4 @@ data:extend(
       module_info_icon_shift = {0, 0.9}
     }
   },
-  
 })

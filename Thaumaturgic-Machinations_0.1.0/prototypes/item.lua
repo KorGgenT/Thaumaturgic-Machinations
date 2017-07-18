@@ -1,3 +1,16 @@
+if not data.raw.item["seedling"] then
+data:extend({
+  {
+    type = "item",
+	name = "seedling",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-material",
+	order = "seedling",
+	stack_size = 100,
+  },
+})
+end
 
 data:extend({
 
@@ -167,6 +180,37 @@ data:extend({
     fuel_value = "4MJ",
 	subgroup = "raw-material",
 	order = "vis-infused-wood",
+	stack_size = 100,
+  },
+  {
+    type = "item",
+	name = "silverwood-seedling",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "raw-material",
+	order = "silverwood-seedling",
+	stack_size = 100,
+  },
+  {
+    type = "item",
+	name = "raw-silverwood",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/raw-silverwood.png",
+	flags = {"goes-to-main-inventory"},
+    fuel_category = "Vis",
+    fuel_value = "10MJ",
+	subgroup = "raw-material",
+	order = "raw-silverwood",
+	stack_size = 100,
+  },
+  {
+    type = "item",
+	name = "refined-silverwood",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",
+	flags = {"goes-to-main-inventory"},
+    fuel_category = "Vis",
+    fuel_value = "15MJ",
+	subgroup = "raw-material",
+	order = "refined-silverwood",
 	stack_size = 100,
   },
 }
