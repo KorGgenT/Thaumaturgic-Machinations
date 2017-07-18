@@ -108,7 +108,7 @@ log("adding aspect " .. aspect .. " to " .. item)
 			{
 			  {type="fluid", name=aspect, amount=count},
 			},
-			icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png", --CHANGE THIS
+			icon = data.raw.item[item].icon, --CHANGE THIS
 			subgroup = "aspect-extraction",
 			order = item_AE,
 		}

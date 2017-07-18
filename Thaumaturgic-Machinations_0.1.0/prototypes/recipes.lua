@@ -59,7 +59,7 @@ data:extend({
 		{"vis-infused-brick", 5},
 		{type="fluid", name="Ignis", amount=250},
 	},
-	result = "thaumic-stone-furnace",
+	result = "infused-thaumic-stone-furnace",
 },
 {
 	type = "recipe",

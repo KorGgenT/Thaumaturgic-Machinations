@@ -19,10 +19,28 @@ data:extend({
 	{
 	  {type="fluid", name="Aqua", amount=50},
 	},
-	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png", --CHANGE THIS
+	icon = "__base__/graphics/icons/fluid/water.png",
 	subgroup = "aspect-extraction",
-	order = item_AE,
-}
+	order = "water-aspect-extraction",
+},
+{
+	type = "recipe",
+	name = "crude-oil-aspect-extraction",
+	category = "pure-aspect-extraction",
+	enabled = true,
+	energy_required = 1,
+	ingredients =
+	{
+	  {type="fluid", name="crude-oil", amount=100}
+	},
+	results=
+	{
+	  {type="fluid", name="Potentia", amount=50},
+	},
+	icon = "__base__/graphics/icons/fluid/crude-oil.png",
+	subgroup = "aspect-extraction",
+	order = "crude-oil-aspect-extraction",
+},
 })
 
 TM.assign_inherited_aspects("iron-plate")
