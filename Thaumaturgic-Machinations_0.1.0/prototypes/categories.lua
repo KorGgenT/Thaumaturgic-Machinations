@@ -27,6 +27,12 @@ data:extend(
 	subgroup = "combine-aspect",
   },
   {
+	type = "item-subgroup",
+	name = "TM-science",
+	group = "intermediate-products",
+	order = "h",
+  },
+  {
 	type = "item-group",
 	name = "aspect",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/WIP.png",

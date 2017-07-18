@@ -41,6 +41,27 @@ data:extend({
     }
 },
 {
+    type = "recipe",
+    name = "vis-infused-wood",
+    category = "thaumic-smelting",
+    normal =
+    {
+      enabled = true,
+      energy_required = 1,
+      ingredients = {{"raw-wood", 2}},
+      result = "vis-infused-wood",
+	  result_count = 5,
+    },
+    expensive =
+    {
+      enabled = true,
+      energy_required = 1,
+      ingredients = {{"raw-wood", 1}},
+      result = "vis-infused-wood",
+	  result_count = 2,
+    }
+},
+{
 	type = "recipe",
 	name = "thaumic-stone-furnace",
 	category = "crafting",
@@ -60,6 +81,32 @@ data:extend({
 		{type="fluid", name="Ignis", amount=250},
 	},
 	result = "infused-thaumic-stone-furnace",
+},
+{
+	type = "recipe",
+	name = "alumentum",
+	category = "aspect-crafting",
+	enabled = true,
+	energy_required = 1,
+	ingredients = {
+		{"coal", 1},
+		{type="fluid", name="Ignis", amount=20},
+		{type="fluid", name="Potentia", amount=20},
+	},
+	result = "alumentum",
+},
+{
+	type = "recipe",
+	name = "research-note",
+	category = "aspect-crafting",
+	enabled = true,
+	energy_required = 1,
+	ingredients = {
+		{"vis-infused-wood", 1},
+		{type="fluid", name="Aer", amount=20},
+		{type="fluid", name="Terra", amount=20},
+	},
+	result = "research-note",
 },
 {
 	type = "recipe",
@@ -83,6 +130,19 @@ data:extend({
 	ingredients = {{"stone-brick", 10},
 					{"iron-plate", 10}},
 	result = "crucible",
+},
+{
+	type = "recipe",
+	name = "TM-lab",
+	category = "aspect-crafting",
+	enabled = true,
+	energy_required = 1,
+	ingredients = {
+		{"vis-infused-wood", 20},
+		{type="fluid", name="Ordo", amount=400},
+		{type="fluid", name="Terra", amount=50},
+	},
+	result = "TM-lab",
 },
 
 
