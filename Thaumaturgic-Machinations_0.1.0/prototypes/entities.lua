@@ -412,14 +412,14 @@ data:extend(
 		scale = 1.2,
         frame_count = 72,
 		line_length = 8,
-        shift = {1, 0,},
+        shift = {1,0,},
         hr_version = {
           filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
           priority = "extra-high",
           width = 240,
           height = 160,
           frame_count = 72,
-		  line_length = 8,
+		  line_length = 17,
           shift = {1,0},
           scale = 0.6
           }
