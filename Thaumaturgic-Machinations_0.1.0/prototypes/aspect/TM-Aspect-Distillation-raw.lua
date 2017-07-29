@@ -32,7 +32,7 @@ data:extend({
 		},
 	},
 	subgroup = "aspect-extraction-" .. TM.GetTier("Aqua"),
-	order = "water-aspect-extraction",
+	order = "Aqua",
 },
 {
 	type = "recipe",
@@ -65,7 +65,7 @@ data:extend({
 		},
 	},
 	subgroup = "aspect-extraction-" .. TM.GetTier("Potentia"),
-	order = "crude-oil-aspect-extraction",
+	order = "Potentia",
 },
 {
 	type = "recipe",
@@ -120,7 +120,6 @@ TM.aspect_add_aspect("manasteel", "Permutatio", 200)
 TM.aspect_add_aspect("iron-gear-wheel", "Machina", 15)
 TM.aspect_add_aspect("assembling-machine-1", "Fabrico", 20)
 TM.aspect_add_aspect("assembling-machine-2", "Fabrico", 50)
-TM.aspect_add_aspect("soulfire", "Spiritus", 50)
 TM.aspect_add_aspect("uranium-235", "Radio", 100)
 TM.aspect_add_aspect("iron-chest", "Vacuous", 100)
 log("Aspect Distillation recipes complete.")

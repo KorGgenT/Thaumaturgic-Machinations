@@ -38,6 +38,17 @@ data:extend({
 	stack_size = 100,
   },
   {
+    type = "tool",
+	name = "magic-pack-3",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/essentia-detector.png",
+	icon_size = 32,
+	flags = {"goes-to-main-inventory"},
+	durability = 1,
+	subgroup = "TM-science",
+	order = "c",
+	stack_size = 100,
+  },
+  {
     type = "item",
     name = "ignis-steam-engine",
     icons = {

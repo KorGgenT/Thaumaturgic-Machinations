@@ -54,9 +54,28 @@ data:extend(
   },
   {
 	type = "item-group",
+	name = "barreling",
+	icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
+	icon_size = 32,
+	order = "z",
+  },
+  {
+	type = "item-group",
 	name = "aspect",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/Primal-Aspects.png",
 	icon_size = 96,
 	order= "g",
   },
 })
+
+data:extend({
+{
+	type = "item-group",
+	name = "barreling",
+	icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
+	icon_size = 32,
+	order = "z",
+},
+})
+data.raw["item-subgroup"]["fill-barrel"].group = "barreling"
+data.raw["item-subgroup"]["empty-barrel"].group = "barreling"

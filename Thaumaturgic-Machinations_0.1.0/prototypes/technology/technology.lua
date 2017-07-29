@@ -1,6 +1,140 @@
 data:extend({
 {
 	type = "technology",
+	name = "magic-personal-bots-1",
+	prerequisites = {"magic-armor-1","manasteel","magic-electronics"},
+	icon = "__base__/graphics/technology/personal-roboport-equipment.png",
+	icon_size = 128,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "magic-personal-roboport-equipment"
+		},
+	},
+	unit = {
+		count = 25,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "magic-personal-bots-1",
+},
+{
+	type = "technology",
+	name = "prismatic-fuel",
+	prerequisites = {"soulfire","rocket-silo"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/prismatic-fuel.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "prismatic-fuel"
+		},
+	},
+	unit = {
+		count = 120,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+			{name = "magic-pack-3", amount = 1}
+		},
+		time = 10
+	},
+	order = "prismatic-fuel",
+},
+{
+	type = "technology",
+	name = "soulfire",
+	prerequisites = {"death-magic","alumentum","oil-processing"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/soulfire.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "soulfire"
+		},
+	},
+	unit = {
+		count = 400,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "soulfire",
+},
+{
+	type = "technology",
+	name = "longstriders-1",
+	prerequisites = {"magic-armor-1"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/longstriders-1.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "longstriders-1"
+		},
+	},
+	unit = {
+		count = 120,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "longstriders-1",
+},
+{
+	type = "technology",
+	name = "longstriders-2",
+	prerequisites = {"longstriders-1","advanced-magic-electronics"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/longstriders-1.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "longstriders-2"
+		},
+	},
+	unit = {
+		count = 360,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+			{name = "magic-pack-3", amount = 1},
+		},
+		time = 10
+	},
+	order = "longstriders-1",
+},
+{
+	type = "technology",
+	name = "magic-night-vision-equipment",
+	prerequisites = {"magic-armor-2"},
+	icon = "__base__/graphics/technology/night-vision-equipment.png",
+	icon_size = 128,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "magic-night-vision-equipment"
+		},
+	},
+	unit = {
+		count = 75,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "longstriders-1",
+},
+{
+	type = "technology",
 	name = "magic-armor-1",
 	prerequisites = {"magic"},
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
@@ -16,7 +150,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 400,
 		ingredients = {
 			{name = "research-note", amount = 1},
 			{name = "brain-in-a-jar", amount = 1},
@@ -24,6 +158,95 @@ data:extend({
 		time = 10
 	},
 	order = "magic-armor-1",
+},
+{
+	type = "technology",
+	name = "magic-armor-2",
+	prerequisites = {"magic-armor-1","manasteel"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "magic-armor-2"
+		},
+	},
+	unit = {
+		count = 700,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "magic-armor-2",
+},
+{
+	type = "technology",
+	name = "magic-armor-3",
+	prerequisites = {"magic-armor-2","advanced-magic-electronics"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
+	icon_size = 32,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "magic-armor-3"
+		},
+	},
+	unit = {
+		count = 1200,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+			{name = "magic-pack-3", amount = 1},
+		},
+		time = 10
+	},
+	order = "magic-armor-3",
+},
+{
+	type = "technology",
+	name = "medium-power-crystal-1",
+	prerequisites = {"magic-armor-1"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/technology/fire-shard_hr.png",
+	icon_size = 128,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "medium-power-crystal-1"
+		},
+	},
+	unit = {
+		count = 400,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "medium-power-crystal-1",
+},
+{
+	type = "technology",
+	name = "large-power-crystal-1",
+	prerequisites = {"medium-power-crystal-1","magic-armor-3"},
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/technology/fire-shard_hr.png",
+	icon_size = 128,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "large-power-crystal-1"
+		},
+	},
+	unit = {
+		count = 700,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "large-power-crystal-1",
 },
 {
 	type = "technology",
@@ -38,7 +261,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 300,
 		ingredients = {
 			{name = "research-note", amount = 1},
 			{name = "brain-in-a-jar", amount = 1},
@@ -60,7 +283,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 100,
 		ingredients = {
 			{name = "research-note", amount = 1},
 			{name = "brain-in-a-jar", amount = 1},
@@ -68,6 +291,51 @@ data:extend({
 		time = 10
 	},
 	order = "bag-of-holding-1",
+},
+{
+	type = "technology",
+	name = "bag-of-holding-2",
+	prerequisites = {"bag-of-holding-1","crystallized-aspects"},
+	icon = "__Thaumaturgic-Machinations__/graphics/equipment/bag-of-holding-2.png",
+	icon_size = 64,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "bag-of-holding-2"
+		},
+	},
+	unit = {
+		count = 250,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+		},
+		time = 10
+	},
+	order = "bag-of-holding-2",
+},
+{
+	type = "technology",
+	name = "bag-of-holding-3",
+	prerequisites = {"bag-of-holding-2","advanced-magic-electronics"},
+	icon = "__Thaumaturgic-Machinations__/graphics/equipment/bag-of-holding-3.png",
+	icon_size = 64,
+	effects = {
+		{
+			type = "unlock-recipe",
+			recipe = "bag-of-holding-3"
+		},
+	},
+	unit = {
+		count = 400,
+		ingredients = {
+			{name = "research-note", amount = 1},
+			{name = "brain-in-a-jar", amount = 1},
+			{name = "magic-pack-3", amount = 1},
+		},
+		time = 10
+	},
+	order = "bag-of-holding-3",
 },
 {
 	type = "technology",
@@ -86,7 +354,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 800,
 		ingredients = {
 			{name="research-note", amount=1},
 			{name="brain-in-a-jar", amount=1},
@@ -95,7 +363,33 @@ data:extend({
 	},
 	order = "magic-assembler-1",
 },
-
+{
+	type = "technology",
+	name = "magic-modules-3",
+	prerequisites = {"magic-modules-2", "speed-module-3", "effectivity-module-3", "advanced-magic-electronics"},
+	icon = "__base__/graphics/technology/module.png",
+	icon_size = 128,
+	effects = {
+		{
+        type = "unlock-recipe",
+        recipe = "TM-speed-module-3"
+		},
+		{
+        type = "unlock-recipe",
+        recipe = "TM-effectivity-module-3"
+		},
+	},
+	unit = {
+		count = 1850,
+		ingredients = {
+			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1},
+			{name="magic-pack-3", amount=1}
+		},
+		time = 10,
+	},
+	order = "magic-assembler-1",
+},
 {
 	type = "technology",
 	name = "advanced-aspect-refining",
@@ -109,7 +403,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 750,
 		ingredients = {
 			{name="research-note", amount=1},
 			{name="brain-in-a-jar", amount=1},
@@ -135,7 +429,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 100,
 		ingredients = {
 			{name="research-note", amount=1},
 			{name="brain-in-a-jar", amount=1},
@@ -143,6 +437,29 @@ data:extend({
 		time = 10,
 	},
 	order = "magic-assembler-1",
+},
+
+{
+	type = "technology",
+	name = "magic-assembler-2",
+	prerequisites = {"magic-assembler-1", "automation-3", "advanced-magic-electronics"},
+	icon = "__base__/graphics/technology/automation.png",
+	effects = {
+		{
+        type = "unlock-recipe",
+        recipe = "magic-assembling-machine-2"
+		},
+	},
+	unit = {
+		count = 200,
+		ingredients = {
+			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1},
+			{name="magic-pack-3", amount=1},
+		},
+		time = 10,
+	},
+	order = "magic-assembler-2",
 },
 
 {
@@ -155,7 +472,7 @@ data:extend({
 		
 	},
 	unit = {
-		count = 25,
+		count = 75,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -181,7 +498,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 325,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -250,7 +567,7 @@ data:extend({
 {
 	type = "technology",
 	name = "alumentum",
-	prerequisites = {"magic"},
+	prerequisites = {"fire-magic"},
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/alumentum.png",
 	icon_size = 32,
 	effects = {
@@ -260,7 +577,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 60,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -286,7 +603,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 50,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -311,7 +628,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 70,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -336,7 +653,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 110,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -349,8 +666,8 @@ data:extend({
 	type = "technology",
 	name = "magic-electronics",
 	prerequisites = {"electronics", "crystallized-aspects"},
-	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/vis-diode.png",
-	icon_size = 32,
+	icon = "__base__/graphics/technology/electronics.png",
+	icon_size = 128,
 	effects = {
 		{
         type = "unlock-recipe",
@@ -358,9 +675,36 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 25,
+		count = 55,
 		ingredients = {
 			{name="research-note", amount=1},
+		},
+		time = 10,
+	},
+	order = "magic-electronics",
+},
+
+{
+	type = "technology",
+	name = "advanced-magic-electronics",
+	prerequisites = {"advanced-electronics", "magic-electronics", "soulfire"},
+	icon = "__base__/graphics/technology/advanced-electronics.png",
+	icon_size = 128,
+	effects = {
+		{
+        type = "unlock-recipe",
+        recipe = "dark-electronic-circuit"
+		},
+		{
+        type = "unlock-recipe",
+        recipe = "magic-pack-3"
+		},
+	},
+	unit = {
+		count = 285,
+		ingredients = {
+			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount = 1},
 		},
 		time = 10,
 	},
@@ -396,7 +740,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 10,
+		count = 100,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -438,7 +782,7 @@ data:extend({
 		},
 	},
 	unit = {
-		count = 10,
+		count = 200,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -490,9 +834,10 @@ data:extend({
 	},
     prerequisites = {"aspect-seperation-2"},
 	unit = {
-		count = 50,
+		count = 80,
 		ingredients = {
 			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1}
 		},
 		time = 10,
 	},
@@ -507,9 +852,11 @@ data:extend({
 	},
     prerequisites = {"aspect-seperation-3"},
 	unit = {
-		count = 50,
+		count = 100,
 		ingredients = {
 			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1},
+			{name="magic-pack-3", amount=1}
 		},
 		time = 10,
 	},
@@ -525,7 +872,7 @@ data:extend({
 	effects = {
 	},
 	unit = {
-		count = 50,
+		count = 10,
 		ingredients = {
 			{name="research-note", amount=1},
 		},
@@ -559,9 +906,10 @@ data:extend({
 	},
     prerequisites = {"aspect-combination-2"},
 	unit = {
-		count = 50,
+		count = 80,
 		ingredients = {
 			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1},
 		},
 		time = 10,
 	},
@@ -576,9 +924,11 @@ data:extend({
 	},
     prerequisites = {"aspect-combination-3"},
 	unit = {
-		count = 50,
+		count = 100,
 		ingredients = {
 			{name="research-note", amount=1},
+			{name="brain-in-a-jar", amount=1},
+			{name="magic-pack-3", amount=1},
 		},
 		time = 10,
 	},

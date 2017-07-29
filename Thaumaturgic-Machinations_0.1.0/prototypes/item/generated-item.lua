@@ -284,8 +284,19 @@ data:extend(
 	flags = {"goes-to-main-inventory"},
 	fuel_category = "chemical",
 	fuel_value = "50MJ",
+	fuel_acceleration_multiplier = 2.5,
+	fuel_top_speed_multiplier = 1.5,
 	subgroup = "raw-material",
 	order = "c[prismatic-fuel]",
 	stack_size = 50
+},
+{
+	type = "item",
+	name = "dark-electronic-circuit",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/dark-electronic-circuit.png",
+	flags = {"goes-to-main-inventory"},
+	subgroup = "intermediate-product",
+	order = "g[q]",
+	stack_size = 100,
 },
 })
