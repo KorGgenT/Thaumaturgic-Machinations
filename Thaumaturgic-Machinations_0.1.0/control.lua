@@ -1,9 +1,9 @@
 -- list of all items that should give inventory bonuses and their respective bonus
 function inv_bonus_list()
 local list = {
-	{"bag-of-holding-1", 2},
-	{"bag-of-holding-2", 5},
-	{"bag-of-holding-3", 10},
+	{"bag-of-holding-1", 10},
+	{"bag-of-holding-2", 20},
+	{"bag-of-holding-3", 30},
 }
 
 return list

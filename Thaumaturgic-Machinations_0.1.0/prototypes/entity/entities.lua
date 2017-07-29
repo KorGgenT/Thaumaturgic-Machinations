@@ -766,7 +766,7 @@ data:extend(
       }
     },
     energy_usage = "100kW",
-    ingredient_count = 4,
+    ingredient_count = 6,
     crafting_categories = {"combine-aspect","seperate-aspect","aspect-crafting"},
     fluid_boxes =
     {
@@ -868,6 +868,7 @@ data:extend(
     {
       "research-note",
 	  "brain-in-a-jar",
+	  "magic-pack-3",
     },
     module_specification =
     {
@@ -943,12 +944,6 @@ data:extend(
         }
       }
     }}),
-
-
-
-
-
-
     working_visualisations =
     {
       {
@@ -1002,24 +997,6 @@ data:extend(
         base_level = -1,
         pipe_connections = {{ type="input", position = {1, 3} }}
       },
-      {
-        production_type = "output",
-        pipe_covers = pipecoverspictures(),
-        base_level = 1,
-        pipe_connections = {{ position = {-2, -3} }}
-      },
-      {
-        production_type = "output",
-        pipe_covers = pipecoverspictures(),
-        base_level = 1,
-        pipe_connections = {{ position = {0, -3} }}
-      },
-      {
-        production_type = "output",
-        pipe_covers = pipecoverspictures(),
-        base_level = 1,
-        pipe_connections = {{ position = {2, -3} }}
-      }
     },
     pipe_covers = pipecoverspictures()
   },

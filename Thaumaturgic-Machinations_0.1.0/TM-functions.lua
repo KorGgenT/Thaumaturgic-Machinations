@@ -43,7 +43,7 @@ data.raw.recipe[recipe_create] =
 {
     type = "recipe",
     name = recipe_create,
-	localised_name = {"recipe-name.combine-recipe", {"fluid.name", recipe}},
+	localised_name = {"recipe-name.combine-recipe", {"fluid-name." .. recipe}},
     category = "combine-aspect",
     enabled = false,
     energy_required = 1,

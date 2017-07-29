@@ -345,10 +345,29 @@ data:extend({
 	ingredients = {
 		{"TM-speed-module", 5},
 		{"speed-module-2", 5},
-		{type="fluid", name="Motus", amount=500},
+		{type="fluid", name="Volatus", amount=500},
 	},
 	results = {
 		{name="TM-speed-module-2", amount=1},
+	},
+},
+{
+	type = "recipe",
+	name = "TM-speed-module-3",
+    icon = "__base__/graphics/icons/speed-module-3.png",
+	icon_size = 32,
+	category = "aspect-crafting",
+	subgroup = "TM-module",
+	enabled = false,
+	energy_required = 60,
+	ingredients = {
+		{"TM-speed-module-2", 5},
+		{"speed-module-3", 5},
+		{"dark-electronic-circuit", 10},
+		{type="fluid", name="Tempus", amount=500},
+	},
+	results = {
+		{name="TM-speed-module-3", amount=1},
 	},
 },
 {
@@ -385,6 +404,25 @@ data:extend({
 	},
 	results = {
 		{name="TM-effectivity-module-2", amount=1},
+	},
+},
+{
+	type = "recipe",
+	name = "TM-effectivity-module-3",
+    icon = "__base__/graphics/icons/effectivity-module-3.png",
+	icon_size = 32,
+	category = "aspect-crafting",
+	subgroup = "TM-module",
+	enabled = false,
+	energy_required = 60,
+	ingredients = {
+		{"TM-effectivity-module-2", 5},
+		{"effectivity-module-3", 5},
+		{"dark-electronic-circuit", 10},
+		{type="fluid", name="Invidia", amount=500},
+	},
+	results = {
+		{name="TM-effectivity-module-3", amount=1},
 	},
 },
 {
@@ -586,6 +624,27 @@ data:extend({
 },
 {
 	type = "recipe",
+	name = "magic-assembling-machine-2",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-assembling-machine-2.png",
+	icon_size = 32,
+	category = "aspect-crafting",
+    subgroup = "production-machine",
+	enabled = false,
+	energy_required = 2,
+	ingredients = {
+		{"magic-gear-wheel", 5},
+		{"vis-diode", 10},
+		{"dark-electronic-circuit", 10},
+		{"magic-assembling-machine-1", 1},
+		{"assembling-machine-3", 1},
+		{type="fluid", name="Tempus", amount=100},
+	},
+	results = {
+		{name="magic-assembling-machine-2", amount=1},
+	},
+},
+{
+	type = "recipe",
 	name = "magic-gear-wheel",
     icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-gear-wheel.png",
 	icon_size = 32,
@@ -615,15 +674,86 @@ data:extend({
 },
 {
     type = "recipe",
+    name = "bag-of-holding-2",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 14,
+	ingredients = {
+		{type="fluid", name="Avaritia", amount=500},
+		{"vis-diode", 5},
+	},
+	result = "bag-of-holding-2"
+},
+{
+    type = "recipe",
+    name = "bag-of-holding-3",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 21,
+	ingredients = {
+		{type="fluid", name="Gula", amount=500},
+		{"dark-electronic-circuit", 20},
+	},
+	result = "bag-of-holding-3"
+},
+{
+    type = "recipe",
     name = "small-power-crystal-1",
 	category = "aspect-crafting",
 	enabled = false,
 	energy_required = 5,
 	ingredients = {
-		{"vis-diode", 2},
+		{"vis-diode", 5},
 		{type="fluid", name="Potentia", amount=500},
 	},
 	result = "small-power-crystal-1"
+},
+{
+    type = "recipe",
+    name = "medium-power-crystal-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 5,
+	ingredients = {
+		{"vis-diode", 20},
+		{type="fluid", name="Potentia", amount=2000},
+	},
+	result = "medium-power-crystal-1"
+},
+{
+    type = "recipe",
+    name = "large-power-crystal-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 5,
+	ingredients = {
+		{"vis-diode", 100},
+		{type="fluid", name="Potentia", amount=10000},
+	},
+	result = "large-power-crystal-1"
+},
+{
+	type = "recipe",
+	name = "longstriders-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 16,
+	ingredients = {
+		{type="fluid", name="Iter", amount=100},
+	},
+	result = "longstriders-1"
+},
+{
+	type = "recipe",
+	name = "longstriders-2",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 16,
+	ingredients = {
+		{"longstriders-1", 5},
+		{type="fluid", name="Tempus", amount=100},
+	},
+	result = "longstriders-2"
 },
 {
     type = "recipe",
@@ -635,6 +765,44 @@ data:extend({
 		{type="fluid", name="Humanus", amount=500},
 	},
 	result = "magic-armor-1"
+},
+{
+    type = "recipe",
+    name = "magic-armor-2",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 5,
+	ingredients = {
+		{"magic-armor-1", 1},
+		{"manasteel", 100},
+		{type="fluid", name="Asidia", amount=500},
+	},
+	result = "magic-armor-2"
+},
+{
+    type = "recipe",
+    name = "magic-armor-3",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 5,
+	ingredients = {
+		{"magic-armor-2", 1},
+		{"dark-electronic-circuit", 100},
+		{type="fluid", name="Superbia", amount=500},
+	},
+	result = "magic-armor-3"
+},
+{
+    type = "recipe",
+    name = "magic-night-vision-equipment",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 5,
+	ingredients = {
+		{type="fluid", name="Lux", amount=500},
+		{type="fluid", name="Sensus", amount=500},
+	},
+	result = "magic-night-vision-equipment"
 },
 {
     type = "recipe",
@@ -658,5 +826,57 @@ data:extend({
 		{"solid-fuel", 1},
 	},
 	result = "soulfire"
+},
+{
+    type = "recipe",
+    name = "prismatic-fuel",
+	category = "aspect-crafting",
+	enabled = true,
+	energy_required = 10,
+	ingredients = {
+		{"soulfire", 2},
+		{"rocket-fuel", 1},
+	},
+	result = "prismatic-fuel"
+},
+{
+    type = "recipe",
+    name = "dark-electronic-circuit",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 36,
+	ingredients = {
+		{"entropy-shard", 2},
+		{"advanced-circuit", 10},
+	},
+	result = "dark-electronic-circuit",
+	result_count = 5,
+},
+{
+    type = "recipe",
+    name = "magic-pack-3",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 36,
+	ingredients = {
+		{type="fluid", name="Radio", amount=10},
+		{type="fluid", name="Magneto", amount=100},
+		{"dark-electronic-circuit", 10},
+	},
+	result = "magic-pack-3",
+	result_count = 1,
+},
+{
+    type = "recipe",
+    name = "magic-personal-roboport-equipment",
+	category = "crafting",
+	enabled = false,
+	energy_required = 36,
+	ingredients = {
+		{"vis-diode", 20},
+		{"manasteel", 20},
+	},
+	result = "magic-personal-roboport-equipment",
+	result_count = 1,
 },
 })
