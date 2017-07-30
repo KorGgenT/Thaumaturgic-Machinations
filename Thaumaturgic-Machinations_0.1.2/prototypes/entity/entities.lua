@@ -99,8 +99,8 @@ data:extend(
         percent = 30
       }
     },
-    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.8, -1}, {0.8, 1}},
+    collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
     crafting_categories = {"thaumic-smelting"},
     result_inventory_size = 1,
     energy_usage = "5MW",
@@ -127,7 +127,7 @@ data:extend(
     },
     animation =
     {
-	  layers =
+	  layers = 
       {
         {
         filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
@@ -135,45 +135,28 @@ data:extend(
         line_length = 16,
         width = 128,
         height = 128,
-        frame_count = 100,
-		scale = 0.7,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filenames = {"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_2.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_3.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_4.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_5.png",
-		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_6.png"},
-          priority = "extra-high",
-          line_length = 4,
-          width = 512,
-          height = 512,
-          frame_count = 100,
-          shift = util.by_pixel(-0.25, 6),
-          scale = 0.25
-          }
-        },--[[
-        {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace-shadow.png",
-        priority = "extra-high",
-        width = 81,
-        height = 64,
         frame_count = 1,
-        draw_as_shadow = true,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-shadow.png",
-          priority = "extra-high",
-          width = 164,
-          height = 74,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(14.5, 13),
-          scale = 0.5
-          }
-        } ]]
+		scale = 0.9,
+        shift = {0.4, -0.25},
+			hr_version = {
+				filenames = {
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_2.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_3.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_4.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_5.png",
+					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_6.png"
+				},
+				priority = "extra-high",
+				line_length = 4,
+				width = 512,
+				height = 512,
+				frame_count = 100,
+				shift = util.by_pixel(-0.25, 6),
+				scale = 0.25
+			}
+        },
       }
     },
     working_visualisations =
@@ -185,16 +168,18 @@ data:extend(
           west_position = {0.0, 0.0},
           animation =
           {
-            filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
-            priority = "extra-high",
-            line_length = 16,
-            width = 128,
-            height = 128,
-            frame_count = 100,
-			scale = 0.7,
+			
+			filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
+			priority = "extra-high",
+			line_length = 16,
+			width = 128,
+			height = 128,
+			frame_count = 100,
+			scale = 0.9,
+			shift = {0.4, -0.25},
             axially_symmetrical = false,
             direction_count = 1,
-            shift = util.by_pixel(0.515625, 0.0625),
+			
             hr_version = {
               filename = {
 				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
