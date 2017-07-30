@@ -1,30 +1,28 @@
 require("prototypes.entity.pipepictures")
-data:extend(
+data:extend {
 {
-
-{
-  type = "tree",
-  name = "silverwood-tree",
-  icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
-  flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
-  minable =
-  {
+	type = "tree",
+	name = "silverwood-tree",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
+	flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
+	minable =
+	{
 	mining_particle = "wooden-particle",
 	mining_time = 10,
 	result = "raw-silverwood",
 	count = 100
-  },
-  --corpse = "silverwood-tree-stump",
-  --remains_when_mined = "silverwood-tree-stump",
-  emissions_per_tick = -0.001,
-  max_health = 4000,
-  collision_box = {{0, -1}, {1, 5}},
-  selection_box = {{-5, -9}, {5, 5}},
-  drawing_box = {{-0.9, -3}, {0.9, 0.6}},
-  subgroup = "trees",
-  order = "z",
-  vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
-  
+	},
+	--corpse = "silverwood-tree-stump",
+	--remains_when_mined = "silverwood-tree-stump",
+	emissions_per_tick = -0.001,
+	max_health = 4000,
+	collision_box = {{-0.7, 0}, {0.7, 1}},
+	selection_box = {{-2, -11}, {2, 1}},
+	drawing_box = {{-0.9, -10.4}, {0.9, 0}},
+	subgroup = "trees",
+	order = "z",
+	vehicle_impact_sound =  { filename = "__base__/sound/car-wood-impact.ogg", volume = 1.0 },
+
 	autoplace =
 	{
 	  order = "a[doodad]-a[rock]",
@@ -42,18 +40,18 @@ data:extend(
 		}
 	  }
 	},
-	
-  pictures =
-  {
+
+	pictures =
+	{
 	{
 		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood_hr.png",
 		width = 1290,
 		scale = 0.7,
 		height = 907,
-		shift = {9,0},
+		shift = {8.7,-4},
 	},
-  },
-  --[[variations = {
+	},
+	--[[variations = {
 	trunk = {
 		filename = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
 		flags = { "mipmap" },
@@ -62,9 +60,9 @@ data:extend(
 		frame_count = 1,
 		shift = {0,0}
 	},
-  },]]--
-  --colors = tree_data.colors,
-  darkness_of_burnt_tree = 0.2,
+	},]]--
+	--colors = tree_data.colors,
+	darkness_of_burnt_tree = 0.2,
 },
 
 {
@@ -1873,6 +1871,4 @@ data:extend(
     allowed_effects = {"consumption", "speed", "productivity", "pollution"}
   },
 
-
-
-})
+}
