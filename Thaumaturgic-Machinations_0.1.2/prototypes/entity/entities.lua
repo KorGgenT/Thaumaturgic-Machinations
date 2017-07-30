@@ -352,12 +352,12 @@ data:extend {
     corpse = "medium-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    close_sound = { filename = "__Thaumaturgic-Machinations__/sounds/open-pot-lid.ogg", volume = 2 },
-    --close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    open_sound = { filename = "__Thaumaturgic-Machinations__/sounds/open-crucible.ogg", volume = 2 },
+    close_sound = { filename = "__Thaumaturgic-Machinations__/sounds/close-crucible.ogg", volume = 2 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
     working_sound =
     {
-      sound = { filename = "__Thaumaturgic-Machinations__/sounds/bubbly-pot.ogg", }
+      sound = { filename = "__Thaumaturgic-Machinations__/sounds/bubbling_1.ogg" }
     },
     resistances =
     {
@@ -477,12 +477,12 @@ data:extend {
     corpse = "medium-remnants",
     repair_sound = { filename = "__base__/sound/manual-repair-simple.ogg" },
     mined_sound = { filename = "__base__/sound/deconstruct-bricks.ogg" },
-    close_sound = { filename = "__Thaumaturgic-Machinations__/sounds/open-pot-lid.ogg", volume = 2 },
-    --close_sound = { filename = "__base__/sound/machine-close.ogg", volume = 0.75 },
+    open_sound = { filename = "__Thaumaturgic-Machinations__/sounds/open-crucible.ogg", volume = 2 },
+    close_sound = { filename = "__Thaumaturgic-Machinations__/sounds/close-crucible.ogg", volume = 2 },
     vehicle_impact_sound =  { filename = "__base__/sound/car-stone-impact.ogg", volume = 1.0 },
     working_sound =
     {
-      sound = { filename = "__Thaumaturgic-Machinations__/sounds/bubbly-pot.ogg", }
+      sound = { filename = "__Thaumaturgic-Machinations__/sounds/bubbling_1.ogg" }
     },
     resistances =
     {
