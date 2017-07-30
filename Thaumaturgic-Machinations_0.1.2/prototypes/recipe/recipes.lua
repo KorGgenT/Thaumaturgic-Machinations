@@ -274,10 +274,10 @@ data:extend({
 	energy_required = 1,
 	ingredients = {
 		{"raw-silverwood", 1},
-		{type="fluid", name="Lux", amount=200},
+		{type="fluid", name="Lux", amount=10},
 	},
 	results = {
-		{type="fluid", name="Herba", amount=200},
+		{type="fluid", name="Herba", amount=10},
 		{name="refined-silverwood", amount=1},
 	},
 },
@@ -821,7 +821,7 @@ data:extend({
     type = "recipe",
     name = "soulfire",
 	category = "aspect-crafting",
-	enabled = true,
+	enabled = false,
 	energy_required = 10,
 	ingredients = {
 		{"catalytic-coal", 1},
@@ -833,7 +833,7 @@ data:extend({
     type = "recipe",
     name = "prismatic-fuel",
 	category = "aspect-crafting",
-	enabled = true,
+	enabled = false,
 	energy_required = 10,
 	ingredients = {
 		{"soulfire", 2},
@@ -849,7 +849,8 @@ data:extend({
 	energy_required = 36,
 	ingredients = {
 		{"entropy-shard", 2},
-		{"advanced-circuit", 10},
+		{"advanced-circuit", 8},
+		{"refined-silverwood", 1},
 	},
 	result = "dark-electronic-circuit",
 	result_count = 5,

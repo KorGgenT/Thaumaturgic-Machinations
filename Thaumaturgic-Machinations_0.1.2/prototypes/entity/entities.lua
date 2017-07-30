@@ -803,7 +803,7 @@ data:extend {
   {
     type = "lab",
     name = "TM-lab",
-    icon = "__base__/graphics/icons/lab.png",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/item/TM-lab.png",
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "TM-lab"},
     max_health = 150,
