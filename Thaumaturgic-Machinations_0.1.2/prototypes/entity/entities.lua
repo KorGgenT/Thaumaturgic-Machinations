@@ -127,25 +127,34 @@ data:extend(
     },
     animation =
     {
-    layers =
+	  layers =
       {
         {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
         priority = "extra-high",
-        width = 81,
-        height = 64,
-        frame_count = 1,
+        line_length = 16,
+        width = 128,
+        height = 128,
+        frame_count = 100,
+		scale = 0.7,
         shift = {0.515625, 0.0625},
         hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace.png",
+          filenames = {"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_2.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_3.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_4.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_5.png",
+		  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_6.png"},
           priority = "extra-high",
-          width = 151,
-          height = 146,
-          frame_count = 1,
+          line_length = 4,
+          width = 512,
+          height = 512,
+          frame_count = 100,
           shift = util.by_pixel(-0.25, 6),
-          scale = 0.5
+          scale = 0.25
           }
-        },
+        },--[[
         {
         filename = "__base__/graphics/entity/stone-furnace/stone-furnace-shadow.png",
         priority = "extra-high",
@@ -164,7 +173,7 @@ data:extend(
           shift = util.by_pixel(14.5, 13),
           scale = 0.5
           }
-        }
+        } ]]
       }
     },
     working_visualisations =
@@ -176,26 +185,34 @@ data:extend(
           west_position = {0.0, 0.0},
           animation =
           {
-            filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
+            filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
             priority = "extra-high",
-            line_length = 8,
-            width = 20,
-            height = 49,
-            frame_count = 48,
+            line_length = 16,
+            width = 128,
+            height = 128,
+            frame_count = 100,
+			scale = 0.7,
             axially_symmetrical = false,
             direction_count = 1,
-            shift = util.by_pixel(2, 5.5),
+            shift = util.by_pixel(0.515625, 0.0625),
             hr_version = {
-              filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-fire.png",
+              filename = {
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
+				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png"},
               priority = "extra-high",
-              line_length = 8,
-              width = 41,
-              height = 100,
-              frame_count = 48,
+              line_length = 4,
+              width = 512,
+              height = 512,
+              frame_count = 100,
               axially_symmetrical = false,
               direction_count = 1,
               shift = util.by_pixel(-0.75, 5.5),
-              scale = 0.5
+              scale = 0.25
             }
           },
         light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
