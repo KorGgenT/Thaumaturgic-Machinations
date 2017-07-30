@@ -1,4 +1,4 @@
-local function createAspect(name, color, flow_color, heat_capacity, ratio) {
+local function createAspect(name, color, flow_color, heat_capacity, ratio)
 	data:extend {{
 		type = "fluid",
 		name = name,
@@ -11,7 +11,7 @@ local function createAspect(name, color, flow_color, heat_capacity, ratio) {
 		pressure_to_speed_ratio = 0.6,
 		flow_to_energy_ratio = 0.59
 	}}
-}
+end
 
 -- Primary Aspects
 
