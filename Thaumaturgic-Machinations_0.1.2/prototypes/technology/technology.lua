@@ -345,12 +345,16 @@ data:extend({
 	icon_size = 128,
 	effects = {
 		{
-        type = "unlock-recipe",
-        recipe = "TM-speed-module-2"
+			type = "unlock-recipe",
+			recipe = "TM-speed-module-2"
 		},
 		{
-        type = "unlock-recipe",
-        recipe = "TM-effectivity-module-2"
+			type = "unlock-recipe",
+			recipe = "TM-effectivity-module-2"
+		},
+		{
+			type = "unlock-recipe",
+			recipe = "TM-prod-module-2"
 		},
 	},
 	unit = {
@@ -371,12 +375,17 @@ data:extend({
 	icon_size = 128,
 	effects = {
 		{
-        type = "unlock-recipe",
-        recipe = "TM-speed-module-3"
+			type = "unlock-recipe",
+			recipe = "TM-speed-module-3"
 		},
 		{
-        type = "unlock-recipe",
-        recipe = "TM-effectivity-module-3"
+			type = "unlock-recipe",
+			recipe = "TM-effectivity-module-3"
+		},
+		
+		{
+			type = "unlock-recipe",
+			recipe = "TM-prod-module-3"
 		},
 	},
 	unit = {
@@ -622,12 +631,16 @@ data:extend({
 	icon_size = 128,
 	effects = {
 		{
-        type = "unlock-recipe",
-        recipe = "TM-speed-module"
+			type = "unlock-recipe",
+			recipe = "TM-speed-module"
 		},
 		{
-        type = "unlock-recipe",
-        recipe = "TM-effectivity-module"
+			type = "unlock-recipe",
+			recipe = "TM-effectivity-module"
+		},
+		{
+			type = "unlock-recipe",
+			recipe = "TM-prod-module"
 		},
 	},
 	unit = {

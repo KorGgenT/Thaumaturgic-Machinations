@@ -327,13 +327,6 @@ function TM.inherit_aspects(recipe)
 end
 
 
--- the below function is to make migrations for recipes enabled by technology easier to write.
-function migrate_recipe_tech(recipe, tech)
-	for k,force in pairs(game.forces) do
-	  force.recipes[recipe].enabled = force.technologies[tech].researched
-	end
-end
-
 
 
 
