@@ -57,7 +57,7 @@ createAspect("Volatus", {r=0.9, g=0.9, b=0.9}, {r=0.9, g=0.9, b=0.9})
 
 -- Tier 3 Aspects
 createAspect("Alienis", {r=0.3, g=0, b=0.5}, {r=0.3, g=0, b=0.5})
-createAspect("Asidia", {r=0.8, g=0.5, b=0}, {r=0.8, g=0.5, b=0}), nil, 0.2)
+createAspect("Asidia", {r=0.8, g=0.5, b=0}, {r=0.8, g=0.5, b=0}, nil, 0.2)
 createAspect("Avaritia", {r=1, g=0.85, b=0}, {r=1, g=0.85, b=0})
 createAspect("Aversio", {r=1, g=0.3, b=0.3}, {r=1, g=0.3, b=0.3})
 createAspect("Cognitio", {r=1, g=0.7, b=0.7}, {r=1, g=0.7, b=0.7})
