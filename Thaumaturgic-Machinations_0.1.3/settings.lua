@@ -33,8 +33,18 @@ data:extend({
 		setting_type = "startup",
 		default_value = 1,
 		--maximum_value = 1,
-		--minimum_value = 1,
+		minimum_value = 0,
 		per_user = false,
 		order = "creatio-4"
+	},
+	{
+		type = "double-setting",
+		name = "combine-seperate-modifier",
+		setting_type = "startup",
+		default_value = 0.1,
+		maximum_value = 1,
+		minimum_value = 0,
+		per_user = false,
+		order = "TM-1"
 	},
 })

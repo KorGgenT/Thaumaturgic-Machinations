@@ -54,7 +54,7 @@ data.raw.recipe[recipe_create] =
     },
     results=
     {
-      {type="fluid", name=recipe, amount=10},
+      {type="fluid", name=recipe, amount=200*combine_seperate_modifier},
     },
     icons = {
 		{
@@ -98,8 +98,8 @@ data.raw.recipe[recipe_seperate] =
     },
     results=
     {
-	  {type="fluid", name=aspect1, amount=10},
-	  {type="fluid", name=aspect2, amount=10}
+	  {type="fluid", name=aspect1, amount=100*combine_seperate_modifier},
+	  {type="fluid", name=aspect2, amount=100*combine_seperate_modifier}
     },
     icons = {
 		{

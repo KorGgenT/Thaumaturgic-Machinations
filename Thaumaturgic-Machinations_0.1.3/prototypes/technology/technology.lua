@@ -807,7 +807,9 @@ data:extend({
 	},
 	order = "crystallized-aspects",
 },
-
+})
+if combine_seperate_modifier ~= 0 then
+data:extend({
 {
 	type = "technology",
 	name = "aspect-seperation-1",
@@ -952,3 +954,4 @@ data:extend({
 	order = "aspect-combination-4",
 },
 })
+end
