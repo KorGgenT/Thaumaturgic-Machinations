@@ -10,7 +10,7 @@
 -- Tier 1
 
 TM.new_aspect_combine("Gelum", "Ignis", "Perditio")
-TM.new_aspect_combine("Lux", "Aer", "Ordo")
+TM.new_aspect_combine("Lux", "Aer", "Ignis")
 TM.new_aspect_combine("Metallum", "Terra", "Ordo")
 TM.new_aspect_combine("Mortuus", "Aqua", "Perditio")
 TM.new_aspect_combine("Motus", "Aer", "Ordo")
@@ -39,6 +39,10 @@ TM.new_aspect_combine("Tenebrae", "Vacuous", "Ordo")
 TM.new_aspect_combine("Vinculum", "Motus", "Perditio")
 TM.new_aspect_combine("Vitium", "Potentia", "Perditio")
 TM.new_aspect_combine("Volatus", "Aer", "Motus")
+
+if creatio_enabled then
+	TM.new_aspect_combine("Creatio", "Vacuous", "Vitae")
+end
 
 -- Tier 3
 

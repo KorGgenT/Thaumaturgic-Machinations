@@ -1,4 +1,8 @@
 if not TM then TM = {} end
+
+creatio_enabled = settings.startup["creatio-enabled"].value
+
+
 require("prototypes.item.item")
 require("prototypes.item.generated-item")
 require("prototypes.technology.technology")
