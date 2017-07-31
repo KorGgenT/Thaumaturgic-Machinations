@@ -72,3 +72,7 @@ createAspect("Invidia", {r=0, g=0.9, b=0}, {r=0, g=0.9, b=0})
 createAspect("Ira", {r=0.9, g=0, b=0}, {r=0.9, g=0, b=0})
 createAspect("Luxuria", {r=1, g=0.7, b=0.7}, {r=1, g=0.7, b=0.7})
 --createAspect("Nebrisium", {r=1, g=0.9, b=0.2}, {r=1, g=0.9, b=0.2})
+
+if creatio_enabled then
+	createAspect("Creatio", {r=79/255, g=41/255, b = 71/255}, {r=79/255, g=41/255, b = 71/255})
+end

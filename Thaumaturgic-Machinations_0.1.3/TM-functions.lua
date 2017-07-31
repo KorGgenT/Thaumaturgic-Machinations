@@ -54,7 +54,7 @@ data.raw.recipe[recipe_create] =
     },
     results=
     {
-      {type="fluid", name=recipe, amount=10},
+      {type="fluid", name=recipe, amount=200*combine_seperate_modifier},
     },
     icons = {
 		{
@@ -98,8 +98,8 @@ data.raw.recipe[recipe_seperate] =
     },
     results=
     {
-	  {type="fluid", name=aspect1, amount=10},
-	  {type="fluid", name=aspect2, amount=10}
+	  {type="fluid", name=aspect1, amount=100*combine_seperate_modifier},
+	  {type="fluid", name=aspect2, amount=100*combine_seperate_modifier}
     },
     icons = {
 		{
@@ -238,11 +238,6 @@ local tier = TM.GetTier(aspect)
 	end
 end
 --[[
-Checks if the string inputted is a primal aspect. (primal defined in master list)
-(string)
-example: TM.IsPrimal("Gula")
-]]--
---[[
 function TM.GetTier(aspect)
 	return data.raw.fluid[aspect].tier
 end
@@ -325,9 +320,6 @@ function TM.inherit_aspects(recipe)
 		log("recipe " .. recipe .. " does not exist or has no ingredients!")
 	end
 end
-
-
-
 
 
 
