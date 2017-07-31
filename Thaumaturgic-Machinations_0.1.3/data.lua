@@ -1,7 +1,9 @@
 if not TM then TM = {} end
 
 creatio_enabled = settings.startup["creatio-enabled"].value
-
+creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value
+creatio_primal_cost = settings.startup["creatio-primal-cost"].value
+creatio_recipe_time = settings.startup["creatio-recipe-time"].value
 
 require("prototypes.item.item")
 require("prototypes.item.generated-item")
@@ -21,3 +23,7 @@ require("prototypes.item.equipment")
 
 require("prototypes.item.ammo")
 require("prototypes.entity.projectiles")
+
+if creatio_enabled then
+	require("prototypes.aspect.TM-Creatio")
+end

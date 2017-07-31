@@ -238,11 +238,6 @@ local tier = TM.GetTier(aspect)
 	end
 end
 --[[
-Checks if the string inputted is a primal aspect. (primal defined in master list)
-(string)
-example: TM.IsPrimal("Gula")
-]]--
---[[
 function TM.GetTier(aspect)
 	return data.raw.fluid[aspect].tier
 end
@@ -325,9 +320,6 @@ function TM.inherit_aspects(recipe)
 		log("recipe " .. recipe .. " does not exist or has no ingredients!")
 	end
 end
-
-
-
 
 
 
