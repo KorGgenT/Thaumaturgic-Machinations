@@ -135,7 +135,7 @@ data:extend {
         height = 128,
         frame_count = 1,
 		scale = 0.9,
-        shift = {0.4, -0.25},
+        shift = {0.4, -0.25},--[[
 			hr_version = {
 				filenames = {
 					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
@@ -153,7 +153,7 @@ data:extend {
 				frame_count = 100,
 				shift = util.by_pixel(-0.25, 6),
 				scale = 0.25
-			}
+			}]]--
         },
       }
     },
@@ -177,7 +177,7 @@ data:extend {
 			shift = {0.4, -0.25},
             axially_symmetrical = false,
             direction_count = 1,
-			
+			--[[
             hr_version = {
               filename = {
 				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
@@ -196,7 +196,7 @@ data:extend {
               direction_count = 1,
               shift = util.by_pixel(-0.75, 5.5),
               scale = 0.25
-            }
+            }]]--
           },
         light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
         }
