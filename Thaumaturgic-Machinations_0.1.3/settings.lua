@@ -39,6 +39,16 @@ data:extend({
 	},
 	{
 		type = "double-setting",
+		name = "creatio-multiplier",
+		setting_type = "startup",
+		default_value = 2,
+		--maximum_value = 1,
+		minimum_value = 1,
+		per_user = false,
+		order = "creatio-5"
+	},
+	{
+		type = "double-setting",
 		name = "combine-seperate-modifier",
 		setting_type = "startup",
 		default_value = 0.1,

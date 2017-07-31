@@ -4,6 +4,7 @@ creatio_enabled = settings.startup["creatio-enabled"].value
 creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value
 creatio_primal_cost = settings.startup["creatio-primal-cost"].value
 creatio_recipe_time = settings.startup["creatio-recipe-time"].value
+creatio_multiplier = settings.startup["creatio-multiplier"].value
 combine_seperate_modifier = settings.startup["combine-seperate-modifier"].value
 
 require("prototypes.item.item")

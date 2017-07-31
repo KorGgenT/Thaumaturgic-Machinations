@@ -211,7 +211,7 @@ function creatio_recipe(item, red, green, blue)
 					{type = "fluid", name = "Terra", amount = creatio_primal_cost}
 				},
 				results = {
-					{item, 60}
+					{item, 30*creatio_multiplier}
 				},
 			},
 		})
