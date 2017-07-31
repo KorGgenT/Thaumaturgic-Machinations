@@ -159,7 +159,7 @@ Adds the ability to distill an additional aspect from the input item.
 (string, string, number)
 example: TM.aspect_add_aspect("iron-ore", "Ordo", 50)
 ]]--
-function TM.aspect_add_aspect(item, aspect, count)
+function TM.item_add_aspect(item, aspect, count)
 local item_AE = item .. "-aspect-extraction"
 local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
@@ -198,7 +198,14 @@ local tier = TM.GetTier(aspect)
 	log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
 		else if not data.raw.recipe[item_AE] and data.raw.item[item] then
 		log("creating recipe " .. item_AE .. ": " .. count .. " " .. aspect)
-		log("local name = " .. GetLocalName(item))
+		
+		local count_string = count
+		local x = 10
+		while x < 10^6 do
+			if count < x then count_string = "0" .. count_string end
+			x=x*10
+		end
+		
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
@@ -231,7 +238,7 @@ local tier = TM.GetTier(aspect)
 				},
 			},
 			subgroup = "aspect-extraction-" .. tier,
-			order = aspect,
+			order = aspect .. "-" .. count_string,
 		}
 		end
 		return
