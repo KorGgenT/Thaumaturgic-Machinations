@@ -69,6 +69,7 @@ data:extend {
     type = "furnace",
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
+	localised_name = {"item-name.TM", {"item-name.stone-furnace"}},
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "thaumic-stone-furnace"},
     max_health = 200,
