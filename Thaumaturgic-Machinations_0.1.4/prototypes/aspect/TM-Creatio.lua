@@ -3,6 +3,7 @@ data:extend({
 	type = "item-group",
 	name = "creatio-fluid",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/creatio-fluid.png",
+	icon_size = 64,
 	order = "z",
 },
 {
