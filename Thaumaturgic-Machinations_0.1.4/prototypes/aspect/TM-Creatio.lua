@@ -217,14 +217,13 @@ function creatio_recipe(item, red, green, blue)
 			},
 		})
 		
-		log("Creating Creatio recipes for " .. item)
+		TM.debug_log("Creating Creatio recipes for " .. item)
 	else
 		if reason == " " then
 			reason = " unknown."
 		end
 		log("Failed to make Creatio recipes for " .. item .. ". Reason:" .. reason)
 	end
-		log(item_aspect)
 end
 
 --[[
@@ -418,6 +417,6 @@ creatio_ores = {
 	{"copper-ore", 0, 0, 0},
 	{"stone", 0, 0, 0},
 	{"coal", 0, 0, 0},
-	{"uranium-235", 0, 0, 0},
+	{"uranium-ore", 0, 0, 0},
 }
 TM.creatio_pairs(creatio_ores)

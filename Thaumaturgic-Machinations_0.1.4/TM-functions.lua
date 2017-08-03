@@ -1,4 +1,6 @@
-
+function TM.debug_log(string)
+	if debug_setting == true then log(string) end
+end
 --[[
 The function below creates two recipes: a construction recipe, which makes an aspect out of two different aspects; and a seperation recipe, which does the reverse.
 Icon size is expected to be 32.
@@ -17,7 +19,7 @@ local tier = 1 + math.max(TM.GetTier(aspect1),TM.GetTier(aspect2))
 
 
 if data.raw["item-subgroup"]["combine-aspect-" .. tier] == nil then
-	log("creating subgroup combine-aspect-" .. tier)
+	TM.debug_log("creating subgroup combine-aspect-" .. tier)
 	data.raw["item-subgroup"]["combine-aspect-" .. tier] =	
 	{
 		type = "item-subgroup",
@@ -27,7 +29,7 @@ if data.raw["item-subgroup"]["combine-aspect-" .. tier] == nil then
 	}
 end
 if data.raw["item-subgroup"]["seperate-aspect-" .. tier] == nil then
-	log("creating subgroup seperate-aspect-" .. tier)
+	TM.debug_log("creating subgroup seperate-aspect-" .. tier)
 	data.raw["item-subgroup"]["seperate-aspect-" .. tier] =	
 		{
 			type = "item-subgroup",
@@ -37,7 +39,7 @@ if data.raw["item-subgroup"]["seperate-aspect-" .. tier] == nil then
 		}
 end
 
-log("Tier " .. tier .. ": " .. aspect1 .. " + " .. aspect2 .. " = " .. recipe)
+TM.debug_log("Tier " .. tier .. ": " .. aspect1 .. " + " .. aspect2 .. " = " .. recipe)
 
 data.raw.recipe[recipe_create] =
 {
@@ -149,23 +151,25 @@ function TM.remove_ingredient(recipe, item)
 end
 --gets the local name for an item, if it's item-name or entity-name
 local function GetLocalName(item)
-	if data.raw.item[item].place_result ~= nil then
-		return "entity-name." .. data.raw.item[item].place_result
+	local name = "-name."
+	if item.type == "item" and item.place_result ~= nil then
+		return "entity" .. name .. item.name
 	end
-	return "item-name." .. item
+	return item.type .. name .. item.name
 end
 --[[
 Adds the ability to distill an additional aspect from the input item.
 (string, string, number)
 example: TM.aspect_add_aspect("iron-ore", "Ordo", 50)
 ]]--
-function TM.item_add_aspect(item, aspect, count)
+function TM.item_add_aspect(item, aspect, count, amount)
 local item_AE = item .. "-aspect-extraction"
 local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
-
+local datum = TM.GetType(item) -- if it's an item, you get data.raw.item[item]
+amount = amount or 1
 	if data.raw["item-subgroup"]["aspect-extraction-" .. tier] == nil then
-		log("creating subgroup aspect-extraction-" .. tier)
+		TM.debug_log("creating subgroup aspect-extraction-" .. tier)
 		data.raw["item-subgroup"]["aspect-extraction-" .. tier] =	
 		{
 			type = "item-subgroup",
@@ -175,7 +179,7 @@ local tier = TM.GetTier(aspect)
 		}
 	end
 
-	if data.raw.item[item] == nil then
+	if datum == nil then
 		log(item .. " item not found. No aspect extraction recipe initialized.")
 		return
 	end
@@ -187,36 +191,31 @@ local tier = TM.GetTier(aspect)
 			if value.name == aspect then
 				value.amount = count + value.amount
 				asex = true
-				log("inserting " .. count .. " " .. aspect .. " to " .. item)
+				TM.debug_log("inserting " .. count .. " " .. aspect .. " to " .. item)
 			end
 		end 
 		
 	end
 
-	if data.raw.recipe[item_AE] and data.raw.item[item] ~= nil and not asex then
-	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count})
-	log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
-		else if not data.raw.recipe[item_AE] and data.raw.item[item] then
-		log("creating recipe " .. item_AE .. ": " .. count .. " " .. aspect)
+	if data.raw.recipe[item_AE] and datum ~= nil and not asex then
+	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count/amount})
+	TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
+		else if not data.raw.recipe[item_AE] and datum then
+		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
 		
-		local count_string = count
-		local x = 10
-		while x < 10^6 do
-			if count < x then count_string = "0" .. count_string end
-			x=x*10
-		end
-		
+		local ingredient_type = datum.type
+		if ingredient_type ~= "fluid" then ingredient_type = "item" end
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
 			name = item_AE,
-			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {GetLocalName(item)}},
+			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {GetLocalName(datum)}},
 			category = "pure-aspect-extraction",
 			enabled = true,
 			energy_required = 1,
 			ingredients =
 			{
-			  {type=data.raw.item[item].type, name=item, amount=1}
+			  {type=ingredient_type, name=item, amount=amount}
 			},
 			results=
 			{
@@ -227,7 +226,7 @@ local tier = TM.GetTier(aspect)
 					icon = "__Thaumaturgic-Machinations__/graphics/icons/blank.png",
 				},
 				{
-					icon = data.raw.item[item].icon,
+					icon = datum.icon,
 					scale = 0.65,
 					shift = {-8,-6}
 				},
@@ -238,11 +237,21 @@ local tier = TM.GetTier(aspect)
 				},
 			},
 			subgroup = "aspect-extraction-" .. tier,
-			order = aspect .. "-" .. count_string,
+			order = aspect .. "-" .. string.format("%06d", count),
 		}
 		end
 		return
 	end
+end
+
+local primal_aspects = {"Aer","Ordo","Terra","Perditio","Aqua","Ignis"}
+function TM.IsPrimal(aspect)
+	for i,v in pairs(primal_aspects) do
+		if v == aspect then
+			return true
+		end
+	end
+	return false
 end
 --[[
 function TM.GetTier(aspect)
@@ -250,12 +259,16 @@ function TM.GetTier(aspect)
 end
 ]]--
 function TM.GetTier(aspect)
-
-
+	if aspect == nil then
+		return nil
+	end
 	local ing = data.raw.recipe[aspect .. "-create"]
 	if ing == nil then
 		--log(aspect .." is primal.")
-		return 0
+		if TM.IsPrimal(aspect) then
+			return 0
+		end
+		return nil
 	end
 	--log(aspect .. " ingredients:")
 	ing = ing.ingredients
@@ -304,18 +317,20 @@ end
 
 function TM.inherit_aspects(recipe)
 	if data.raw.recipe[recipe] ~= nil and data.raw.recipe[recipe].ingredients ~= nil then
-		log("\nInheriting aspects for " .. recipe)
+		TM.debug_log("\nInheriting aspects for " .. recipe)
 		for index, value in pairs(data.raw.recipe[recipe].ingredients)
 		do
 		local isaspect = " (is not an aspect)"
+		local tier = TM.GetTier(value.name)
+		if tier ~= nil and tier >= 0 then isaspect = " (is an aspect)" end
 			if value[1] == nil then
-				log("fluid ingredient = " .. value.amount .. " " .. value.name .. isaspect)
+				TM.debug_log("fluid ingredient = " .. value.amount .. " " .. value.name .. isaspect)
 			else
-				log("ingredient = " .. value[2] .. " " .. value[1])
+				TM.debug_log("ingredient = " .. value[2] .. " " .. value[1])
 				if data.raw.recipe[value[1] .. "-aspect-extraction"] and data.raw.recipe[value[1] .. "-aspect-extraction"].results then
-					log(value[1] .. " has the following aspects:")
+					TM.debug_log(value[1] .. " has the following aspects:")
 					for index2, value2 in pairs(data.raw.recipe[value[1] .. "-aspect-extraction"].results) do
-						log(value2.amount .. " " .. value2.name)
+						TM.debug_log(value2.amount .. " " .. value2.name)
 					end
 				
 				else
@@ -329,7 +344,19 @@ function TM.inherit_aspects(recipe)
 end
 
 
-
+function TM.GetType(string)
+	local t = string .. " type = "
+	if data.raw.item[string] then return data.raw.item[string] end
+	if data.raw.fluid[string] then return data.raw.fluid[string] end
+	for i,v in pairs(data.raw) do
+		if v[string] ~= nil then
+			TM.debug_log(t .. v[string].type)
+			return v[string]
+		end
+	end
+	log(t .. "not found.")
+	return nil
+end
 
 
 
