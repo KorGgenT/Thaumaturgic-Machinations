@@ -1,11 +1,12 @@
 if not TM then TM = {} end
-debug_settig = settings.startup["debug-enabled"].value
+debug_setting = settings.startup["debug-enabled"].value
 creatio_enabled = settings.startup["creatio-enabled"].value
 creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value
 creatio_primal_cost = settings.startup["creatio-primal-cost"].value
 creatio_recipe_time = settings.startup["creatio-recipe-time"].value
 creatio_multiplier = settings.startup["creatio-multiplier"].value
 combine_seperate_modifier = settings.startup["combine-seperate-modifier"].value
+inherit_multiplier = 1.1
 
 require("prototypes.item.item")
 require("prototypes.item.generated-item")

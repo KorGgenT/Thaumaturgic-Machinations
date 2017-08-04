@@ -31,7 +31,6 @@ TM.new_aspect_combine("Herba", "Vitae", "Terra")
 TM.new_aspect_combine("Instrumentum", "Metallum", "Potentia")
 TM.new_aspect_combine("Iter", "Motus", "Aer")
 TM.new_aspect_combine("Machina", "Motus", "Metallum")
-TM.new_aspect_combine("Magneto", "Metallum", "Motus")
 TM.new_aspect_combine("Radio", "Lux", "Potentia")
 TM.new_aspect_combine("Spiritus", "Vitae", "Mortuus")
 TM.new_aspect_combine("Tempus", "Vacuous", "Ordo")
@@ -60,11 +59,11 @@ TM.new_aspect_combine("Superbia", "Volatus", "Vacuous")
 
 -- Tier 4
 
+TM.new_aspect_combine("Magneto", "Aversio", "Perditio")
 TM.new_aspect_combine("Infernus", "Ignis", "Alienis")
 TM.new_aspect_combine("Invidia", "Sensus", "Fames")
 TM.new_aspect_combine("Ira", "Aversio", "Ignis")
 TM.new_aspect_combine("Luxuria", "Humanus", "Fames")
-
 -- Tier 5
 
 -- TM.new_aspect_combine("Nebrisium", "Luxuria", "Avaritia")

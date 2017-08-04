@@ -61,7 +61,7 @@ data:extend({
 		type = "bool-setting",
 		name = "debug-enabled",
 		setting_type = "startup",
-		default_value = false,
+		default_value = true,
 		per_user = true,
 		order = "zzz"
 	},
