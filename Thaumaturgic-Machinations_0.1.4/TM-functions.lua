@@ -253,6 +253,11 @@ amount = amount or 1
 		if datum.place_result then
 			local_type = "entity"
 		end
+		local assign_icon = datum.icon
+		if assign_icon == nil and datum.icons then
+			assign_icon = datum.icons[1].icon
+			TM.debug_log("ERROR CODE 1456: Trying to assign nil to icon")
+		end
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
@@ -274,7 +279,7 @@ amount = amount or 1
 					icon = "__Thaumaturgic-Machinations__/graphics/icons/blank.png",
 				},
 				{
-					icon = datum.icon,
+					icon = assign_icon,
 					scale = 0.65,
 					shift = {-8,-6}
 				},
@@ -347,7 +352,8 @@ function TM.inherit_helper(dat_recipe, recipe)
 		if value[1] == nil then
 			TM.debug_log("fluid ingredient = " .. value.amount .. " " .. value.name .. isaspect)
 			if tier ~= nil then
-				TM.item_add_aspect(TM.GetType(recipe).name, value.name, value.amount*inherit_multiplier/result_amount)-- adds aspect that was used to create item to item's aspects.
+				local ty = TM.GetType(recipe)
+				TM.item_add_aspect(ty.name, value.name, value.amount*inherit_multiplier/result_amount)-- adds aspect that was used to create item to item's aspects.
 			end
 		else
 			TM.debug_log("ingredient = " .. value[2] .. " " .. value[1])
@@ -389,16 +395,48 @@ Returns nil and writes to log if no type can be found.
 ]]--
 function TM.GetType(string)
 	local t = string .. " type = "
-	if data.raw.item[string] then TM.debug_log(t .. "item") return data.raw.item[string] end
-	if data.raw.fluid[string] then TM.debug_log(t .. "fluid") return data.raw.fluid[string] end
+	local it = nil
+	local rip = nil
+	--if data.raw.item[string] then TM.debug_log(t .. "item") return data.raw.item[string] end
+	--if data.raw.fluid[string] then TM.debug_log(t .. "fluid") return data.raw.fluid[string] end
+	--if data.raw.ammo[string] then TM.debug_log(t .. "ammo") return data.raw.ammo[string] end
+	--if data.raw.capsule[string] then TM.debug_log(t .. "capsule") return data.raw.capsule[string] end
 	for i,v in pairs(data.raw) do
 		if v[string] ~= nil then
-			TM.debug_log(t .. v[string].type)
-			return v[string]
+			local c = v[string].type
+			local blacklist = {
+				"recipe",
+				"resource",
+				"noise-layer",
+				"item",
+				"autoplace-control",
+				"projectile",
+				"ammo-category",
+				"roboport-equipment",
+				"tile",
+				"recipe-category",
+				"generator-equipment"
+			}
+			if not TM.InList(blacklist, c) then
+				TM.debug_log(t .. v[string].type)
+				return v[string]
+			elseif c == "item" then
+				it = v[string]
+			elseif c == "recipe" then
+				rip = v[string]
+			end
+		else 
 		end
 	end
-	log(t .. "not found.")
-	return nil
+	if it then
+		TM.debug_log(t .. it.type)
+		return it
+	end
+	if rip == nil then
+		log(t .. "not found.")
+	end
+	TM.debug_log(t .. rip.type)
+	return rip
 end
 --[[
 This function takes two aspects as inputs, and returns the aspect that they combine into.
@@ -471,6 +509,11 @@ function TM.icons_assign(recipe)
 			datum.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
 			local input = datum.ingredients[1].name
 			local input_type = TM.GetType(input).type
+			if input_type == "recipe" then 
+				TM.debug_log("ERROR CODE 1246: recipe as ingredient") -- rare error, is caused when recipe name and item name do not match
+				data.raw.recipe[recipe] = nil
+				return
+			end
 			if input_type == "fluid" then
 				input_type = input_type .. "-name."
 			else
@@ -480,6 +523,19 @@ function TM.icons_assign(recipe)
 				end
 			end
 			datum.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
+		end
+		local datum_ing = datum.ingredients[1].name -- there should only be a single ingredient in extraction recipes.
+		local rpl_bool = false
+		if data.raw.projectile[data_ing] then
+			rpl_bool = true
+			datum.icon = data.raw.projectile[data_ing].icon	
+		elseif data.raw.tool[data_ing] then
+			rpl_bool = true
+			datum.icon = data.raw.tool[data_ing].icon
+		end
+		if rpl_bool then
+			log("ERROR CODE 8724 " .. data_ing .. " icon replacement")
+			datum.icons = nil
 		end
 	elseif match_value then
 		log("Failed to assign aspect icon to " .. recipe)

@@ -1,4 +1,13 @@
 if not TM then TM = {} end
+if not inherited then inherited = {} end
+table.insert(inherited, "grow-silverwood")
+table.insert(inherited, "grow-wood")
+table.insert(inherited, "TM-seedling")
+
+
+
+
+
 debug_setting = settings.startup["debug-enabled"].value
 creatio_enabled = settings.startup["creatio-enabled"].value
 creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value

@@ -216,7 +216,9 @@ function creatio_recipe(item, red, green, blue)
 				},
 			},
 		})
-		
+		table.insert(inherited, item .. "-precipitation")
+		table.insert(inherited, item .. "-liquid")
+		table.insert(inherited, item .. "-gas")
 		TM.debug_log("Creating Creatio recipes for " .. item)
 	else
 		if reason == " " then
