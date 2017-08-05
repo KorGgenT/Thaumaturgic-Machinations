@@ -129,23 +129,54 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 
 end
 
--- this function has been borrowed from boblib.
-function TM.remove_ingredient(recipe, item)
-  if data.raw.recipe[recipe] then
-
-    if data.raw.recipe[recipe].expensive then
-      TM.item_remove(data.raw.recipe[recipe].expensive.ingredients, item)
-    end
-    if data.raw.recipe[recipe].normal then
-      TM.item_remove(data.raw.recipe[recipe].normal.ingredients, item)
-    end
-    if data.raw.recipe[recipe].ingredients then
-      TM.item_remove(data.raw.recipe[recipe].ingredients, item)
-    end
-
-  else
-    --log("Recipe " .. recipe .. " does not exist.")
-  end
+-- this function has been borrowed from omnilib.
+function TM.remove_ingredient(recipe, ingredient)
+	if data.raw.recipe[recipe].ingredients then
+		for i,ing in pairs(data.raw.recipe[recipe].ingredients) do
+			if ing.name == ingredient then
+				table.remove(data.raw.recipe[recipe].ingredients,i)
+				TM.debug_log("Removing " .. ingredient .. " from " .. recipe)
+			end
+		end
+	elseif data.raw.recipe[recipe].normal.ingredients then
+		for i,ing in pairs(data.raw.recipe[recipe].normal.ingredients) do
+			if ing.name == ingredient then
+				table.remove(data.raw.recipe[recipe].normal.ingredients,i)
+				TM.debug_log("Removing " .. ingredient .. " from " .. recipe)
+			end
+		end
+		for i,ing in pairs(data.raw.recipe[recipe].expensive.ingredients) do
+			if ing.name == ingredient then
+				table.remove(data.raw.recipe[recipe].expensive.ingredients,i)
+				TM.debug_log("Removing " .. ingredient .. " from " .. recipe)
+			end
+		end
+	end
+end
+-- this function removes the inputted result.
+function TM.remove_result(recipe, result)
+	local datum = data.raw.recipe[recipe]
+	if datum.normal and datum.normal.results then
+		for i,res in pairs(datum.normal.results) do
+			if res.name == result then
+				table.remove(datum.normal.results, i)
+				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+			end
+		end
+		for i,res in pairs(datum.expensive.results) do
+			if res.name == result then
+				table.remove(datum.expensive.results, i)
+				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+			end
+		end
+	elseif datum.results then
+		for i,res in pairs(datum.results) do
+			if res.name == result then
+				table.remove(datum.results, i)
+				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+			end		
+		end
+	end
 end
 --this function has been borrowed from boblib.
 function TM.item_remove(list, item)
@@ -157,11 +188,13 @@ function TM.item_remove(list, item)
 end
 --gets the local name for an item, if it's item-name or entity-name
 local function GetLocalName(item)
-	local name = "-name."
+	local nm = "-name."
 	if item.type == "item" and item.place_result ~= nil then
-		return "entity" .. name .. item.name
+		return "entity" .. nm .. item.name
 	end
-	return item.type .. name .. item.name
+	local item_type = item.type
+	if item_type == "capsule" then item_type = "item" end
+	return item_type .. nm .. item.name
 end
 --[[
 Adds the ability to distill an additional aspect from the input item. Supports many item types.
@@ -213,12 +246,18 @@ amount = amount or 1
 		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
 		
 		local ingredient_type = datum.type
-		if ingredient_type ~= "fluid" then ingredient_type = "item" end
+		if ingredient_type ~= "fluid" then 
+			ingredient_type = "item" 
+		end
+		local local_type = ingredient_type
+		if datum.place_result then
+			local_type = "entity"
+		end
 		data.raw.recipe[item_AE] =
 		{
 			type = "recipe",
 			name = item_AE,
-			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {GetLocalName(datum)}},
+			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {local_type .. "-name." .. datum.name}},
 			category = "pure-aspect-extraction",
 			enabled = true,
 			energy_required = 1,
@@ -302,7 +341,7 @@ function TM.inherit_helper(dat_recipe, recipe)
 			if dat_recipe.results == nil then
 				result_amount = 1
 			else
-				result_amount = dat_recipe.results[1][1] or dat_recipe.results[1]["amount"]
+				result_amount = dat_recipe.results[1][2] or dat_recipe.results[1]["amount"]
 			end
 		end
 		if value[1] == nil then
@@ -335,8 +374,7 @@ function TM.inherit_aspects(recipe)
 			TM.inherit_helper(dat_recipe, recipe)
 		elseif dat_recipe.normal ~= nil then
 			TM.inherit_helper(dat_recipe.normal, recipe)
-		--elseif dat_recipe.expensive ~= nil
-		
+			TM.inherit_helper(dat_recipe.expensive, recipe)
 		else
 		log("recipe " .. recipe .. " has no ingredients!")
 		end
@@ -366,16 +404,21 @@ end
 This function takes two aspects as inputs, and returns the aspect that they combine into.
 ]]--
 function TM.GetCombinable(aspect1, aspect2)
+	if match_value == nil then
+		TM.debug_log("Aspect combination not found")
+	end
 	TM.debug_log("Searching for aspect combination for " .. aspect1 .. " & " .. aspect2)
 	local aspect_ing1 = nil
 	if not TM.IsAspect(aspect1) or not TM.IsAspect(aspect2) then
 		return nil
 	end
 	for i,recipe in pairs(data.raw.recipe) do
-		if recipe.ingredients ~= nil then
+	local match_value = string.find(recipe.name, '.create$')
+		if recipe.ingredients ~= nil and match_value then
 			for i2,ingredient in pairs(recipe.ingredients) do
 				if ingredient.name == aspect1 or ingredient.name == aspect2 then
 					if aspect_ing1 then
+						TM.debug_log(aspect_ing1)
 						TM.debug_log("Aspect combination is " .. recipe.results[1].name)
 						return recipe.results[1].name
 					else
@@ -401,16 +444,132 @@ function TM.CompressExtract(item)
 		for i2,aspect2 in pairs(extract_recipe.results) do
 			if aspect1 ~= aspect2 then
 				local combined = TM.GetCombinable(aspect1.name,aspect2.name)
-				local count = aspect1.amount + aspect2.amount
-				count = count / 2
-				TM.item_add_aspect(item, combined, count)
-				TM.remove_ingredient(extract_recipe, aspect1.name)
-				TM.remove_ingredient(extract_recipe, aspect2.name)
+				if combined then
+					local count = aspect1.amount + aspect2.amount
+					count = count / 2 * combine_seperate_modifier * inherit_multiplier
+					TM.item_add_aspect(item, combined, count)
+					TM.remove_result(extract_recipe.name, aspect1.name)
+					TM.remove_result(extract_recipe.name, aspect2.name)
+				end
 			end
 		end
 	end
 
 end
+--[[
+This function assigns the most prominent aspect of an extraction recipe the correct aspect icon and locale.
+]]--
+function TM.icons_assign(recipe)
+	local match_value = string.find(recipe, 'aspect.extraction')
+	if match_value and data.raw.recipe[recipe].icons then
+		local aspect, count = TM.MostAspect(recipe)
+		TM.debug_log("found " .. recipe .. ". largest aspects: " .. count .. " " .. aspect)
+		local datum = data.raw.recipe[recipe]
+		if datum.icons and datum.icons[1] then
+			datum.icons[3].icon = data.raw.fluid[aspect].icon
+			datum.order = aspect .. "-" .. string.format("%06d", count)
+			datum.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
+			local input = datum.ingredients[1].name
+			local input_type = TM.GetType(input).type
+			if input_type == "fluid" then
+				input_type = input_type .. "-name."
+			else
+				input_type = "item-name."
+				if data.raw.item[input] and data.raw.item[input].place_result then
+					input_type = "entity-name."
+				end
+			end
+			datum.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
+		end
+	elseif match_value then
+		log("Failed to assign aspect icon to " .. recipe)
+	end
+end
+--[[
+This function returns the most prominent aspect of a recipe or nil.
+]]--
+function TM.MostAspect(recipe)
+	local datum = data.raw.recipe[recipe]
+	if not datum or not datum.results then
+		return nil
+	end
+	local most_aspect = nil
+	local most_count = 0
+	for i,v in pairs(datum.results) do
+		if v.amount > most_count then
+			most_count = v.amount
+			most_aspect = v.name
+		end
+	end
+	return most_aspect, most_count
+end
+--[[
+This function returns true if item is in list, otherwise false.
+]]--
+function TM.InList(list, item)
+	for i,v in pairs(list) do
+		if item == v then
+			return true
+		end
+	end
+	return false
+end
+--[[
+Recursive. Triest to inherit from all ingredients in list, and if an ingredient is in list it calls the function
+]]--
+function TM.Inheritance(list, recipe)
+	if TM.InList(list, recipe) then
+		return list
+	end
+	local match_value = string.find(recipe, 'aspect.extraction') or string.find(recipe, 'create$') or string.find(recipe, 'seperate$') or string.find(recipe, 'fill.+barrel')
+	if match_value then
+		table.insert(list, recipe)
+		return list
+	end
+	if data.raw.recipe[recipe] == nil or data.raw.recipe[recipe].ingredients == nil then
+		table.insert(list, recipe)
+		return list
+	end
+	log(recipe)
+	for i,v in pairs(data.raw.recipe[recipe].ingredients) do
+		local ing_name = v.name or v[1]
+		if not TM.InList(list, ing_name) then
+			list = TM.Inheritance(list, ing_name)
+		end
+	end
+	TM.inherit_aspects(recipe)
+	TM.CompressExtract(recipe)
+	table.insert(list, recipe)
+	return list
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
