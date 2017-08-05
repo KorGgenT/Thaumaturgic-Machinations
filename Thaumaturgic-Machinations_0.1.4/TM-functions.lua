@@ -160,20 +160,20 @@ function TM.remove_result(recipe, result)
 		for i,res in pairs(datum.normal.results) do
 			if res.name == result then
 				table.remove(datum.normal.results, i)
-				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end
 		end
 		for i,res in pairs(datum.expensive.results) do
 			if res.name == result then
 				table.remove(datum.expensive.results, i)
-				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end
 		end
 	elseif datum.results then
 		for i,res in pairs(datum.results) do
 			if res.name == result then
 				table.remove(datum.results, i)
-				TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
+				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end		
 		end
 	end
@@ -256,7 +256,7 @@ amount = amount or 1
 		local assign_icon = datum.icon
 		if assign_icon == nil and datum.icons then
 			assign_icon = datum.icons[1].icon
-			TM.debug_log("ERROR CODE 1456: Trying to assign nil to icon")
+			log("ERROR CODE 1456: Trying to assign nil to icon")
 		end
 		data.raw.recipe[item_AE] =
 		{
@@ -397,10 +397,6 @@ function TM.GetType(string)
 	local t = string .. " type = "
 	local it = nil
 	local rip = nil
-	--if data.raw.item[string] then TM.debug_log(t .. "item") return data.raw.item[string] end
-	--if data.raw.fluid[string] then TM.debug_log(t .. "fluid") return data.raw.fluid[string] end
-	--if data.raw.ammo[string] then TM.debug_log(t .. "ammo") return data.raw.ammo[string] end
-	--if data.raw.capsule[string] then TM.debug_log(t .. "capsule") return data.raw.capsule[string] end
 	for i,v in pairs(data.raw) do
 		if v[string] ~= nil then
 			local c = v[string].type
@@ -418,7 +414,7 @@ function TM.GetType(string)
 				"generator-equipment"
 			}
 			if not TM.InList(blacklist, c) then
-				TM.debug_log(t .. v[string].type)
+				--TM.debug_log(t .. v[string].type)
 				return v[string]
 			elseif c == "item" then
 				it = v[string]
@@ -429,13 +425,13 @@ function TM.GetType(string)
 		end
 	end
 	if it then
-		TM.debug_log(t .. it.type)
+		--TM.debug_log(t .. it.type)
 		return it
 	end
 	if rip == nil then
 		log(t .. "not found.")
 	end
-	TM.debug_log(t .. rip.type)
+	--TM.debug_log(t .. rip.type)
 	return rip
 end
 --[[
@@ -443,9 +439,9 @@ This function takes two aspects as inputs, and returns the aspect that they comb
 ]]--
 function TM.GetCombinable(aspect1, aspect2)
 	if match_value == nil then
-		TM.debug_log("Aspect combination not found")
+		--TM.debug_log("Aspect combination not found")
 	end
-	TM.debug_log("Searching for aspect combination for " .. aspect1 .. " & " .. aspect2)
+	--TM.debug_log("Searching for aspect combination for " .. aspect1 .. " & " .. aspect2)
 	local aspect_ing1 = nil
 	if not TM.IsAspect(aspect1) or not TM.IsAspect(aspect2) then
 		return nil
@@ -456,7 +452,7 @@ function TM.GetCombinable(aspect1, aspect2)
 			for i2,ingredient in pairs(recipe.ingredients) do
 				if ingredient.name == aspect1 or ingredient.name == aspect2 then
 					if aspect_ing1 then
-						TM.debug_log(aspect_ing1)
+						--TM.debug_log(aspect_ing1)
 						TM.debug_log("Aspect combination is " .. recipe.results[1].name)
 						return recipe.results[1].name
 					else
@@ -467,7 +463,7 @@ function TM.GetCombinable(aspect1, aspect2)
 		end
 		aspect_ing1 = nil
 	end
-	TM.debug_log("Aspect combination not found")
+	--TM.debug_log("Aspect combination not found")
 	return nil
 end
 --[[
@@ -501,7 +497,7 @@ function TM.icons_assign(recipe)
 	local match_value = string.find(recipe, 'aspect.extraction')
 	if match_value and data.raw.recipe[recipe].icons then
 		local aspect, count = TM.MostAspect(recipe)
-		TM.debug_log("found " .. recipe .. ". largest aspects: " .. count .. " " .. aspect)
+		--TM.debug_log("found " .. recipe .. ". largest aspects: " .. count .. " " .. aspect)
 		local datum = data.raw.recipe[recipe]
 		if datum.icons and datum.icons[1] then
 			datum.icons[3].icon = data.raw.fluid[aspect].icon
@@ -510,7 +506,7 @@ function TM.icons_assign(recipe)
 			local input = datum.ingredients[1].name
 			local input_type = TM.GetType(input).type
 			if input_type == "recipe" then 
-				TM.debug_log("ERROR CODE 1246: recipe as ingredient") -- rare error, is caused when recipe name and item name do not match
+				log("ERROR CODE 1246: recipe as ingredient: " .. recipe) -- rare error, is caused when recipe name and item name do not match
 				data.raw.recipe[recipe] = nil
 				return
 			end
@@ -577,7 +573,7 @@ function TM.Inheritance(list, recipe)
 	if TM.InList(list, recipe) then
 		return list
 	end
-	local match_value = string.find(recipe, 'aspect.extraction') or string.find(recipe, 'create$') or string.find(recipe, 'seperate$') or string.find(recipe, 'fill.+barrel')
+	local match_value = string.find(recipe, 'aspect.extraction') or string.find(recipe, 'create$') or string.find(recipe, 'seperate$') or string.find(recipe, '^fill.+barrel') or string.find(recipe, '^empty.+barrel')
 	if match_value then
 		table.insert(list, recipe)
 		return list
