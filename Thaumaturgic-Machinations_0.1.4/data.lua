@@ -1,8 +1,13 @@
 if not TM then TM = {} end
 if not inherited then inherited = {} end
-table.insert(inherited, "grow-silverwood")
-table.insert(inherited, "grow-wood")
-table.insert(inherited, "TM-seedling")
+local blacklist = {
+	"grow-silverwood",
+	"grow-wood",
+	"TM-seedling",
+}
+for i,v in pairs(inherited) do
+	inherited[#inherited + 1] = v
+end
 
 
 
@@ -25,7 +30,7 @@ require("TM-functions")
 if combine_seperate_modifier ~= 0 then
 	require("prototypes.aspect.TM-Aspect-Tree-Master")
 else
-	TM.debug_log("Seperation and Combination recipes have been disabled.")
+	log("WARNING: Seperation and Combination recipes have been disabled. This disallows the inherit function.")
 end
 require("prototypes.aspect.TM-Aspect-Distillation-raw")
 require("prototypes.recipe.recipes")

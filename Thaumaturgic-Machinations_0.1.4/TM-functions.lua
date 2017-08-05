@@ -1,5 +1,11 @@
-function TM.debug_log(strin)
-	if debug_setting then log(strin) end
+-- allows for togglable logs.
+if debug_setting then
+	function TM.debug_log(strin)
+		log(strin)
+	end
+else
+	function TM.debug_log()
+	end
 end
 --[[
 The function below creates two recipes: a construction recipe, which makes an aspect out of two different aspects; and a seperation recipe, which does the reverse.
@@ -208,6 +214,7 @@ local item_AE = item .. "-aspect-extraction"
 local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
 local datum = TM.GetType(item) -- if it's an item, you get data.raw.item[item]
+local dat_AE = data.raw.recipe[item_AE] -- local reference.
 amount = amount or 1
 	if tier == nil then return end
 	if data.raw["item-subgroup"]["aspect-extraction-" .. tier] == nil then
@@ -239,10 +246,10 @@ amount = amount or 1
 		
 	end
 
-	if data.raw.recipe[item_AE] and datum ~= nil and not asex then
-	table.insert(data.raw.recipe[item_AE].results, {type="fluid", name=aspect, amount=count/amount})
+	if dat_AE and datum ~= nil and not asex then
+	dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
 	TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
-		else if not data.raw.recipe[item_AE] and datum then
+		else if not dat_AE and datum then
 		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
 		
 		local ingredient_type = datum.type
@@ -268,11 +275,11 @@ amount = amount or 1
 			energy_required = 1,
 			ingredients =
 			{
-			  {type=ingredient_type, name=item, amount=amount}
+			  {type = ingredient_type, name = item, amount = amount}
 			},
-			results=
+			results =
 			{
-			  {type="fluid", name=aspect, amount=count},
+			  {type = "fluid", name = aspect, amount = count},
 			},
 			icons = {
 				{
@@ -327,13 +334,14 @@ function TM.GetTier(aspect)
 end
 --[[
 This function returns true if the fluid is an aspect, and false otherwise.
+Expects a string
 ]]--
 function TM.IsAspect(aspect)
-	if TM.IsPrimal(aspect) then return true end
-	if TM.GetTier(aspect) > 0 then return true end
+	if TM.GetTier(aspect) >= 0 then return true end
 	return false
 end
 --[[
+This function takes a recipe object, recipe.normal, or recipe.expensive and tries to inherit all aspects for that particular recipe type.
 ]]--
 function TM.inherit_helper(dat_recipe, recipe)
 	TM.debug_log("\nInheriting aspects for " .. recipe)
@@ -349,23 +357,26 @@ function TM.inherit_helper(dat_recipe, recipe)
 				result_amount = dat_recipe.results[1][2] or dat_recipe.results[1]["amount"]
 			end
 		end
-		if value[1] == nil then
-			TM.debug_log("fluid ingredient = " .. value.amount .. " " .. value.name .. isaspect)
+		if result_amount == nil then result_amount = 1 end -- this is a catch-all.
+		local na = value.name or value[1] -- makes sure a string is always assigned
+		local ct = value.amount or value[2] -- makes sure a number is always assigned
+		if value.type == "fluid" then
+			TM.debug_log("fluid ingredient = " .. ct .. " " .. na .. isaspect)
 			if tier ~= nil then
 				local ty = TM.GetType(recipe)
-				TM.item_add_aspect(ty.name, value.name, value.amount*inherit_multiplier/result_amount)-- adds aspect that was used to create item to item's aspects.
+				TM.item_add_aspect(ty.name, na, ct * inherit_multiplier / result_amount)-- adds aspect that was used to create item to item's aspects.
 			end
 		else
-			TM.debug_log("ingredient = " .. value[2] .. " " .. value[1])
-			if data.raw.recipe[value[1] .. "-aspect-extraction"] and data.raw.recipe[value[1] .. "-aspect-extraction"].results then
-				TM.debug_log(value[1] .. " has the following aspects:")
-				for index2, value2 in pairs(data.raw.recipe[value[1] .. "-aspect-extraction"].results) do
+			TM.debug_log("ingredient = " .. ct .. " " .. na)
+			if data.raw.recipe[na .. "-aspect-extraction"] and data.raw.recipe[na .. "-aspect-extraction"].results then
+				TM.debug_log(na .. " has the following aspects:")
+				for index2, value2 in pairs(data.raw.recipe[na .. "-aspect-extraction"].results) do
 					TM.debug_log(value2.amount .. " " .. value2.name)
 					TM.item_add_aspect(recipe, value2.name, value2.amount / result_amount * inherit_multiplier)
 				end
 			
 			else
-				TM.debug_log(value[1] .. " has no aspects")
+				TM.debug_log(na .. " has no aspects")
 			end
 		end	
 	end
@@ -400,7 +411,7 @@ function TM.GetType(string)
 	for i,v in pairs(data.raw) do
 		if v[string] ~= nil then
 			local c = v[string].type
-			local blacklist = {
+			local blacklist = { -- even though these items may be correct types, most are unusable in the way this mod uses them.
 				"recipe",
 				"resource",
 				"noise-layer",
@@ -411,10 +422,21 @@ function TM.GetType(string)
 				"roboport-equipment",
 				"tile",
 				"recipe-category",
-				"generator-equipment"
+				"generator-equipment",
+				"item-subgroup",
+				"equipment-category",
+				"belt-immunity-equipment",
+				"battery-equipment",
+				"active-defense-equipment",
+				"energy-shield-equipment",
+				"solar-panel-equipment",
+				"movement-bonus-equipment",
+				"equipment-grid",
+				"technology",
+				"night-vision-equipment",
 			}
 			if not TM.InList(blacklist, c) then
-				--TM.debug_log(t .. v[string].type)
+				TM.debug_log(t .. v[string].type)
 				return v[string]
 			elseif c == "item" then
 				it = v[string]
@@ -569,29 +591,42 @@ end
 --[[
 Recursive. Triest to inherit from all ingredients in list, and if an ingredient is in list it calls the function
 ]]--
-function TM.Inheritance(list, recipe)
+function TM.Inheritance(list, recipe, recipe_list)
+	local recipe_list = recipe_list or {}
 	if TM.InList(list, recipe) then
 		return list
 	end
-	local match_value = string.find(recipe, 'aspect.extraction') or string.find(recipe, 'create$') or string.find(recipe, 'seperate$') or string.find(recipe, '^fill.+barrel') or string.find(recipe, '^empty.+barrel')
+	local match_value = recipe:find('aspect.extraction') or recipe:find('create$') or recipe:find('seperate$') or recipe:find('^fill.+barrel') or recipe:find('^empty.+barrel')
 	if match_value then
-		table.insert(list, recipe)
+		list[#list + 1] = recipe
 		return list
 	end
-	if data.raw.recipe[recipe] == nil or data.raw.recipe[recipe].ingredients == nil then
-		table.insert(list, recipe)
+	local datum = data.raw.recipe[recipe]
+	if datum == nil or datum.ingredients == nil then
+		list[#list + 1] = recipe
 		return list
 	end
 	log(recipe)
-	for i,v in pairs(data.raw.recipe[recipe].ingredients) do
+	log("Checking ingredients: ")
+	for i,v in pairs(datum.ingredients) do
 		local ing_name = v.name or v[1]
 		if not TM.InList(list, ing_name) then
-			list = TM.Inheritance(list, ing_name)
+			if not TM.InList(recipe_list, ing_name) then
+				log("Ingredient " .. ing_name .. " already inherited.")
+				recipe_list[#recipe_list + 1] = recipe
+				list = TM.Inheritance(list, ing_name, recipe_list)
+			else
+				TM.debug_log(recipe .. " is cyclical")
+				list[#list + 1] = recipe
+				TM.inherit_aspects(recipe)
+				TM.CompressExtract(recipe)
+				return list
+			end
 		end
 	end
 	TM.inherit_aspects(recipe)
 	TM.CompressExtract(recipe)
-	table.insert(list, recipe)
+	list[#list + 1] = recipe
 	return list
 end
 
