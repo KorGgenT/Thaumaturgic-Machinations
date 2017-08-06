@@ -516,7 +516,7 @@ end
 This function assigns the most prominent aspect of an extraction recipe the correct aspect icon and locale.
 ]]--
 function TM.icons_assign(recipe)
-	local match_value = string.find(recipe, 'aspect.extraction')
+	local match_value = recipe:find('aspect.extraction')
 	if match_value and data.raw.recipe[recipe].icons then
 		local aspect, count = TM.MostAspect(recipe)
 		--TM.debug_log("found " .. recipe .. ". largest aspects: " .. count .. " " .. aspect)
@@ -629,8 +629,12 @@ function TM.Inheritance(list, recipe, recipe_list)
 	list[#list + 1] = recipe
 	return list
 end
-
-
+--[[
+This function returns an "index" related to the payload for magic turrets.
+]]--
+function TM.GetPayloadIndex ()
+	return 1 -- temporary while i figure out how to edit payload!
+end
 
 
 
