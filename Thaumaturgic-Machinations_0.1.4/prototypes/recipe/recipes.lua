@@ -277,8 +277,8 @@ data:extend({
 		{type="fluid", name="Lux", amount=10},
 	},
 	results = {
-		{type="fluid", name="Herba", amount=10},
 		{name="refined-silverwood", amount=1},
+		{type="fluid", name="Herba", amount=10},
 	},
 },
 {

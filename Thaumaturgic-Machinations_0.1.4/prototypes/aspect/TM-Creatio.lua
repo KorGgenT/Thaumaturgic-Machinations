@@ -3,6 +3,7 @@ data:extend({
 	type = "item-group",
 	name = "creatio-fluid",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/creatio-fluid.png",
+	icon_size = 64,
 	order = "z",
 },
 {
@@ -73,7 +74,7 @@ function creatio_recipe(item, red, green, blue)
 
 	if item_aspect ~= nil then
 		local local_item = "item-name." .. item
-		
+		local tier = TM.GetTier(item_aspect)
 		data:extend({
 			{
 				type = "fluid",
@@ -148,9 +149,9 @@ function creatio_recipe(item, red, green, blue)
 				enabled = true, --- ENABLED
 				energy_required = creatio_recipe_time,
 				ingredients = {
-					{type = "fluid", name = "Creatio", amount = creatio_aspect_cost},
+					{type = "fluid", name = "Creatio", amount = creatio_aspect_cost * tier},
 					{type = "fluid", name = item_aspect, amount = 10 * item_aspect_amount},
-					{type = "fluid", name = "Aer", amount = creatio_primal_cost}
+					{type = "fluid", name = "Aer", amount = creatio_primal_cost * tier}
 				},
 				results = {
 					{type = "fluid", name = item .. "-gas", amount = 100}
@@ -179,7 +180,7 @@ function creatio_recipe(item, red, green, blue)
 				ingredients = {
 					{type = "fluid", name = item .. "-gas", amount = 100},
 					{type = "fluid", name = item_aspect, amount = 10 * item_aspect_amount},
-					{type = "fluid", name = "Aqua", amount = creatio_primal_cost}
+					{type = "fluid", name = "Aqua", amount = creatio_primal_cost * tier}
 				},
 				results = {
 					{type = "fluid", name = item .. "-liquid", amount = 100}
@@ -208,22 +209,23 @@ function creatio_recipe(item, red, green, blue)
 				ingredients = {
 					{type = "fluid", name = item .. "-liquid", amount = 100},
 					{type = "fluid", name = item_aspect, amount = 10 * item_aspect_amount},
-					{type = "fluid", name = "Terra", amount = creatio_primal_cost}
+					{type = "fluid", name = "Terra", amount = creatio_primal_cost * tier}
 				},
 				results = {
 					{item, 30*creatio_multiplier}
 				},
 			},
 		})
-		
-		log("Creating Creatio recipes for " .. item)
+		table.insert(inherited, item .. "-precipitation")
+		table.insert(inherited, item .. "-liquid")
+		table.insert(inherited, item .. "-gas")
+		TM.debug_log("Creating Creatio recipes for " .. item)
 	else
 		if reason == " " then
 			reason = " unknown."
 		end
 		log("Failed to make Creatio recipes for " .. item .. ". Reason:" .. reason)
 	end
-		log(item_aspect)
 end
 
 --[[
@@ -417,6 +419,6 @@ creatio_ores = {
 	{"copper-ore", 0, 0, 0},
 	{"stone", 0, 0, 0},
 	{"coal", 0, 0, 0},
-	{"uranium-235", 0, 0, 0},
+	{"uranium-ore", 0, 0, 0},
 }
 TM.creatio_pairs(creatio_ores)
