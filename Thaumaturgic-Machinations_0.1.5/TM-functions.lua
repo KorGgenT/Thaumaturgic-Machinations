@@ -649,6 +649,7 @@ function TM.OrderRecipeResults(recipe_obj)
 		end
 		log("removed " .. asp .. " from  " .. recipe_obj.name)
 	end
+	recipe_obj.results = temp_results
 end
 
 
