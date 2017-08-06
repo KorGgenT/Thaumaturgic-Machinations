@@ -297,7 +297,7 @@ amount = amount or 1
 				},
 			},
 			subgroup = "aspect-extraction-" .. tier,
-			order = aspect .. "-" .. string.format("%06d", count),
+			order = aspect .. "-" .. string.format("%10d", count),
 		}
 		end
 		return
@@ -523,7 +523,7 @@ function TM.icons_assign(recipe)
 		local datum = data.raw.recipe[recipe]
 		if datum.icons and datum.icons[1] then
 			datum.icons[3].icon = data.raw.fluid[aspect].icon
-			datum.order = aspect .. "-" .. string.format("%06d", count)
+			datum.order = aspect .. "-" .. string.format("%10d", count)
 			datum.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
 			local input = datum.ingredients[1].name
 			local input_type = TM.GetType(input).type
