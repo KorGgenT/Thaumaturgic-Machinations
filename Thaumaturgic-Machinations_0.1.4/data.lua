@@ -47,5 +47,3 @@ require("prototypes.entity.projectiles")
 if creatio_enabled then
 	require("prototypes.aspect.TM-Creatio")
 end
-
-require("prototypes.aspect.TM-Vanilla-Deconstruct")
