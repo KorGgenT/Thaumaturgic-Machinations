@@ -74,7 +74,7 @@ function creatio_recipe(item, red, green, blue)
 
 	if item_aspect ~= nil then
 		local local_item = "item-name." .. item
-		local tier = TM.GetTier(item_aspect)
+		local tier = 1 + TM.GetTier(item_aspect)
 		data:extend({
 			{
 				type = "fluid",
