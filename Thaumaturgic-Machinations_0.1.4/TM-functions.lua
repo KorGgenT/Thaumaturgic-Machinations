@@ -612,7 +612,7 @@ function TM.Inheritance(list, recipe, recipe_list)
 		local ing_name = v.name or v[1]
 		if not TM.InList(list, ing_name) then
 			if not TM.InList(recipe_list, ing_name) then
-				log("Ingredient " .. ing_name .. " already inherited.")
+				TM.debug_log("Ingredient " .. ing_name .. " already inherited.")
 				recipe_list[#recipe_list + 1] = recipe
 				list = TM.Inheritance(list, ing_name, recipe_list)
 			else
@@ -629,7 +629,6 @@ function TM.Inheritance(list, recipe, recipe_list)
 	list[#list + 1] = recipe
 	return list
 end
-
 
 
 
