@@ -635,8 +635,21 @@ This function returns an "index" related to the payload for magic turrets.
 function TM.GetPayloadIndex ()
 	return 1 -- temporary while i figure out how to edit payload!
 end
-
-
+--[[
+This function takes the results of a recipe and reorders them by amount. WARNING: only extraction recipes can be input into this function!
+]]--
+function TM.OrderRecipeResults(recipe_obj)
+	local temp_results = {}
+	local asp_cap = 1 -- this is the maximum number of aspects that can exist in an extraction recipe.
+	while #recipe_obj.results ~= 0 do
+		local asp, cnt = TM.MostAspect(recipe_obj.name)
+		TM.remove_result(recipe_obj.name, asp)
+		if #temp_results < asp_cap then
+			temp_results[#temp_results + 1] = {type = "fluid", name = asp, amount = cnt}
+		end
+		log("removed " .. asp .. " from  " .. recipe_obj.name)
+	end
+end
 
 
 

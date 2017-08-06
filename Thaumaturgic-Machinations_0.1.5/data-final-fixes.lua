@@ -6,5 +6,6 @@ if combine_seperate_modifier ~= 0 then
 end
 for i,v in pairs(data.raw.recipe) do
 	TM.icons_assign(v.name)
+	if v.name:find('aspect.extraction$') then TM.OrderRecipeResults(v) end
 end
 log("LOG DESTRUCTION CONCLUDED.")
