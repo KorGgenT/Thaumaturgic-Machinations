@@ -637,22 +637,18 @@ function TM.GetPayloadIndex ()
 end
 --[[
 This function takes the results of a recipe and reorders them by amount. WARNING: only extraction recipes can be input into this function!
+It also caps the number of aspects that can be in results.
 ]]--
 function TM.OrderRecipeResults(recipe_obj)
-	local temp_results = {}
 	local asp_cap = 1 -- this is the maximum number of aspects that can exist in an extraction recipe.
-	while #recipe_obj.results ~= 0 do
-		local asp, cnt = TM.MostAspect(recipe_obj.name)
-		TM.remove_result(recipe_obj.name, asp)
-		if #temp_results < asp_cap then
-			temp_results[#temp_results + 1] = {type = "fluid", name = asp, amount = cnt}
-		end
-		log("removed " .. asp .. " from  " .. recipe_obj.name)
+	local result_list = recipe_obj.results
+	table.sort(result_list, function (a, b) return a.amount >= b.amount end)
+
+	-- Removes any excess results
+	for i = #result_list, asp_cap + 1, -1 do
+		result_list[i] = nil
 	end
-	recipe_obj.results = temp_results
 end
-
-
 
 
 
