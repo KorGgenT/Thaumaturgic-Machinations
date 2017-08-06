@@ -372,7 +372,7 @@ function TM.inherit_helper(dat_recipe, recipe)
 				TM.debug_log(na .. " has the following aspects:")
 				for index2, value2 in pairs(data.raw.recipe[na .. "-aspect-extraction"].results) do
 					TM.debug_log(value2.amount .. " " .. value2.name)
-					TM.item_add_aspect(recipe, value2.name, value2.amount / result_amount * inherit_multiplier)
+					TM.item_add_aspect(recipe, value2.name, value2.amount / result_amount * inherit_multiplier * ct)
 				end
 			
 			else
