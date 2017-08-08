@@ -1,7 +1,7 @@
 local string_format = "%" .. string.format("%02d", asp_pow_max + 1) .. "d"
 
 -- allows for togglable logs.
-if debug_setting then
+if tm_debug_setting then
 	function TM.debug_log(strin)
 		log(strin)
 	end

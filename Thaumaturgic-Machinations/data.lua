@@ -10,7 +10,7 @@ for i,v in pairs(inherited) do
 end
 
 
-debug_setting = settings.startup["debug-enabled"].value
+tm_debug_setting = settings.startup["tm-debug-enabled"].value
 creatio_enabled = settings.startup["creatio-enabled"].value
 creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value
 creatio_primal_cost = settings.startup["creatio-primal-cost"].value

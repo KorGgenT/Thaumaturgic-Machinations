@@ -59,7 +59,7 @@ data:extend({
 	},
 	{
 		type = "bool-setting",
-		name = "debug-enabled",
+		name = "tm-debug-enabled",
 		setting_type = "startup",
 		default_value = true,
 		per_user = true,

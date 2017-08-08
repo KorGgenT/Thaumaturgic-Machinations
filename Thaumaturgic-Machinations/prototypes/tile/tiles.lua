@@ -43,8 +43,6 @@ local function ritual_tile(clr,variant)
 				local dir_next = i3 + 1
 				if dir_next > #var then dir_next = 1 end
 				dir_next = "ritual-" .. c .. "-" .. var.type .. "-" .. var[dir_next] -- this can be assigned to next_direction
-				log(variant_name)
-				log(dir_next)
 				data:extend({
 					{
 						type = "item",
