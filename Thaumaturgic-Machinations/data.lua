@@ -10,9 +10,6 @@ for i,v in pairs(inherited) do
 end
 
 
-
-
-
 debug_setting = settings.startup["debug-enabled"].value
 creatio_enabled = settings.startup["creatio-enabled"].value
 creatio_aspect_cost = settings.startup["creatio-aspect-cost"].value
@@ -21,6 +18,9 @@ creatio_recipe_time = settings.startup["creatio-recipe-time"].value
 creatio_multiplier = settings.startup["creatio-multiplier"].value
 combine_seperate_modifier = settings.startup["combine-seperate-modifier"].value
 inherit_multiplier = 1.1
+asp_pow_max = 6 -- 10^asp_pow_max is the maximum of one type of aspect that can be on an item.
+
+
 
 require("prototypes.item.item")
 require("prototypes.item.generated-item")
@@ -43,6 +43,8 @@ require("prototypes.item.equipment")
 
 require("prototypes.item.ammo")
 require("prototypes.entity.projectiles")
+
+require("prototypes.tile.tiles")
 
 if creatio_enabled then
 	require("prototypes.aspect.TM-Creatio")

@@ -451,9 +451,9 @@ data:extend {
       {
         production_type = "output",
         pipe_covers = pipecoverspictures(),
-        base_area = 10,
+        base_area = 10^(asp_pow_max - 2),-- this number *100 is the fluid capacity
         base_level = 1,
-        pipe_connections = {{ position = {1, -1.75} }}
+        pipe_connections = {{ position = {1, -1.75} }},
       },
       {
         production_type = "input",
@@ -547,7 +547,7 @@ data:extend {
         production_type = "output",
 		pipe_picture = crucible2_pipes(),
 		pipe_covers = pipecoverspictures(),
-        base_area = 10,
+        base_area = 10^(asp_pow_max - 2),-- this number *100 is the fluid capacity
         base_level = 1,
         pipe_connections = {{ position = {1, -1.85} }}
       },

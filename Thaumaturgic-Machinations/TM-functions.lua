@@ -1,3 +1,5 @@
+local string_format = "%" .. string.format("%02d", asp_pow_max + 1) .. "d"
+
 -- allows for togglable logs.
 if debug_setting then
 	function TM.debug_log(strin)
@@ -215,6 +217,8 @@ local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
 local datum = TM.GetType(item) -- if it's an item, you get data.raw.item[item]
 local dat_AE = data.raw.recipe[item_AE] -- local reference.
+if count > 10^asp_pow_max then count = 10^asp_pow_max; log("ERROR 0492: " .. item .. " aspect count exceeded maximum.") end
+
 amount = amount or 1
 	if tier == nil then return end
 	if data.raw["item-subgroup"]["aspect-extraction-" .. tier] == nil then
@@ -239,6 +243,7 @@ amount = amount or 1
 		for index,value in pairs(ing) do
 			if value.name == aspect then
 				value.amount = count + value.amount
+				if value.amount > 10^asp_pow_max then value.amount = 10^asp_pow_max end
 				asex = true
 				TM.debug_log("inserting " .. count .. " " .. aspect .. " to " .. item)
 			end
@@ -297,7 +302,7 @@ amount = amount or 1
 				},
 			},
 			subgroup = "aspect-extraction-" .. tier,
-			order = aspect .. "-" .. string.format("%06d", count),
+			order = aspect .. "-" .. string.format(string_format, count),
 		}
 		end
 		return
@@ -523,7 +528,7 @@ function TM.icons_assign(recipe)
 		local datum = data.raw.recipe[recipe]
 		if datum.icons and datum.icons[1] then
 			datum.icons[3].icon = data.raw.fluid[aspect].icon
-			datum.order = aspect .. "-" .. string.format("%06d", count)
+			datum.order = aspect .. "-" .. string.format(string_format, count)
 			datum.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
 			local input = datum.ingredients[1].name
 			local input_type = TM.GetType(input).type
@@ -635,10 +640,21 @@ This function returns an "index" related to the payload for magic turrets.
 function TM.GetPayloadIndex ()
 	return 1 -- temporary while i figure out how to edit payload!
 end
+--[[
+This function takes the results of a recipe and reorders them by amount. WARNING: only extraction recipes can be input into this function!
+It also caps the number of aspects that can be in results.
+]]--
+function TM.OrderRecipeResults(recipe_obj)
+	local asp_cap = 1 -- this is the maximum number of aspects that can exist in an extraction recipe.
+	local result_list = recipe_obj.results
+	if result_list[1].amount == nil then log("ERROR 2894: Tried to sort a recipe that is not aspect extraction: " .. recipe_obj.name) return end
+	table.sort(result_list, function (a, b) return a.amount > b.amount end)
 
-
-
-
+	-- Removes any excess results
+	for i = #result_list, asp_cap + 1, -1 do
+		result_list[i] = nil
+	end
+end
 
 
 
