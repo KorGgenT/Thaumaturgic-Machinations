@@ -5,7 +5,7 @@ local blacklist = {
 	"grow-wood",
 	"TM-seedling",
 }
-for i,v in pairs(inherited) do
+for i,v in pairs(blacklist) do
 	inherited[#inherited + 1] = v
 end
 
@@ -40,7 +40,7 @@ require("prototypes.aspect.TM-item-aspects")
 require("prototypes.item.TM-Modules")
 require("prototypes.equipment.equipment")
 require("prototypes.item.equipment")
-
+require("prototypes.equipment.power-crystal")
 require("prototypes.item.ammo")
 require("prototypes.entity.projectiles")
 

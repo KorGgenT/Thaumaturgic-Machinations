@@ -752,7 +752,7 @@ data:extend({
 		{"dark-electronic-circuit", 20},
 	},
 	result = "bag-of-holding-3"
-},
+},--[[
 {
     type = "recipe",
     name = "small-power-crystal-1",
@@ -763,7 +763,7 @@ data:extend({
 		{"vis-diode", 5},
 		{type="fluid", name="Potentia", amount=500},
 	},
-	result = "small-power-crystal-1"
+	result = "tm-small-power-crystal-1"
 },
 {
     type = "recipe",
@@ -775,7 +775,7 @@ data:extend({
 		{"vis-diode", 20},
 		{type="fluid", name="Potentia", amount=2000},
 	},
-	result = "medium-power-crystal-1"
+	result = "tm-medium-power-crystal-1"
 },
 {
     type = "recipe",
@@ -787,8 +787,8 @@ data:extend({
 		{"vis-diode", 100},
 		{type="fluid", name="Potentia", amount=10000},
 	},
-	result = "large-power-crystal-1"
-},
+	result = "tm-large-power-crystal-1"
+},]]--
 {
 	type = "recipe",
 	name = "longstriders-1",

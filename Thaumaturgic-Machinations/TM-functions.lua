@@ -601,7 +601,7 @@ function TM.Inheritance(list, recipe, recipe_list)
 	if TM.InList(list, recipe) then
 		return list
 	end
-	local match_value = recipe:find('aspect.extraction') or recipe:find('create$') or recipe:find('seperate$') or recipe:find('^fill.+barrel') or recipe:find('^empty.+barrel')
+	local match_value = recipe:find('aspect.extraction$') or recipe:find('create$') or recipe:find('seperate$') or recipe:find('^fill.+barrel') or recipe:find('^empty.+barrel')
 	if match_value then
 		list[#list + 1] = recipe
 		return list

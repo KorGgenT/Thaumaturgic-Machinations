@@ -102,7 +102,7 @@ data:extend({
 	subgroup = "magic-equipment",
 	order = "a[bag]-a[bag-3]",
 	stack_size = 20
-},
+},--[[
 {
 	type = "item",
 	name = "small-power-crystal-1",
@@ -132,7 +132,7 @@ data:extend({
 	subgroup = "magic-equipment",
 	order = "b[energy-source]-c[large]-a[power-crystal-1]",
 	stack_size = 20
-},
+},]]--
 {
 	type = "item",
 	name = "longstriders-1",

@@ -144,10 +144,6 @@ data:extend({
 			type = "unlock-recipe",
 			recipe = "magic-armor-1"
 		},
-		{
-			type = "unlock-recipe",
-			recipe = "small-power-crystal-1"
-		},
 	},
 	unit = {
 		count = 400,
@@ -203,7 +199,7 @@ data:extend({
 		time = 10
 	},
 	order = "magic-armor-3",
-},
+},--[[
 {
 	type = "technology",
 	name = "medium-power-crystal-1",
@@ -247,7 +243,7 @@ data:extend({
 		time = 10
 	},
 	order = "large-power-crystal-1",
-},
+},]]--
 {
 	type = "technology",
 	name = "magic-shield-1",
