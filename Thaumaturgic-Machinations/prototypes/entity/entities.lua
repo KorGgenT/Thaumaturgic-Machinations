@@ -69,7 +69,7 @@ data:extend {
     type = "furnace",
     name = "thaumic-stone-furnace",
     icon = "__base__/graphics/icons/stone-furnace.png",
-	localised_name = {"item-name.TM", {"item-name.stone-furnace"}},
+	localised_name = {"item-name.TM", {"entity-name.stone-furnace"}},
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "thaumic-stone-furnace"},
     max_health = 200,
@@ -129,7 +129,7 @@ data:extend {
 	  layers = 
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_off_0.png",
         priority = "extra-high",
         line_length = 16,
         width = 128,
