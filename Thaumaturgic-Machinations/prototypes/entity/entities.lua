@@ -68,7 +68,7 @@ data:extend {
 {
     type = "furnace",
     name = "thaumic-stone-furnace",
-    icon = "__base__/graphics/icons/stone-furnace.png",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/thaumic_furnace.png",
 	localised_name = {"item-name.TM", {"entity-name.stone-furnace"}},
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "thaumic-stone-furnace"},
@@ -99,7 +99,7 @@ data:extend {
       }
     },
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
-    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -1}, {1, 1}},
     crafting_categories = {"thaumic-smelting"},
     result_inventory_size = 1,
     energy_usage = "5MW",
@@ -129,78 +129,72 @@ data:extend {
 	  layers = 
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_off_0.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_stone_furnace_off.png",
         priority = "extra-high",
-        line_length = 16,
         width = 128,
-        height = 128,
+        height = 90,
         frame_count = 1,
 		scale = 0.9,
-        shift = {0.4, -0.25},--[[
+        shift = {0.25, -0.25},
 			hr_version = {
-				filenames = {
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_2.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_3.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_4.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_5.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_6.png"
-				},
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_off.png",
 				priority = "extra-high",
-				line_length = 4,
 				width = 512,
-				height = 512,
-				frame_count = 100,
-				shift = util.by_pixel(-0.25, 6),
-				scale = 0.25
-			}]]--
+				height = 360,
+				frame_count = 1,
+				shift = {0.25, -.25},
+				scale = 0.25 * 0.9
+			}
         },
       }
     },
-    working_visualisations =
-      {
+    working_visualisations = {
         {
           north_position = {0.0, 0.0},
           east_position = {0.0, 0.0},
           south_position = {0.0, 0.0},
           west_position = {0.0, 0.0},
-          animation =
-          {
+          animation = {
 			
-			filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
+			filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_stone_furnace.png",
 			priority = "extra-high",
 			line_length = 16,
 			width = 128,
-			height = 128,
+			height = 90,
 			frame_count = 100,
 			scale = 0.9,
-			shift = {0.4, -0.25},
+			shift = {0.25, -0.25},
             axially_symmetrical = false,
             direction_count = 1,
 			--[[
-            hr_version = {
-              filename = {
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png"},
-              priority = "extra-high",
-              line_length = 4,
-              width = 512,
-              height = 512,
-              frame_count = 100,
-              axially_symmetrical = false,
-              direction_count = 1,
-              shift = util.by_pixel(-0.75, 5.5),
-              scale = 0.25
-            }]]--
+            --hr_version = {
+				
+				
+				--{
+					--priority = "extra-high",
+					--line_length = 4,
+					--axially_symmetrical = false,
+					width = 512,
+					height = 360,
+					frame_count = 100 - 16,
+					direction_count = 1,
+					shift = {0.25, -0.25},
+					scale = 0.9 * 0.25,
+					filenames = {
+						"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_0.png",
+						"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_1.png",
+						"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_2.png",
+						"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_3.png",
+						"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_4.png",
+						
+					},
+				--},
+				]]--
+				
+			--},
           },
-        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
-        }
+        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}},
+        },
       },
     --fast_replaceable_group = "furnace"
 },
@@ -208,7 +202,7 @@ data:extend {
 {
     type = "furnace",
     name = "infused-thaumic-stone-furnace",
-    icon = "__base__/graphics/icons/stone-furnace.png",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/infused-thaumic_furnace.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "infused-thaumic-stone-furnace"},
     max_health = 200,
