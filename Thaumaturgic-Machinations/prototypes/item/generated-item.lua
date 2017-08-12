@@ -248,7 +248,7 @@ data:extend(
 {
 	type = "item",
 	name = "infused-thaumic-stone-furnace",
-	icon = "__base__/graphics/icons/stone-furnace.png",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/infused_thaumic_furnace.png",
 	flags = {"goes-to-quickbar"},
 	subgroup = "smelting-machine",
 	order = "a[stone-furnace-2]",
