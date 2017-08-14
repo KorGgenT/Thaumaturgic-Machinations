@@ -138,11 +138,11 @@ data:extend {
 			hr_version = {
 				filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_off.png",
 				priority = "extra-high",
-				width = 512,
-				height = 360,
+				width = 256,
+				height = 180,
 				frame_count = 1,
-				shift = {0.25, -.25},
-				scale = 0.25 * 0.9
+				shift = util.by_pixel(9.5, -5.5),
+				scale = 0.5 * 0.9
 			}
         },
       }
@@ -154,7 +154,6 @@ data:extend {
 			south_position = {0.0, 0.0},
 			west_position = {0.0, 0.0},
 			animation = {
-			
 				filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_stone_furnace.png",
 				priority = "extra-high",
 				line_length = 16,
@@ -162,36 +161,24 @@ data:extend {
 				height = 90,
 				frame_count = 100,
 				scale = 0.9,
+				animation_speed = 1.5,
 				shift = {0.25, -0.25},
 				axially_symmetrical = false,
 				direction_count = 1,
-				--[[
-				--hr_version = {
-					
-					
-					--{
-						--priority = "extra-high",
-						--line_length = 4,
-						--axially_symmetrical = false,
-						width = 512,
-						height = 360,
-						frame_count = 100 - 16,
-						direction_count = 1,
-						shift = {0.25, -0.25},
-						scale = 0.9 * 0.25,
-						filenames = {
-							"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_0.png",
-							"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_1.png",
-							"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_2.png",
-							"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_3.png",
-							"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_4.png",
-							
-						},
-					--},
-					]]--
-					
-				--},
-          },
+				hr_version = {
+					filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace.png",
+					priority = "extra-high",
+					line_length = 8,
+					width = 256,
+					height = 180,
+					frame_count = 100,
+					axially_symmetrical = false,
+					direction_count = 1,
+					animation_speed = 1.5,
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
+				}
+			},
         light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}},
         },
       },
@@ -269,49 +256,50 @@ data:extend {
 				hr_version = {
 					filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/hr_infused_thaumic_stone_furnace_off.png",
 					priority = "extra-high",
-					width = 512,
-					height = 360,
+					width = 256,
+					height = 180,
 					frame_count = 1,
-					shift = {0.25, -.25},
-					scale = 0.25 * 0.9
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
 				}
 			},
 		},
-		working_visualisations = {
-			{
-				north_position = {0.0, 0.0},
-				east_position = {0.0, 0.0},
-				south_position = {0.0, 0.0},
-				west_position = {0.0, 0.0},
-				animation = {
-					filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/infused_thaumic_stone_furnace.png",
+	},
+	working_visualisations = {
+		{
+			north_position = {0.0, 0.0},
+			east_position = {0.0, 0.0},
+			south_position = {0.0, 0.0},
+			west_position = {0.0, 0.0},
+			animation = {
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/infused_thaumic_stone_furnace.png",
+				priority = "extra-high",
+				line_length = 16,
+				width = 128,
+				height = 90,
+				frame_count = 100,
+				axially_symmetrical = false,
+				direction_count = 1,
+				animation_speed = 1.5,
+				shift = {0.25, -.025},
+				scale = 0.9,
+				hr_version = {
+					filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/hr_infused_thaumic_stone_furnace.png",
 					priority = "extra-high",
-					line_length = 16,
-					width = 128,
-					height = 90,
+					line_length = 8,
+					width = 256,
+					height = 180,
 					frame_count = 100,
 					axially_symmetrical = false,
 					direction_count = 1,
-					shift = {0.25, -.025},
-					scale = 0.9,
-					--[[
-					hr_version = {
-						filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-fire.png",
-						priority = "extra-high",
-						line_length = 8,
-						width = 41,
-						height = 100,
-						frame_count = 48,
-						axially_symmetrical = false,
-						direction_count = 1,
-						shift = util.by_pixel(-0.75, 5.5),
-						scale = 0.5
-					}]]--
-				},
-				light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
-			}
-		},
-    }
+					animation_speed = 1.5,
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
+				}
+			},
+			light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
+		}
+	},
 	--fast_replaceable_group = "furnace"
 },
   
