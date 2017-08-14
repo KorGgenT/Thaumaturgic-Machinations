@@ -44,7 +44,7 @@ data:extend {
 	pictures =
 	{
 	{
-		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood_hr.png",
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood/hr_silverwood.png",
 		width = 1290,
 		scale = 0.7,
 		height = 907,
@@ -367,7 +367,7 @@ data:extend {
     layers =
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_lr_entity_spritesheet.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible/crucible.png",
         priority = "extra-high",
         width = 120,
         height = 80,
@@ -376,7 +376,7 @@ data:extend {
 		line_length = 8,
         shift = {1, 0,},
         hr_version = {
-          filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
+          filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible/hr_crucible.png",
           priority = "extra-high",
           width = 240,
           height = 160,
@@ -385,26 +385,7 @@ data:extend {
           shift = {1,0},
           scale = 0.6
           }
-        },--[[
-        {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace-shadow.png",
-        priority = "extra-high",
-        width = 81,
-        height = 64,
-        frame_count = 1,
-        draw_as_shadow = true,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-shadow.png",
-          priority = "extra-high",
-          width = 164,
-          height = 74,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(14.5, 13),
-          scale = 0.5
-          }
-        }]]--
+        },
       }
     },
     fluid_boxes =
