@@ -114,4 +114,14 @@ data:extend({
     speed = 7.5,
     stack_size = 20
 },
+{
+	type = "item",
+	name = "tm-filter-burner-inserter",
+    icon = "__base__/graphics/icons/burner-inserter.png",
+	flags = {"goes-to-quickbar"},
+	subgroup = "inserter",
+	order = "a-f",
+	place_result = "tm-filter-burner-inserter",
+	stack_size = 50
+},
 })

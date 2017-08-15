@@ -937,4 +937,17 @@ data:extend({
 	result = "magic-personal-roboport-equipment",
 	result_count = 1,
 },
+{
+    type = "recipe",
+    name = "tm-filter-burner-inserter",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 6,
+	ingredients = {
+		{type = "fluid", name = "Cognitio", amount = 20},
+		{"burner-inserter", 1},
+	},
+	result = "tm-filter-burner-inserter",
+	result_count = 1,
+},
 })
