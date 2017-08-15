@@ -73,7 +73,7 @@ data:extend({
 	energy_consumption = "180kW",
 	movement_bonus = 0,
 	categories = {"magic-armor"}
-},
+},--[[
 {
 	type = "generator-equipment",
 	name = "small-power-crystal-1",
@@ -145,7 +145,7 @@ data:extend({
 	},
 	power = "1MW",
 	categories = {"magic-armor"}
-},
+},]]--
 {
 	type = "energy-shield-equipment",
 	name = "magic-shield-1",

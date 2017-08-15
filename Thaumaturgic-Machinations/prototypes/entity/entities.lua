@@ -5,15 +5,14 @@ data:extend {
 	name = "silverwood-tree",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
 	flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
-	minable =
-	{
-	mining_particle = "wooden-particle",
-	mining_time = 10,
-	result = "raw-silverwood",
-	count = 100
+	minable = {
+		mining_particle = "wooden-particle",
+		mining_time = 10,
+		result = "raw-silverwood",
+		count = 100
 	},
-	--corpse = "silverwood-tree-stump",
-	--remains_when_mined = "silverwood-tree-stump",
+	corpse = "silverwood-stump",
+	remains_when_mined = "silverwood-stump",
 	emissions_per_tick = -0.001,
 	max_health = 4000,
 	collision_box = {{-0.7, 0}, {0.7, 1}},
@@ -44,7 +43,7 @@ data:extend {
 	pictures =
 	{
 	{
-		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood_hr.png",
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood/hr_silverwood.png",
 		width = 1290,
 		scale = 0.7,
 		height = 907,
@@ -66,10 +65,35 @@ data:extend {
 },
 
 {
+	type = "corpse",
+	name = "silverwood-stump",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-stump.png",
+	flags = {"placeable-neutral", "not-on-map"},
+	collision_box = {{0,0}, {0,0}},
+	selection_box = {{0,0}, {0,0}},
+	tile_width = 1,
+	tile_height = 1,
+	selectable_in_game = false,
+	time_before_removed = 60 * 60 * 15, -- 15 minutes
+	final_render_layer = "remnants",
+	subgroup = "remnants",
+	order = "d[remnants]-b[tree]-y[silverwood]",
+	animation = {
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood/silverwood-stump.png",
+		width = 320,
+		height = 180,
+		frame_count = 1,
+		direction_count = 1,
+		shift = {0,0.5},
+		scale = 0.6
+	}
+},
+
+{
     type = "furnace",
     name = "thaumic-stone-furnace",
-    icon = "__base__/graphics/icons/stone-furnace.png",
-	localised_name = {"item-name.TM", {"item-name.stone-furnace"}},
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/thaumic_furnace.png",
+	localised_name = {"item-name.TM", {"entity-name.stone-furnace"}},
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "thaumic-stone-furnace"},
     max_health = 200,
@@ -99,7 +123,7 @@ data:extend {
       }
     },
     collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
-    selection_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -1}, {1, 1}},
     crafting_categories = {"thaumic-smelting"},
     result_inventory_size = 1,
     energy_usage = "5MW",
@@ -126,81 +150,61 @@ data:extend {
     },
     animation =
     {
-	  layers = 
-      {
+	  layers = {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_stone_furnace_off.png",
         priority = "extra-high",
-        line_length = 16,
         width = 128,
-        height = 128,
+        height = 90,
         frame_count = 1,
 		scale = 0.9,
-        shift = {0.4, -0.25},--[[
+        shift = {0.25, -0.25},
 			hr_version = {
-				filenames = {
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_0.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_2.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_3.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_4.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_5.png",
-					"__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_6.png"
-				},
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace_off.png",
 				priority = "extra-high",
-				line_length = 4,
-				width = 512,
-				height = 512,
-				frame_count = 100,
-				shift = util.by_pixel(-0.25, 6),
-				scale = 0.25
-			}]]--
+				width = 256,
+				height = 180,
+				frame_count = 1,
+				shift = util.by_pixel(9.5, -5.5),
+				scale = 0.5 * 0.9
+			}
         },
       }
     },
-    working_visualisations =
-      {
+    working_visualisations = {
         {
-          north_position = {0.0, 0.0},
-          east_position = {0.0, 0.0},
-          south_position = {0.0, 0.0},
-          west_position = {0.0, 0.0},
-          animation =
-          {
-			
-			filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_lr_entity_spritesheet_0.png",
-			priority = "extra-high",
-			line_length = 16,
-			width = 128,
-			height = 128,
-			frame_count = 100,
-			scale = 0.9,
-			shift = {0.4, -0.25},
-            axially_symmetrical = false,
-            direction_count = 1,
-			--[[
-            hr_version = {
-              filename = {
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png",
-				  "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_furnace_hr_entity_spritesheet_1.png"},
-              priority = "extra-high",
-              line_length = 4,
-              width = 512,
-              height = 512,
-              frame_count = 100,
-              axially_symmetrical = false,
-              direction_count = 1,
-              shift = util.by_pixel(-0.75, 5.5),
-              scale = 0.25
-            }]]--
-          },
-        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
-        }
+			north_position = {0.0, 0.0},
+			east_position = {0.0, 0.0},
+			south_position = {0.0, 0.0},
+			west_position = {0.0, 0.0},
+			animation = {
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/thaumic_stone_furnace.png",
+				priority = "extra-high",
+				line_length = 16,
+				width = 128,
+				height = 90,
+				frame_count = 100,
+				scale = 0.9,
+				animation_speed = 1.5,
+				shift = {0.25, -0.25},
+				axially_symmetrical = false,
+				direction_count = 1,
+				hr_version = {
+					filename = "__Thaumaturgic-Machinations__/graphics/entity/thaumic-furnace/hr_thaumic_stone_furnace.png",
+					priority = "extra-high",
+					line_length = 8,
+					width = 256,
+					height = 180,
+					frame_count = 100,
+					axially_symmetrical = false,
+					direction_count = 1,
+					animation_speed = 1.5,
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
+				}
+			},
+        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}},
+        },
       },
     --fast_replaceable_group = "furnace"
 },
@@ -208,7 +212,7 @@ data:extend {
 {
     type = "furnace",
     name = "infused-thaumic-stone-furnace",
-    icon = "__base__/graphics/icons/stone-furnace.png",
+    icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/infused_thaumic_furnace.png",
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "infused-thaumic-stone-furnace"},
     max_health = 200,
@@ -237,8 +241,8 @@ data:extend {
         percent = 30
       }
     },
-    collision_box = {{-0.7, -0.7}, {0.7, 0.7}},
-    selection_box = {{-0.8, -1}, {0.8, 1}},
+    collision_box = {{-0.8, -0.8}, {0.8, 0.8}},
+    selection_box = {{-1, -1}, {1, 1}},
     crafting_categories = {"thaumic-smelting"},
     result_inventory_size = 1,
     energy_usage = "1MW",
@@ -263,83 +267,64 @@ data:extend {
         }
       }
     },
-    animation =
-    {
-    layers =
-      {
-        {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace.png",
-        priority = "extra-high",
-        width = 81,
-        height = 64,
-        frame_count = 1,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace.png",
-          priority = "extra-high",
-          width = 151,
-          height = 146,
-          frame_count = 1,
-          shift = util.by_pixel(-0.25, 6),
-          scale = 0.5
-          }
-        },
-        {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace-shadow.png",
-        priority = "extra-high",
-        width = 81,
-        height = 64,
-        frame_count = 1,
-        draw_as_shadow = true,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-shadow.png",
-          priority = "extra-high",
-          width = 164,
-          height = 74,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(14.5, 13),
-          scale = 0.5
-          }
-        }
-      }
-    },
-    working_visualisations =
-      {
-        {
-          north_position = {0.0, 0.0},
-          east_position = {0.0, 0.0},
-          south_position = {0.0, 0.0},
-          west_position = {0.0, 0.0},
-          animation =
-          {
-            filename = "__base__/graphics/entity/stone-furnace/stone-furnace-fire.png",
-            priority = "extra-high",
-            line_length = 8,
-            width = 20,
-            height = 49,
-            frame_count = 48,
-            axially_symmetrical = false,
-            direction_count = 1,
-            shift = util.by_pixel(2, 5.5),
-            hr_version = {
-              filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-fire.png",
-              priority = "extra-high",
-              line_length = 8,
-              width = 41,
-              height = 100,
-              frame_count = 48,
-              axially_symmetrical = false,
-              direction_count = 1,
-              shift = util.by_pixel(-0.75, 5.5),
-              scale = 0.5
-            }
-          },
-        light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
-        }
-      },
-    --fast_replaceable_group = "furnace"
+    animation = {
+		layers = {
+			{
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/infused_thaumic_stone_furnace_off.png",
+				priority = "extra-high",
+				width = 128,
+				height = 90,
+				frame_count = 1,
+				scale = 0.9,
+				shift = {0.25, -0.25},
+				hr_version = {
+					filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/hr_infused_thaumic_stone_furnace_off.png",
+					priority = "extra-high",
+					width = 256,
+					height = 180,
+					frame_count = 1,
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
+				}
+			},
+		},
+	},
+	working_visualisations = {
+		{
+			north_position = {0.0, 0.0},
+			east_position = {0.0, 0.0},
+			south_position = {0.0, 0.0},
+			west_position = {0.0, 0.0},
+			animation = {
+				filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/infused_thaumic_stone_furnace.png",
+				priority = "extra-high",
+				line_length = 16,
+				width = 128,
+				height = 90,
+				frame_count = 100,
+				axially_symmetrical = false,
+				direction_count = 1,
+				animation_speed = 1.5,
+				shift = {0.25, -.025},
+				scale = 0.9,
+				hr_version = {
+					filename = "__Thaumaturgic-Machinations__/graphics/entity/infused-thaumic-furnace/hr_infused_thaumic_stone_furnace.png",
+					priority = "extra-high",
+					line_length = 8,
+					width = 256,
+					height = 180,
+					frame_count = 100,
+					axially_symmetrical = false,
+					direction_count = 1,
+					animation_speed = 1.5,
+					shift = util.by_pixel(9.5, -5.5),
+					scale = 0.5 * 0.9
+				}
+			},
+			light = {intensity = 1, size = 1, color = {r=1.0, g=1.0, b=1.0}}
+		}
+	},
+	--fast_replaceable_group = "furnace"
 },
   
 {
@@ -406,7 +391,7 @@ data:extend {
     layers =
       {
         {
-        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_lr_entity_spritesheet.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible/crucible.png",
         priority = "extra-high",
         width = 120,
         height = 80,
@@ -415,7 +400,7 @@ data:extend {
 		line_length = 8,
         shift = {1, 0,},
         hr_version = {
-          filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible_hr_entity_spritesheet.png",
+          filename = "__Thaumaturgic-Machinations__/graphics/entity/crucible/hr_crucible.png",
           priority = "extra-high",
           width = 240,
           height = 160,
@@ -424,32 +409,14 @@ data:extend {
           shift = {1,0},
           scale = 0.6
           }
-        },--[[
-        {
-        filename = "__base__/graphics/entity/stone-furnace/stone-furnace-shadow.png",
-        priority = "extra-high",
-        width = 81,
-        height = 64,
-        frame_count = 1,
-        draw_as_shadow = true,
-        shift = {0.515625, 0.0625},
-        hr_version = {
-          filename = "__base__/graphics/entity/stone-furnace/hr-stone-furnace-shadow.png",
-          priority = "extra-high",
-          width = 164,
-          height = 74,
-          frame_count = 1,
-          draw_as_shadow = true,
-          shift = util.by_pixel(14.5, 13),
-          scale = 0.5
-          }
-        }]]--
+        },
       }
     },
     fluid_boxes =
     {
       {
         production_type = "output",
+		pipe_picture = crucible_pipes(),
         pipe_covers = pipecoverspictures(),
         base_area = 10^(asp_pow_max - 2),-- this number *100 is the fluid capacity
         base_level = 1,
@@ -457,6 +424,7 @@ data:extend {
       },
       {
         production_type = "input",
+		pipe_picture = crucible_pipes(),
         pipe_covers = pipecoverspictures(),
         base_area = 10,
         base_level = -1,

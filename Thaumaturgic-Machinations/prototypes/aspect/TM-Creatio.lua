@@ -414,7 +414,7 @@ data:extend({
 })
 
 -- EVERYTHING BELOW THIS LINE IS WHAT ACTUALLY NEEDS TO BE DEFINED IN OTHER ADDONS
-creatio_ores = {
+local creatio_ores = {
 	{"iron-ore", 0, 0, 0},
 	{"copper-ore", 0, 0, 0},
 	{"stone", 0, 0, 0},
