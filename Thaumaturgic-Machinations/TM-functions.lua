@@ -194,13 +194,16 @@ function TM.item_remove(list, item)
     end
   end
 end
---gets the local name for an item, if it's item-name or entity-name
+--gets the local name for an item
 local function GetLocalName(item)
 	local nm = "-name."
-	if item.type == "item" and item.place_result ~= nil then
+	local item_type = item.type
+	if item.placed_as_equipment_result or item.name:find('equipment$') then
+		return "equipment" .. nm .. item.name
+	end
+	if item_type == "item" and item.place_result then
 		return "entity" .. nm .. item.name
 	end
-	local item_type = item.type
 	if item_type == "capsule" then item_type = "item" end
 	return item_type .. nm .. item.name
 end
@@ -261,10 +264,6 @@ amount = amount or 1
 		if ingredient_type ~= "fluid" then 
 			ingredient_type = "item" 
 		end
-		local local_type = ingredient_type
-		if datum.place_result then
-			local_type = "entity"
-		end
 		local assign_icon = datum.icon
 		if assign_icon == nil and datum.icons then
 			assign_icon = datum.icons[1].icon
@@ -274,7 +273,7 @@ amount = amount or 1
 		{
 			type = "recipe",
 			name = item_AE,
-			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {local_type .. "-name." .. datum.name}},
+			localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {GetLocalName(datum)}},
 			category = "pure-aspect-extraction",
 			enabled = true,
 			energy_required = 1,
@@ -611,8 +610,8 @@ function TM.Inheritance(list, recipe, recipe_list)
 		list[#list + 1] = recipe
 		return list
 	end
-	log(recipe)
-	log("Checking ingredients: ")
+	TM.debug_log(recipe)
+	TM.debug_log("Checking ingredients: ")
 	for i,v in pairs(datum.ingredients) do
 		local ing_name = v.name or v[1]
 		if not TM.InList(list, ing_name) then

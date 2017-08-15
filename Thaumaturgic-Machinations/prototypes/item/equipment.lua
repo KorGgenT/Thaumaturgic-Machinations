@@ -102,37 +102,7 @@ data:extend({
 	subgroup = "magic-equipment",
 	order = "a[bag]-a[bag-3]",
 	stack_size = 20
-},--[[
-{
-	type = "item",
-	name = "small-power-crystal-1",
-	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/small-power-crystal-1.png",
-	placed_as_equipment_result = "small-power-crystal-1",
-	flags = {"goes-to-main-inventory"},
-	subgroup = "magic-equipment",
-	order = "b[energy-source]-a[small]-a[power-crystal-1]",
-	stack_size = 20
 },
-{
-	type = "item",
-	name = "medium-power-crystal-1",
-	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/small-power-crystal-1.png",
-	placed_as_equipment_result = "medium-power-crystal-1",
-	flags = {"goes-to-main-inventory"},
-	subgroup = "magic-equipment",
-	order = "b[energy-source]-b[medium]-a[power-crystal-1]",
-	stack_size = 20
-},
-{
-	type = "item",
-	name = "large-power-crystal-1",
-	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/small-power-crystal-1.png",
-	placed_as_equipment_result = "large-power-crystal-1",
-	flags = {"goes-to-main-inventory"},
-	subgroup = "magic-equipment",
-	order = "b[energy-source]-c[large]-a[power-crystal-1]",
-	stack_size = 20
-},]]--
 {
 	type = "item",
 	name = "longstriders-1",

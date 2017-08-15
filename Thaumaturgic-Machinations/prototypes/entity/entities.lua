@@ -5,15 +5,14 @@ data:extend {
 	name = "silverwood-tree",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
 	flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
-	minable =
-	{
-	mining_particle = "wooden-particle",
-	mining_time = 10,
-	result = "raw-silverwood",
-	count = 100
+	minable = {
+		mining_particle = "wooden-particle",
+		mining_time = 10,
+		result = "raw-silverwood",
+		count = 100
 	},
-	--corpse = "silverwood-tree-stump",
-	--remains_when_mined = "silverwood-tree-stump",
+	corpse = "silverwood-stump",
+	remains_when_mined = "silverwood-stump",
 	emissions_per_tick = -0.001,
 	max_health = 4000,
 	collision_box = {{-0.7, 0}, {0.7, 1}},
@@ -63,6 +62,31 @@ data:extend {
 	},]]--
 	--colors = tree_data.colors,
 	darkness_of_burnt_tree = 0.2,
+},
+
+{
+	type = "corpse",
+	name = "silverwood-stump",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-stump.png",
+	flags = {"placeable-neutral", "not-on-map"},
+	collision_box = {{0,0}, {0,0}},
+	selection_box = {{0,0}, {0,0}},
+	tile_width = 1,
+	tile_height = 1,
+	selectable_in_game = false,
+	time_before_removed = 60 * 60 * 15, -- 15 minutes
+	final_render_layer = "remnants",
+	subgroup = "remnants",
+	order = "d[remnants]-b[tree]-y[silverwood]",
+	animation = {
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/silverwood/silverwood-stump.png",
+		width = 320,
+		height = 180,
+		frame_count = 1,
+		direction_count = 1,
+		shift = {0,0.5},
+		scale = 0.6
+	}
 },
 
 {
