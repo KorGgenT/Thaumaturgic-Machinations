@@ -366,7 +366,7 @@ function TM.inherit_helper(dat_recipe, recipe)
 		local ct = value.amount or value[2] -- makes sure a number is always assigned
 		if value.type == "fluid" then
 			TM.debug_log("fluid ingredient = " .. ct .. " " .. na .. isaspect)
-			if tier ~= nil then
+			if tier then
 				local ty = TM.GetType(recipe)
 				TM.item_add_aspect(ty.name, na, ct * inherit_multiplier / result_amount)-- adds aspect that was used to create item to item's aspects.
 			end
@@ -390,10 +390,10 @@ This function "inherits" the aspects from its ingredients. Aspects will only be 
 ]]--
 function TM.inherit_aspects(recipe)
 	local dat_recipe = data.raw.recipe[recipe]
-	if dat_recipe ~= nil then
-		if dat_recipe.ingredients ~= nil then
+	if dat_recipe then
+		if dat_recipe.ingredients then
 			TM.inherit_helper(dat_recipe, recipe)
-		elseif dat_recipe.normal ~= nil then
+		elseif dat_recipe.normal then
 			TM.inherit_helper(dat_recipe.normal, recipe)
 			TM.inherit_helper(dat_recipe.expensive, recipe)
 		else
