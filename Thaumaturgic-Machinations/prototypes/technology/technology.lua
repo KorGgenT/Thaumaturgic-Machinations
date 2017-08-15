@@ -560,6 +560,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "refined-silverwood"
 		},
+		{
+		type = "unlock-recipe",
+		recipe = "tm-filter-burner-inserter"
+		}
 	},
 	unit = {
 		count = 10,
