@@ -3,7 +3,7 @@ if combine_seperate_modifier ~= 0 then
 	for i,v in pairs(data.raw.recipe) do
 		--log(i)
 		--log("\n" .. serpent.block(v))
-		TM.Inheritance(inherited, v)
+		if not inherited[v.name] then TM.Inheritance(inherited, v) end
 		if v.name:find('aspect.extraction$') then TM.OrderRecipeResults(v) end
 		TM.icons_assign(v.name)
 	end
