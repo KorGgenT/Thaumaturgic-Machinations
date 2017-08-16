@@ -163,24 +163,24 @@ function TM.remove_ingredient(recipe, ingredient)
 end
 -- this function removes the inputted result.
 function TM.remove_result(recipe, result)
-	local datum = data.raw.recipe[recipe]
-	if datum.normal and datum.normal.results then
-		for i,res in pairs(datum.normal.results) do
+	local recipe_obj = data.raw.recipe[recipe]
+	if recipe_obj.normal and recipe_obj.normal.results then
+		for i,res in pairs(recipe_obj.normal.results) do
 			if res.name == result then
-				table.remove(datum.normal.results, i)
+				table.remove(recipe_obj.normal.results, i)
 				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end
 		end
-		for i,res in pairs(datum.expensive.results) do
+		for i,res in pairs(recipe_obj.expensive.results) do
 			if res.name == result then
-				table.remove(datum.expensive.results, i)
+				table.remove(recipe_obj.expensive.results, i)
 				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end
 		end
-	elseif datum.results then
-		for i,res in pairs(datum.results) do
+	elseif recipe_obj.results then
+		for i,res in pairs(recipe_obj.results) do
 			if res.name == result then
-				table.remove(datum.results, i)
+				table.remove(recipe_obj.results, i)
 				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
 			end		
 		end
@@ -267,7 +267,7 @@ amount = amount or 1
 		local assign_icon = datum.icon
 		if assign_icon == nil and datum.icons then
 			assign_icon = datum.icons[1].icon
-			log("ERROR CODE 1456: Trying to assign nil to icon")
+			TM.debug_log("ERROR CODE 1456: Trying to assign nil to icon")
 		end
 		data.raw.recipe[item_AE] =
 		{
@@ -455,7 +455,7 @@ function TM.GetType(string)
 		return it
 	end
 	if rip == nil then
-		log(t .. "not found.")
+		log("ERROR 8777: " .. t .. "not found.")
 	end
 	--TM.debug_log(t .. rip.type)
 	return rip
@@ -524,12 +524,12 @@ function TM.icons_assign(recipe)
 	if match_value and data.raw.recipe[recipe].icons then
 		local aspect, count = TM.MostAspect(recipe)
 		--TM.debug_log("found " .. recipe .. ". largest aspects: " .. count .. " " .. aspect)
-		local datum = data.raw.recipe[recipe]
-		if datum.icons and datum.icons[1] then
-			datum.icons[3].icon = data.raw.fluid[aspect].icon
-			datum.order = aspect .. "-" .. string.format(string_format, count)
-			datum.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
-			local input = datum.ingredients[1].name
+		local recipe_obj = data.raw.recipe[recipe]
+		if recipe_obj.icons and recipe_obj.icons[1] then
+			recipe_obj.icons[3].icon = data.raw.fluid[aspect].icon
+			recipe_obj.order = aspect .. "-" .. string.format(string_format, count)
+			recipe_obj.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
+			local input = recipe_obj.ingredients[1].name
 			local input_type = TM.GetType(input).type
 			if input_type == "recipe" then 
 				log("ERROR CODE 1246: recipe as ingredient: " .. recipe) -- rare error, is caused when recipe name and item name do not match
@@ -544,20 +544,20 @@ function TM.icons_assign(recipe)
 					input_type = "entity-name."
 				end
 			end
-			datum.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
+			recipe_obj.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
 		end
-		local datum_ing = datum.ingredients[1].name -- there should only be a single ingredient in extraction recipes.
+		local recipe_obj_ing = recipe_obj.ingredients[1].name -- there should only be a single ingredient in extraction recipes.
 		local rpl_bool = false
 		if data.raw.projectile[data_ing] then
 			rpl_bool = true
-			datum.icon = data.raw.projectile[data_ing].icon	
+			recipe_obj.icon = data.raw.projectile[data_ing].icon	
 		elseif data.raw.tool[data_ing] then
 			rpl_bool = true
-			datum.icon = data.raw.tool[data_ing].icon
+			recipe_obj.icon = data.raw.tool[data_ing].icon
 		end
 		if rpl_bool then
 			log("ERROR CODE 8724 " .. data_ing .. " icon replacement")
-			datum.icons = nil
+			recipe_obj.icons = nil
 		end
 	elseif match_value then
 		log("Failed to assign aspect icon to " .. recipe)
@@ -567,13 +567,13 @@ end
 This function returns the most prominent aspect of a recipe or nil.
 ]]--
 function TM.MostAspect(recipe)
-	local datum = data.raw.recipe[recipe]
-	if not datum or not datum.results then
+	local recipe_obj = data.raw.recipe[recipe]
+	if not recipe_obj or not recipe_obj.results then
 		return nil
 	end
 	local most_aspect = nil
 	local most_count = 0
-	for i,v in pairs(datum.results) do
+	for i,v in pairs(recipe_obj.results) do
 		if v.amount > most_count then
 			most_count = v.amount
 			most_aspect = v.name
@@ -593,44 +593,71 @@ function TM.InList(list, item)
 	return false
 end
 --[[
+This function is basically a regex type blacklist.
+]]--
+function TM.MatchList(str)
+	if str == nil then return nil end
+	local regex_strings = {
+		"aspect.extraction$",
+		"create$",
+		"seperate$",
+		"gas$",
+		"liquid$",
+		"precipitation$",
+		"^fill.+barrel",
+		"^empty.+barrel"
+	}
+	local found = false
+	for _, compare in ipairs(regex_strings) do
+		found = string.find(str, compare) or found
+		if found then return found end
+	end
+	return found
+end
+--[[
 Recursive. Triest to inherit from all ingredients in list, and if an ingredient is in list it calls the function
 ]]--
-function TM.Inheritance(list, recipe, recipe_list)
+function TM.Inheritance(list, recipe_obj, recipe_list)
 	local recipe_list = recipe_list or {}
-	if TM.InList(list, recipe) then
+	local recipe_name = recipe_obj["name"]
+	if list[recipe_name] then
 		return list
 	end
-	local match_value = recipe:find('aspect.extraction$') or recipe:find('create$') or recipe:find('seperate$') or recipe:find('^fill.+barrel') or recipe:find('^empty.+barrel')
-	if match_value then
-		list[#list + 1] = recipe
+	
+	if not recipe_name then log("ERROR!!\n" .. serpent.block(recipe_obj)); return list; end
+	if TM.MatchList(recipe_name) then
+		list[recipe_name] = true
 		return list
 	end
-	local datum = data.raw.recipe[recipe]
-	if datum == nil or datum.ingredients == nil then
-		list[#list + 1] = recipe
+	if recipe_obj == nil or recipe_obj.ingredients == nil then
+		list[recipe_name] = true
 		return list
 	end
-	TM.debug_log(recipe)
+	TM.debug_log(recipe_name)
 	TM.debug_log("Checking ingredients: ")
-	for i,v in pairs(datum.ingredients) do
+	for i,v in pairs(recipe_obj.ingredients) do
 		local ing_name = v.name or v[1]
-		if not TM.InList(list, ing_name) then
-			if not TM.InList(recipe_list, ing_name) then
-				TM.debug_log("Ingredient " .. ing_name .. " already inherited.")
-				recipe_list[#recipe_list + 1] = recipe
-				list = TM.Inheritance(list, ing_name, recipe_list)
-			else
-				TM.debug_log(recipe .. " is cyclical")
-				list[#list + 1] = recipe
-				TM.inherit_aspects(recipe)
-				TM.CompressExtract(recipe)
-				return list
+		if data.raw.recipe[ing_name] then
+			if not list[ing_name] then
+				if not recipe_list[ing_name] then
+					TM.debug_log("Ingredient " .. ing_name .. " already inherited.")
+					recipe_list[recipe_name] = true
+					list = TM.Inheritance(list, data.raw.recipe[ing_name], recipe_list)
+				else
+					TM.debug_log(recipe_name .. " is cyclical")
+					list[recipe_name] = true
+					TM.inherit_aspects(recipe_name)
+					TM.CompressExtract(recipe_name)
+					return list
+				end
 			end
+		else
+			recipe_list[ing_name] = true
 		end
 	end
-	TM.inherit_aspects(recipe)
-	TM.CompressExtract(recipe)
-	list[#list + 1] = recipe
+	TM.inherit_aspects(recipe_name)
+	TM.CompressExtract(recipe_name)
+	list[recipe_name] = true
 	return list
 end
 --[[

@@ -4,9 +4,13 @@ local blacklist = {
 	"grow-silverwood",
 	"grow-wood",
 	"TM-seedling",
+	"coal-liquefaction",
+	"uranium-processing",
+	"player-port",
+	"thaumic-tree-farm"
 }
 for i,v in pairs(blacklist) do
-	inherited[#inherited + 1] = v
+	inherited[v] = true
 end
 
 
