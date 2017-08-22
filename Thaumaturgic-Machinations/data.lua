@@ -1,17 +1,14 @@
 if not TM then TM = {} end
 if not inherited then inherited = {} end
-local blacklist = {
-	"grow-silverwood",
-	"grow-wood",
-	"TM-seedling",
-	"coal-liquefaction",
-	"uranium-processing",
-	"player-port",
-	"thaumic-tree-farm"
+blacklist = {
+	["grow-silverwood"] = true,
+	["grow-wood"] = true,
+	["TM-seedling"] = true,
+	["coal-liquefaction"] = true,
+	["uranium-processing"] = true,
+	["player-port"] = true,
+	["thaumic-tree-farm"] = true
 }
-for i,v in pairs(blacklist) do
-	inherited[v] = true
-end
 
 
 tm_debug_setting = settings.startup["tm-debug-enabled"].value
