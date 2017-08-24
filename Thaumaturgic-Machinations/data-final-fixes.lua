@@ -14,7 +14,6 @@ TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 ]]--
 local aspc_list = {}
 local todo_list = {}
-local extr_list = {}
 if combine_seperate_modifier > 0 then
 	TM.debug_log("PREPARE FOR LOG DESTRUCTION MARK II (data-final-fixes)")
 	for recipe_name, recipe_obj in pairs(data.raw.recipe) do
@@ -30,7 +29,6 @@ if combine_seperate_modifier > 0 then
 				["results"] = recipe_obj.results,
 				["ingredients"] = recipe_obj.ingredients
 			}
-			-- add to list
 		end
 	end
 	
@@ -42,11 +40,30 @@ if combine_seperate_modifier > 0 then
 	while next(todo_list) do
 		local i, v = next(todo_list)
 		-- do stuff
-		
+		aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list)
 		-- stuff do
 		-- log(i)
 		todo_list[i] = nil
 	end
 
 	TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
+end
+
+function TM.AspectInherit(aspc_list, todo_list)
+	local ingr_list = {}
+	local extr_list = {}
+	for i2, v2 in pairs(todo_list.ingredients) do
+		local amt = v2.amount or v2[2]
+		local nme = v2.name or v2[1]
+		local typ = v2.type or "item"
+		if aspc_list[nme] then
+			ingr_list[i2] = aspc_list[nme]
+		else
+			-- here's where the magic happens
+			aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list)
+		end
+	end
+	-- this is where the aspects get ordered
+	-- this is where the aspects get assigned to an actual recipe
+	return aspc_list, todo_list
 end
