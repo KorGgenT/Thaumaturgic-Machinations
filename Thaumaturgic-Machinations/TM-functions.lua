@@ -660,6 +660,48 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 	list[recipe_name] = true
 	return list
 end
+-- rework of above
+function TM.AspectInherit(aspc_list, todo_list, i)
+	local ingr_list = {}
+	local extr_list = {}
+	log(i)
+	local single = todo_list[i]
+	for i2, v2 in pairs(single.ingredients) do
+		local amt = v2.amount or v2[2]
+		local nme = v2.name or v2[1]
+		local typ = v2.type or "item"
+		if aspc_list[nme] then
+			ingr_list[nme] = aspc_list[nme]
+			local amt2 = ingr_list[nme].ingredients[1]
+			local ing  = ingr_list[nme].results[1]
+			--[[
+			if amt2["amount"] then
+				amt2.amount = amt
+			elseif amt2[2] then
+				amt2[2] = amt
+			end
+			log(ing.amount * amt)
+			if ing["amount"] then
+				--ing.amount = ing.amount * amt
+			else
+				log("error?")
+			end
+			log(typ .. " " .. amt .. " " .. nme)
+			log(amt2)
+			]]--
+		else
+			-- here's where the magic happens
+			if nme and todo_list[nme] then
+				aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list, nme)
+			end
+		end
+	end
+	log(serpent.block(ingr_list))
+	-- this is where the aspects get ordered
+	-- this is where the aspects get assigned to an actual recipe
+	single = nil
+	return aspc_list, todo_list
+end
 --[[
 This function returns an "index" related to the payload for magic turrets.
 ]]--

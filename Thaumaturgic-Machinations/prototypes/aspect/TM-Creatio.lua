@@ -207,12 +207,12 @@ function creatio_recipe(item, red, green, blue)
 				enabled = true, --- ENABLED
 				energy_required = creatio_recipe_time,
 				ingredients = {
-					{type = "fluid", name = item .. "-liquid", amount = 100},
-					{type = "fluid", name = item_aspect, amount = 10 * item_aspect_amount},
-					{type = "fluid", name = "Terra", amount = creatio_primal_cost * tier}
+					{type = "fluid", name = item .. "-liquid", amount = 10},
+					{type = "fluid", name = item_aspect, amount = 1 * item_aspect_amount},
+					{type = "fluid", name = "Terra", amount = creatio_primal_cost * tier / 10}
 				},
 				results = {
-					{item, 30*creatio_multiplier}
+					{item, 3 * creatio_multiplier}
 				},
 			},
 		})
