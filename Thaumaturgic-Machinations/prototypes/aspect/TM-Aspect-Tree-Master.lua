@@ -48,7 +48,6 @@ end
 TM.new_aspect_combine("Alienis", "Vacuous", "Tenebrae")
 TM.new_aspect_combine("Asidia", "Vinculum", "Spiritus")
 TM.new_aspect_combine("Avaritia", "Spiritus", "Vacuous")
-TM.new_aspect_combine("Aversio", "Spiritus", "Vacuous")
 TM.new_aspect_combine("Cognitio", "Ignis", "Spiritus")
 TM.new_aspect_combine("Fabrico", "Permutatio", "Instrumentum")
 TM.new_aspect_combine("Gula", "Fames", "Vacuous")
@@ -59,11 +58,12 @@ TM.new_aspect_combine("Superbia", "Volatus", "Vacuous")
 
 -- Tier 4
 
-TM.new_aspect_combine("Magneto", "Aversio", "Perditio")
+TM.new_aspect_combine("Aversio", "Vacuous", "Cognitio")
 TM.new_aspect_combine("Infernus", "Ignis", "Alienis")
 TM.new_aspect_combine("Invidia", "Sensus", "Fames")
 TM.new_aspect_combine("Ira", "Aversio", "Ignis")
 TM.new_aspect_combine("Luxuria", "Humanus", "Fames")
 -- Tier 5
 
+TM.new_aspect_combine("Magneto", "Aversio", "Perditio")
 -- TM.new_aspect_combine("Nebrisium", "Luxuria", "Avaritia")
