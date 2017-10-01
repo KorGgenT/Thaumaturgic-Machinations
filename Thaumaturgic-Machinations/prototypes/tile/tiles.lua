@@ -125,7 +125,6 @@ local function ritual_tile(clr,variant)
 		end
 	end
 end
-log("10104:")
 ritual_tile(color_variants,type_variants)
 --[[
 data:extend({

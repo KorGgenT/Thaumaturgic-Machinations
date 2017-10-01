@@ -918,7 +918,7 @@ data:extend({
 	energy_required = 36,
 	ingredients = {
 		{type="fluid", name="Radio", amount=10},
-		{type="fluid", name="Magneto", amount=100},
+		{type="fluid", name="Sensus", amount=100},
 		{"dark-electronic-circuit", 10},
 	},
 	result = "magic-pack-3",
