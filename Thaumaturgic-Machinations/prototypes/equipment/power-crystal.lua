@@ -99,6 +99,7 @@ for i, crys in pairs(crystal_list) do -- each object should be a tier/color
 						icon = "__Thaumaturgic-Machinations__/graphics/icons/" .. string.upper(sz.name:sub(1,1)) .. ".png",
 					}
 				},
+				icon_size = 32,
 				placed_as_equipment_result = nm,
 				flags = {"goes-to-main-inventory"},
 				subgroup = "magic-equipment",
@@ -138,6 +139,7 @@ for i, crys in pairs(crystal_list) do -- each object should be a tier/color
 						icon = "__Thaumaturgic-Machinations__/graphics/icons/" .. string.upper(sz.name:sub(1,1)) .. ".png",
 					}
 				},
+				icon_size = 32,
 				category = "aspect-crafting",
 				enabled = false,
 				energy_required = nrg * crys.tier,

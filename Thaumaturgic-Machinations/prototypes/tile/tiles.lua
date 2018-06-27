@@ -48,6 +48,7 @@ local function ritual_tile(clr,variant)
 						type = "item",
 						name = tile_result,
 						icon = "__Thaumaturgic-Machinations__/graphics/tile/ritual-" .. c .. "/ritual-tile.png",
+						icon_size = 32,
 						flags = {"goes-to-main-inventory"},
 						subgroup = "ritual-tile",
 						order = i,

@@ -35,7 +35,7 @@ data:extend({
         {
           {
             type = "create-entity",
-            entity_name = "fireball-explosion"
+            entity_name = "fireball-explosion",
           },
           {
             type = "nested-result",
@@ -43,6 +43,7 @@ data:extend({
             {
               type = "area",
               perimeter = 6,
+			  radius = 6,
               action_delivery =
               {
                 type = "instant",
@@ -89,7 +90,7 @@ data:extend({
         starting_frame_speed_deviation = 5
       }
     }
-  },
+  },--[[
   smoke
   {
     name = "nuclear-smoke",
@@ -99,5 +100,5 @@ data:extend({
     start_scale = 0.5,
     end_scale = 1,
     affected_by_wind = false
-  },
+  },]]--
 })

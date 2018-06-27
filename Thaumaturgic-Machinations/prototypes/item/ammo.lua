@@ -4,6 +4,7 @@ data:extend({
 	type = "ammo",
 	name = "fireball",
 	icon = "__base__/graphics/icons/rocket.png",
+	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	ammo_type =
 	{

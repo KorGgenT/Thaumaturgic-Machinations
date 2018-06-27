@@ -84,6 +84,7 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 				shift = {10,-10},
 			},
 		},
+		icon_size = 32,
 		subgroup = "combine-aspect-" .. tier,
 		order = recipe,
 	}
@@ -129,11 +130,12 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 				shift = {10,10},
 			},
 		},
+		icon_size = 32,
 		subgroup = "seperate-aspect-" .. tier,
 		order = recipe,
 	}
-
-	table.insert(data.raw.technology["aspect-seperation-" .. tier].effects,{type="unlock-recipe",recipe=recipe_seperate})
+	-- ?????????????
+	--table.insert(data.raw.technology["aspect-seperation-" .. tier].effects,{type="unlock-recipe",recipe=recipe_seperate})
 
 end
 
@@ -300,6 +302,7 @@ amount = amount or 1
 					shift = {8,6}
 				},
 			},
+			icon_size = 32,
 			subgroup = "aspect-extraction-" .. tier,
 			order = aspect .. "-" .. string.format(string_format, count),
 		}
