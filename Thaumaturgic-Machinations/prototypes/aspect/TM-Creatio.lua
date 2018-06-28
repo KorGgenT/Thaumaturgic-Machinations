@@ -97,6 +97,7 @@ function creatio_recipe(item, red, green, blue)
 						shift = {-10,10}
 					},
 				},
+				icon_size = 32,
 				pressure_to_speed_ratio = 0.6,
 				flow_to_energy_ratio = 0.59,
 				subgroup = "creatio-liquid",
@@ -123,6 +124,7 @@ function creatio_recipe(item, red, green, blue)
 						shift = {-10,10}
 					},
 				},
+				icon_size = 32,
 				pressure_to_speed_ratio = 0.6,
 				flow_to_energy_ratio = 0.59,
 				subgroup = "creatio-gas",
@@ -143,6 +145,7 @@ function creatio_recipe(item, red, green, blue)
 						shift = {-10,10}
 					},
 				},
+				icon_size = 32,
 				category = "ex-nihilo",
 				subgroup = "creatio-gas-recipe",
 				order = item,
@@ -172,6 +175,7 @@ function creatio_recipe(item, red, green, blue)
 						shift = {-10,10}
 					},
 				},
+				icon_size = 32,
 				category = "ex-nihilo",
 				subgroup = "creatio-liquid-recipe",
 				order = item,
@@ -201,6 +205,7 @@ function creatio_recipe(item, red, green, blue)
 						shift = {-10,10}
 					},
 				},
+				icon_size = 32,
 				category = "ex-nihilo",
 				subgroup = "creatio-ore-recipe",
 				order = item,

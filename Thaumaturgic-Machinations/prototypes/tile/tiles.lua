@@ -48,6 +48,7 @@ local function ritual_tile(clr,variant)
 						type = "item",
 						name = tile_result,
 						icon = "__Thaumaturgic-Machinations__/graphics/tile/ritual-" .. c .. "/ritual-tile.png",
+						icon_size = 32,
 						flags = {"goes-to-main-inventory"},
 						subgroup = "ritual-tile",
 						order = i,
@@ -79,19 +80,19 @@ local function ritual_tile(clr,variant)
 							},
 							inner_corner = {
 								picture = "__base__/graphics/terrain/concrete/concrete-inner-corner.png",
-								count = 32
+								count = 16
 							},
 							outer_corner = {
 								picture = "__base__/graphics/terrain/concrete/concrete-outer-corner.png",
-								count = 16
+								count = 8
 							},
 							side = {
 								picture = "__base__/graphics/terrain/concrete/concrete-side.png",
-								count = 16
+								count = 8
 							},
 							u_transition = {
 								picture = "__base__/graphics/terrain/concrete/concrete-u.png",
-								count = 16
+								count = 8
 							},
 							o_transition = {
 								picture = "__base__/graphics/terrain/concrete/concrete-o.png",

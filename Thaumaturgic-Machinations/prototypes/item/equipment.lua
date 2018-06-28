@@ -6,6 +6,7 @@ data:extend({
 	type = "armor",
 	name = "magic-armor-1",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
+	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	resistances =
 	{
@@ -29,6 +30,7 @@ data:extend({
 	type = "armor",
 	name = "magic-armor-2",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
+	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	resistances =
 	{
@@ -53,6 +55,7 @@ data:extend({
 	type = "armor",
 	name = "magic-armor-3",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-armor-1.png",
+	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	resistances =
 	{
@@ -77,6 +80,7 @@ data:extend({
 	type = "item",
 	name = "bag-of-holding-1",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/bag-of-holding-1.png",
+	icon_size = 32,
 	placed_as_equipment_result = "bag-of-holding-1",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -87,6 +91,7 @@ data:extend({
 	type = "item",
 	name = "bag-of-holding-2",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/bag-of-holding-2.png",
+	icon_size = 32,
 	placed_as_equipment_result = "bag-of-holding-2",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -97,6 +102,7 @@ data:extend({
 	type = "item",
 	name = "bag-of-holding-3",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/bag-of-holding-3.png",
+	icon_size = 32,
 	placed_as_equipment_result = "bag-of-holding-3",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -107,6 +113,7 @@ data:extend({
 	type = "item",
 	name = "longstriders-1",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/longstriders-1.png",
+	icon_size = 32,
 	placed_as_equipment_result = "longstriders-1",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -117,6 +124,7 @@ data:extend({
 	type = "item",
 	name = "longstriders-2",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/longstriders-1.png",
+	icon_size = 32,
 	placed_as_equipment_result = "longstriders-2",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -127,6 +135,7 @@ data:extend({
 	type = "item",
 	name = "magic-shield-1",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-shield-1.png",
+	icon_size = 32,
 	placed_as_equipment_result = "magic-shield-1",
 	flags = {"goes-to-main-inventory"},
 	subgroup = "magic-equipment",
@@ -137,6 +146,7 @@ data:extend({
     type = "item",
     name = "magic-personal-roboport-equipment",
     icon = "__base__/graphics/icons/personal-roboport-equipment.png",
+	icon_size = 32,
     placed_as_equipment_result = "magic-personal-roboport-equipment",
     flags = {"goes-to-main-inventory"},
     subgroup = "magic-equipment",
@@ -147,6 +157,7 @@ data:extend({
     type = "item",
     name = "magic-night-vision-equipment",
     icon = "__base__/graphics/icons/night-vision-equipment.png",
+	icon_size = 32,
     placed_as_equipment_result = "magic-night-vision-equipment",
     flags = {"goes-to-main-inventory"},
     subgroup = "magic-equipment",

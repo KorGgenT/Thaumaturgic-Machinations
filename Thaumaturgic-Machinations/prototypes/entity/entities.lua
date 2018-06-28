@@ -4,6 +4,7 @@ data:extend {
 	type = "tree",
 	name = "silverwood-tree",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-tree.png",
+	icon_size = 64,
 	flags = {"placeable-neutral", "placeable-off-grid", "breaths-air"},
 	minable = {
 		mining_particle = "wooden-particle",
@@ -68,6 +69,7 @@ data:extend {
 	type = "corpse",
 	name = "silverwood-stump",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/silverwood-stump.png",
+	icon_size = 32,
 	flags = {"placeable-neutral", "not-on-map"},
 	collision_box = {{0,0}, {0,0}},
 	selection_box = {{0,0}, {0,0}},
@@ -93,6 +95,7 @@ data:extend {
     type = "furnace",
     name = "thaumic-stone-furnace",
     icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/thaumic_furnace.png",
+	icon_size = 32,
 	localised_name = {"item-name.TM", {"entity-name.stone-furnace"}},
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "thaumic-stone-furnace"},
@@ -213,6 +216,7 @@ data:extend {
     type = "furnace",
     name = "infused-thaumic-stone-furnace",
     icon = "__Thaumaturgic-Machinations__/graphics/icons/entity/infused_thaumic_furnace.png",
+	icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "infused-thaumic-stone-furnace"},
     max_health = 200,
@@ -533,6 +537,7 @@ data:extend {
     {
       module_slots = 2
     },
+	allowed_effects = {"consumption", "speed", "productivity", "pollution"},
     fast_replaceable_group = "crucible"
 },
   
@@ -541,6 +546,7 @@ data:extend {
     type = "assembling-machine",
     name = "temp-aspect-machine",
     icon = "__base__/graphics/icons/chemical-plant.png",
+	icon_size = 32,
     flags = {"placeable-neutral","placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "temp-aspect-machine"},
     max_health = 300,
@@ -773,6 +779,7 @@ data:extend {
     type = "lab",
     name = "TM-lab",
     icon = "__Thaumaturgic-Machinations__/graphics/icons/item/TM-lab.png",
+	icon_size = 32,
     flags = {"placeable-player", "player-creation"},
     minable = {mining_time = 1, result = "TM-lab"},
     max_health = 150,
@@ -783,7 +790,7 @@ data:extend {
     light = {intensity = 0.75, size = 8, color = {r = 1.0, g = 1.0, b = 1.0}},
     on_animation = {
 		--north = {
-			filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr_entity_spritesheet.png",
+			filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr.png",
 			width = 113,
 			height = 73,
 			line_length = 18,
@@ -807,7 +814,7 @@ data:extend {
 	},
 	off_animation = {
 		--north = {
-		filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr_entity_spritesheet.png",
+		filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr.png",
 		width = 113,
 		height = 73,
 		frame_count = 1,
@@ -845,13 +852,15 @@ data:extend {
       max_entity_info_module_icons_per_row = 3,
       max_entity_info_module_icon_rows = 1,
       module_info_icon_shift = {0, 0.9}
-    }
+    },
+	allowed_effects = {"consumption", "speed", "productivity", "pollution"}
   },
   
   {
     type = "assembling-machine",
     name = "temp-thaumic-tree-farm",
     icon = "__base__/graphics/icons/oil-refinery.png",
+	icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "temp-thaumic-tree-farm"},
     max_health = 350,
@@ -974,6 +983,7 @@ data:extend {
     type = "generator",
     name = "ignis-steam-engine",
     icon = "__base__/graphics/icons/steam-engine.png",
+	icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "ignis-steam-engine"},
     max_health = 400,
@@ -1007,7 +1017,8 @@ data:extend {
         { type = "input-output", position = {0, 3} },
         { type = "input-output", position = {0, -3} },
       },
-      production_type = "input-output"
+      production_type = "input-output",
+	  filter = "Ignis"
     },
     fluid_input =
     {
@@ -1134,6 +1145,7 @@ data:extend {
     type = "boiler",
     name = "ignis-boiler",
     icon = "__base__/graphics/icons/boiler.png",
+	icon_size = 32,
     flags = {"placeable-neutral", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "ignis-boiler"},
     max_health = 200,
@@ -1585,6 +1597,7 @@ data:extend {
     type = "assembling-machine",
     name = "magic-assembling-machine-1",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
+	icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "magic-assembling-machine-1"},
     max_health = 350,
@@ -1707,6 +1720,7 @@ data:extend {
     type = "assembling-machine",
     name = "magic-assembling-machine-2",
     icon = "__base__/graphics/icons/assembling-machine-2.png",
+	icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "magic-assembling-machine-2"},
     max_health = 350,
@@ -1829,6 +1843,7 @@ data:extend {
     type = "inserter",
     name = "tm-filter-burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
+	icon_size = 32,
     flags = {"placeable-neutral", "placeable-player", "player-creation"},
     minable = {hardness = 0.2, mining_time = 0.5, result = "burner-inserter"},
 	filter_count = 1,
