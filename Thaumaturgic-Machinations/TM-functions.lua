@@ -664,13 +664,14 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 	return list
 end
 -- rework of above
+local exclusion_list = {} -- this is to avoid stack overflow errors due to cyclical recipes
 function TM.AspectInherit(aspc_list, todo_list, i)
 	local ingr_list = {}
 	local extr_list = {}
 	log(i)
 	local single = todo_list[i]
 	for i2, v2 in pairs(single.ingredients) do
-		local amt = v2.amount or v2[2]
+		local amt = v2.amount or v2[2] -- the amount of a particular ingredient for a recipe.
 		local nme = v2.name or v2[1]
 		local typ = v2.type or "item"
 		if aspc_list[nme] then
@@ -694,7 +695,8 @@ function TM.AspectInherit(aspc_list, todo_list, i)
 			]]--
 		else
 			-- here's where the magic happens
-			if nme and todo_list[nme] then
+			if nme and todo_list[nme] and not exclusion_list[nme] then
+				exclusion_list[nme] = true
 				aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list, nme)
 			end
 		end
