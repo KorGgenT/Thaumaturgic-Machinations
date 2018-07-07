@@ -22,6 +22,7 @@ data:extend({
 	type = "item-group",
 	name = "creatio-recipes",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Creatio.png",
+	icon_size = 32,
 	order = "v",
 },
 {
@@ -249,6 +250,7 @@ data:extend({
 	type = "item",
 	name = "creatio-refinery",
 	icon = "__base__/graphics/icons/oil-refinery.png",
+	icon_size = 32,
 	flags = {"goes-to-quickbar"},
 	subgroup = "production-machine",
 	order = "d[refinery]",
@@ -260,6 +262,7 @@ data:extend({
     type = "assembling-machine",
     name = "creatio-refinery",
     icon = "__base__/graphics/icons/oil-refinery.png",
+	icon_size = 32,
     flags = {"placeable-neutral","player-creation"},
     minable = {mining_time = 1, result = "creatio-refinery"},
     max_health = 350,
