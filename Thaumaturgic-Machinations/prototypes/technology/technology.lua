@@ -14,8 +14,8 @@ data:extend({
 	unit = {
 		count = 25,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -36,9 +36,9 @@ data:extend({
 	unit = {
 		count = 120,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
-			{name = "magic-pack-3", amount = 1}
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1}
 		},
 		time = 10
 	},
@@ -59,8 +59,8 @@ data:extend({
 	unit = {
 		count = 400,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -81,8 +81,8 @@ data:extend({
 	unit = {
 		count = 120,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -103,9 +103,9 @@ data:extend({
 	unit = {
 		count = 360,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
-			{name = "magic-pack-3", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1},
 		},
 		time = 10
 	},
@@ -126,8 +126,8 @@ data:extend({
 	unit = {
 		count = 75,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -148,8 +148,8 @@ data:extend({
 	unit = {
 		count = 400,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -170,8 +170,8 @@ data:extend({
 	unit = {
 		count = 700,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -192,9 +192,9 @@ data:extend({
 	unit = {
 		count = 1200,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
-			{name = "magic-pack-3", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1},
 		},
 		time = 10
 	},
@@ -215,8 +215,8 @@ data:extend({
 	unit = {
 		count = 400,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -237,8 +237,8 @@ data:extend({
 	unit = {
 		count = 700,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -259,8 +259,8 @@ data:extend({
 	unit = {
 		count = 300,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -281,8 +281,8 @@ data:extend({
 	unit = {
 		count = 100,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -303,8 +303,8 @@ data:extend({
 	unit = {
 		count = 250,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10
 	},
@@ -325,9 +325,9 @@ data:extend({
 	unit = {
 		count = 400,
 		ingredients = {
-			{name = "research-note", amount = 1},
-			{name = "brain-in-a-jar", amount = 1},
-			{name = "magic-pack-3", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1},
 		},
 		time = 10
 	},
@@ -356,8 +356,8 @@ data:extend({
 	unit = {
 		count = 800,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10,
 	},
@@ -387,9 +387,9 @@ data:extend({
 	unit = {
 		count = 1850,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
-			{name="magic-pack-3", amount=1}
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1}
 		},
 		time = 10,
 	},
@@ -410,8 +410,8 @@ data:extend({
 	unit = {
 		count = 750,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10,
 	},
@@ -437,8 +437,8 @@ data:extend({
 	unit = {
 		count = 100,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10,
 	},
@@ -460,9 +460,9 @@ data:extend({
 	unit = {
 		count = 200,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
-			{name="magic-pack-3", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1},
 		},
 		time = 10,
 	},
@@ -481,7 +481,7 @@ data:extend({
 	unit = {
 		count = 75,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -507,7 +507,7 @@ data:extend({
 	unit = {
 		count = 325,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -568,7 +568,7 @@ data:extend({
 	unit = {
 		count = 10,
 		ingredients = {
-			{name="science-pack-1", amount=1},
+			{"science-pack-1", 1},
 		},
 		time = 10,
 	},
@@ -590,7 +590,7 @@ data:extend({
 	unit = {
 		count = 60,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -616,7 +616,7 @@ data:extend({
 	unit = {
 		count = 50,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -646,7 +646,7 @@ data:extend({
 	unit = {
 		count = 70,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -672,7 +672,7 @@ data:extend({
 	unit = {
 		count = 110,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -694,7 +694,7 @@ data:extend({
 	unit = {
 		count = 55,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -720,8 +720,8 @@ data:extend({
 	unit = {
 		count = 285,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount = 1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10,
 	},
@@ -759,7 +759,7 @@ data:extend({
 	unit = {
 		count = 100,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -801,7 +801,7 @@ data:extend({
 	unit = {
 		count = 200,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -821,7 +821,7 @@ data:extend({
 	unit = {
 		count = 10,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -838,7 +838,7 @@ data:extend({
 	unit = {
 		count = 50,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -855,8 +855,8 @@ data:extend({
 	unit = {
 		count = 80,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1}
+			{"research-note", 1},
+			{"brain-in-a-jar", 1}
 		},
 		time = 10,
 	},
@@ -873,9 +873,9 @@ data:extend({
 	unit = {
 		count = 100,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
-			{name="magic-pack-3", amount=1}
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1}
 		},
 		time = 10,
 	},
@@ -893,7 +893,7 @@ data:extend({
 	unit = {
 		count = 10,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -910,7 +910,7 @@ data:extend({
 	unit = {
 		count = 50,
 		ingredients = {
-			{name="research-note", amount=1},
+			{"research-note", 1},
 		},
 		time = 10,
 	},
@@ -927,8 +927,8 @@ data:extend({
 	unit = {
 		count = 80,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
 		},
 		time = 10,
 	},
@@ -945,9 +945,9 @@ data:extend({
 	unit = {
 		count = 100,
 		ingredients = {
-			{name="research-note", amount=1},
-			{name="brain-in-a-jar", amount=1},
-			{name="magic-pack-3", amount=1},
+			{"research-note", 1},
+			{"brain-in-a-jar", 1},
+			{"magic-pack-3", 1},
 		},
 		time = 10,
 	},

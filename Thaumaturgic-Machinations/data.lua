@@ -10,6 +10,7 @@ blacklist = {
 	["thaumic-tree-farm"] = true
 }
 
+aspect_list = {}
 
 tm_debug_setting = settings.startup["tm-debug-enabled"].value
 creatio_enabled = settings.startup["creatio-enabled"].value

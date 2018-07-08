@@ -217,6 +217,18 @@ TM.item_add_aspect("iron-ore", "Ordo", 50)		-- adds 50 ordo to 1 iron ore
 TM.item_add_aspect("water", "Aqua", 50, 1000)	-- adds 50 Aqua to 1000 water
 ]]--
 function TM.item_add_aspect(item, aspect, count, amount)
+if amount then
+	aspect_list[item] = {
+		["aspect"] = aspect,
+		["amount"] = count / amount,
+	}
+else
+	aspect_list[item] = {
+		["aspect"] = aspect,
+		["amount"] = count,
+	}
+end
+
 local item_AE = item .. "-aspect-extraction"
 local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
@@ -663,47 +675,27 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 	list[recipe_name] = true
 	return list
 end
--- rework of above
-function TM.AspectInherit(aspc_list, todo_list, i)
-	local ingr_list = {}
-	local extr_list = {}
-	log(i)
-	local single = todo_list[i]
-	for i2, v2 in pairs(single.ingredients) do
-		local amt = v2.amount or v2[2]
-		local nme = v2.name or v2[1]
-		local typ = v2.type or "item"
-		if aspc_list[nme] then
-			ingr_list[nme] = aspc_list[nme]
-			local amt2 = ingr_list[nme].ingredients[1]
-			local ing  = ingr_list[nme].results[1]
-			--[[
-			if amt2["amount"] then
-				amt2.amount = amt
-			elseif amt2[2] then
-				amt2[2] = amt
-			end
-			log(ing.amount * amt)
-			if ing["amount"] then
-				--ing.amount = ing.amount * amt
-			else
-				log("error?")
-			end
-			log(typ .. " " .. amt .. " " .. nme)
-			log(amt2)
-			]]--
-		else
-			-- here's where the magic happens
-			if nme and todo_list[nme] then
-				aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list, nme)
+--[[ rework of above
+
+done_list is the list of all recipes that have been looked at
+todo_list is the list of all recipes that need yet to be done.
+recipe_name_current is the recipe that is currently being looked at
+
+]]--
+function TM.AspectInherit(done_list, todo_list, recipe_name_current)
+	if not todo_list then return end
+	log(recipe_name_current)
+	for recipe_name, recipe in pairs(todo_list) do
+		for ingredient_name, ingredient in pairs(recipe.ingredients) do
+			if todo_list[ingredient_name] and not done_list[ingredient_name] then
+				done_list[ingredient_name] = ingredient
+				log(serpent.block(ingredient))
+				done_list, todo_list = TM.AspectInherit(done_list, todo_list, ingredient_name)
+				
 			end
 		end
 	end
-	log(serpent.block(ingr_list))
-	-- this is where the aspects get ordered
-	-- this is where the aspects get assigned to an actual recipe
-	single = nil
-	return aspc_list, todo_list
+	return done_list, todo_list
 end
 --[[
 This function returns an "index" related to the payload for magic turrets.
