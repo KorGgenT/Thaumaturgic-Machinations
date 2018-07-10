@@ -50,7 +50,7 @@ local function crys_modify_ingredients(size_index, crys_obj)
 end
 local function crys_tech_create(sz, crys_obj)
 	local unit, preq = nil,{}
-	local crys_ing = {{name = "research-note", amount = 1}}
+	local crys_ing = {{"research-note", 1}}
 	local tech_prev = crys_obj.tier - 1 -- requires the previous tier power crystal.
 	if tech_prev == 0 then
 		if not crys_sizes[sz - 1] then
@@ -63,10 +63,10 @@ local function crys_tech_create(sz, crys_obj)
 		preq[#preq + 1] = "tm-" .. crys_sizes[sz - 1].name .. gen_name .. crys_obj.tier
 	end
 	if crys_obj.tier > 1 then
-		crys_ing[#crys_ing + 1] = {name = "brain-in-a-jar", amount = 1}
+		crys_ing[#crys_ing + 1] = {"brain-in-a-jar", 1}
 	end
 	if crys_obj.tier > 2 then
-		crys_ing[#crys_ing + 1] = {name = "magic-pack-3", amount = 1}
+		crys_ing[#crys_ing + 1] = {"magic-pack-3", 1}
 	end
 	unit = {
 		count = 75 * crys_obj.tier * sz ^ 2,
