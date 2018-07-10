@@ -12,6 +12,10 @@ end
 inherited = nil -- clears up the inheritance table.
 TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 ]]--
+
+--[[
+The below code is incomplete. it is commented out in order to stop the cyclical recipe problem while i complete this code.
+
 local done_list = {}
 local todo_list = {}
 if combine_seperate_modifier > 0 then
@@ -58,9 +62,11 @@ if combine_seperate_modifier > 0 then
 		-- log(i)
 		if todo_list then
 			todo_list[i] = nil
+		elseif todo_list == nil then
+			break
 		end
 	end
 
 	TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 end
-
+]]--
