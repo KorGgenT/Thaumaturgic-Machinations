@@ -791,13 +791,13 @@ data:extend {
     on_animation = {
 		--north = {
 			filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr.png",
-			width = 113,
-			height = 73,
-			line_length = 18,
-			frame_count = 123,
+			width = 227,
+			height = 146,
+			line_length = 9,
+			frame_count = 120,
 			animation_speed = 1/3,
-			scale = 1.5,
-			shift = {0.9,0}
+			scale = .75,
+			shift = {0.92,0}
 			--[[
 			hr_version = {
 				filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab_dir1_hr_entity_spritesheet.png",
@@ -815,11 +815,11 @@ data:extend {
 	off_animation = {
 		--north = {
 		filename = "__Thaumaturgic-Machinations__/graphics/entity/TM-lab/TM-lab_dir1_lr.png",
-		width = 113,
-		height = 73,
+		width = 227,
+		height = 146,
 		frame_count = 1,
-		scale = 1.5,
-		shift = {0.9,0}
+		scale = .75,
+		shift = {.92,0}
 		--},
 		
 	},
