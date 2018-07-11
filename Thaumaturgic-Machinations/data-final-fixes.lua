@@ -12,6 +12,10 @@ end
 inherited = nil -- clears up the inheritance table.
 TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 ]]--
+
+--[[
+commented out for stack overflow reasons
+
 local aspc_list = {}
 local todo_list = {}
 if combine_seperate_modifier > 0 then
@@ -49,4 +53,4 @@ if combine_seperate_modifier > 0 then
 
 	TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 end
-
+]]--
