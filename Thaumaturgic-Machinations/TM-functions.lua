@@ -90,6 +90,7 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 	}
 	if data.raw.technology["aspect-combination-" .. tier] then
 		table.insert(data.raw.technology["aspect-combination-" .. tier].effects,{type="unlock-recipe",recipe=recipe_create})
+		table.insert(data.raw.technology["aspect-seperation-" .. tier].effects,{type="unlock-recipe",recipe=recipe_seperate})
 	else
 		log("technology 'aspect-combination-" .. tier .. "' does not exist. please initialize!")
 	end
@@ -134,8 +135,6 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 		subgroup = "seperate-aspect-" .. tier,
 		order = recipe,
 	}
-	-- ?????????????
-	--table.insert(data.raw.technology["aspect-seperation-" .. tier].effects,{type="unlock-recipe",recipe=recipe_seperate})
 
 end
 

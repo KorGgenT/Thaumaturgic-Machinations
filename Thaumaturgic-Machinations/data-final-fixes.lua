@@ -1,4 +1,4 @@
---[[
+--[[commented out because it makes the game take forever to load
 TM.debug_log("PREPARE FOR LOG DESTRUCTION (data-final-fixes)")
 if combine_seperate_modifier ~= 0 then
 	for i,v in pairs(data.raw.recipe) do
