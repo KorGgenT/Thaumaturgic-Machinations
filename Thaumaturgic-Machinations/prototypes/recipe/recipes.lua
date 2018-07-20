@@ -950,4 +950,17 @@ data:extend({
 	result = "tm-filter-burner-inserter",
 	result_count = 1,
 },
+{
+	type = "recipe",
+	name = "fireball",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 3,
+	ingredients = {
+		{type = "fluid", name = "Praecantatio", amount = 10},
+		{"fire-shard", 1},
+	},
+	result = "fireball",
+	result_count = 2,
+},
 })

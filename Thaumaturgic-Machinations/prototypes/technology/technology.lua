@@ -476,7 +476,10 @@ data:extend({
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/Ignis.png",
 	icon_size = 32,
 	effects = {
-		
+		{
+		type = "unlock-recipe",
+		recipe = "fireball"
+		}
 	},
 	unit = {
 		count = 75,

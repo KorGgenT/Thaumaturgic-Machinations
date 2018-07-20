@@ -596,6 +596,7 @@ function TM.InList(list, item)
 end
 --[[
 This function is basically a regex type blacklist.
+It prevents certain recipes from being checked for extraction recipes.
 ]]--
 function TM.MatchList(str)
 	if str == nil then return nil end
@@ -617,7 +618,7 @@ function TM.MatchList(str)
 	return found
 end
 --[[
-Recursive. Triest to inherit from all ingredients in list, and if an ingredient is in list it calls the function
+Recursive. Tries to inherit from all ingredients in list, and if an ingredient is in list it calls the function
 ]]--
 function TM.Inheritance(list, recipe_obj, recipe_list)
 	local recipe_list = recipe_list or {}
@@ -662,21 +663,24 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 	list[recipe_name] = true
 	return list
 end
--- rework of above
+-- rework of above, currently WIP
 function TM.AspectInherit(aspc_list, todo_list, i)
 	local ingr_list = {}
-	local extr_list = {}
+	local phantom_list = {} -- a "phantom" todo_list. intended for use in order to exclude the current item from the deeper recursion to avoid stack overflow
 	log(i)
-	local single = todo_list[i]
+	local single = todo_list[i] -- a particular recipe in the todo_list. has real ingredients/results
+	if not single or not single.ingredients then
+		return aspc_list, todo_list 
+	end -- uh oh! somehow an empty ingredient made it through
 	for i2, v2 in pairs(single.ingredients) do
 		local amt = v2.amount or v2[2]
 		local nme = v2.name or v2[1]
 		local typ = v2.type or "item"
-		if aspc_list[nme] then
+		if aspc_list[nme] then -- if one of the ingredients is in the list of extraction recipes
 			ingr_list[nme] = aspc_list[nme]
+			--[[
 			local amt2 = ingr_list[nme].ingredients[1]
 			local ing  = ingr_list[nme].results[1]
-			--[[
 			if amt2["amount"] then
 				amt2.amount = amt
 			elseif amt2[2] then
@@ -692,15 +696,19 @@ function TM.AspectInherit(aspc_list, todo_list, i)
 			log(amt2)
 			]]--
 		else
-			-- here's where the magic happens
+			-- here's where the magic happensS
 			if nme and todo_list[nme] then
-				aspc_list, todo_list = TM.AspectInherit(aspc_list, todo_list, nme)
+				phantom_list = todo_list;
+				phantom_list[i] = nil;
+				aspc_list, todo_list = TM.AspectInherit(aspc_list, phantom_list, nme)
 			end
 		end
 	end
-	log(serpent.block(ingr_list))
-	-- this is where the aspects get ordered
-	-- this is where the aspects get assigned to an actual recipe
+	if not ingr_list == nil then
+		log(serpent.block(ingr_list))
+	else
+		aspc_list[i] = nil; -- removes the item from aspc_list, since there are no ingredients anyway.
+	end
 	single = nil
 	return aspc_list, todo_list
 end
@@ -725,7 +733,6 @@ function TM.OrderRecipeResults(recipe_obj)
 		result_list[i] = nil
 	end
 end
-
 
 
 

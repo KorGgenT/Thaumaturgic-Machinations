@@ -9,6 +9,10 @@ local list = {
 return list
 end
 
+script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
+script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
+
+
 --returns the bonus attributed to inputted item name
 function in_inv_list(name)
 
@@ -34,6 +38,43 @@ script.on_event(defines.events.on_player_placed_equipment, function(event)
 	end
 
 end)
+
+function clear_bonuses(player)
+
+	player.character_inventory_slots_bonus = 0
+
+	player.character_reach_distance_bonus = 0
+	player.character_item_pickup_distance_bonus = 0
+	player.character_loot_pickup_distance_bonus = 0
+	player.character_item_drop_distance_bonus = 0
+
+end
+
+-- The below function is from the Multiblocks mod by WildWolf
+function TM.CreateMultiblock(event) -- on_built_entity, on_robot_built_entity // only shared is created_entity
+
+	local et = {}
+	local created_entity = event.created_entity
+	local name = created_entity.name
+	local current_structure = global.multiblock_structures[created_entity.name]
+	if (created_entity and created_entity.result.relative_position and created_entity.result.name and created_entity.parts) then
+		for _,e in pairs(created_entity.parts) do
+			local fe = game.surfaces[1].find_entity(e.name,{x = created_entity.position.x + e.relative_position[1], y = created_entity.position.y + e.relative_position[2]}) 
+			if(fe and fe.valid) then
+			  table.insert(et,fe)
+			end
+		end
+		if(#et==#created_entity.parts) then 
+			local p = {x=created_entity.position.x+created_entity.result.relative_position[1],y=created_entity.position.y+created_entity.result.relative_position[2]}
+			created_entity.destroy() 
+			for _,e in pairs(et) do 
+				e.destroy() 
+			end 
+			game.surfaces[1].create_entity{name=created_entity.result.name,position=p,force=game.players[event.player_index].force.name} 
+		end
+	end
+
+end
 
 -- removed equipment
 script.on_event(defines.events.on_player_removed_equipment, function(event)
@@ -98,13 +139,3 @@ script.on_event(defines.events.on_player_armor_inventory_changed, function(event
 	--player.print("Bonus inventory slots: +" .. player.character_inventory_slots_bonus)
 end)
 
-function clear_bonuses(player)
-
-	player.character_inventory_slots_bonus = 0
-
-	player.character_reach_distance_bonus = 0
-	player.character_item_pickup_distance_bonus = 0
-	player.character_loot_pickup_distance_bonus = 0
-	player.character_item_drop_distance_bonus = 0
-
-end
