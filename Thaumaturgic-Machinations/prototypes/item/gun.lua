@@ -3,8 +3,8 @@ data:extend({
 
 {
 	type = "gun",
-	name = "rocket-launcher",
-	icon = "__base__/graphics/icons/rocket-launcher.png",
+	name = "wand",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/wand.png",
 	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	subgroup = "gun",

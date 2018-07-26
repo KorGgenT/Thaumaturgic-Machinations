@@ -963,4 +963,17 @@ data:extend({
 	result = "fireball",
 	result_count = 2,
 },
+{
+	type = "recipe",
+	name = "wand",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 10,
+	ingredients = {
+		{type = "fluid", name = "Aversio", amount = 500},
+		{"refined-silverwood", 5},
+	},
+	result = "wand",
+	result_count = 1,
+},
 })

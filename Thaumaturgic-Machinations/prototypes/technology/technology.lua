@@ -479,7 +479,11 @@ data:extend({
 		{
 		type = "unlock-recipe",
 		recipe = "fireball"
-		}
+		},
+		{
+		type = "unlock-recipe",
+		recipe = "wand"
+		},
 	},
 	unit = {
 		count = 75,
