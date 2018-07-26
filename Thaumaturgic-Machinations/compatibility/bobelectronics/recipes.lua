@@ -1,0 +1,1 @@
+bobmods.lib.recipe.replace_ingredient("dark-electronic-circuit","advanced-circuit","circuit-board")

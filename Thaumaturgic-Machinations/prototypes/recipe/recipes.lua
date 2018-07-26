@@ -957,7 +957,7 @@ data:extend({
 	enabled = false,
 	energy_required = 3,
 	ingredients = {
-		{type = "fluid", name = "Praecantatio", amount = 10},
+		{type = "fluid", name = "Potentia", amount = 10},
 		{"fire-shard", 1},
 	},
 	result = "fireball",

@@ -1,3 +1,5 @@
+if not TM then TM = {} end
+
 -- list of all items that should give inventory bonuses and their respective bonus
 function inv_bonus_list()
 local list = {
@@ -8,9 +10,6 @@ local list = {
 
 return list
 end
-
-script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
-script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
 
 
 --returns the bonus attributed to inputted item name
@@ -24,21 +23,6 @@ function in_inv_list(name)
 	return nil
 end
 
--- placed equipment
-script.on_event(defines.events.on_player_placed_equipment, function(event)
-
-	local player = game.players[event.player_index]
-	local inventory_slots = player.character_inventory_slots_bonus
-	local inv_bonus = in_inv_list(event.equipment.name)
-	
-	-- check if the item affects inventory size
-	if inv_bonus ~= nil then
-		player.character_inventory_slots_bonus = inventory_slots + inv_bonus
-		--player.print("Bonus inventory slots: +" .. player.character_inventory_slots_bonus)
-	end
-
-end)
-
 function clear_bonuses(player)
 
 	player.character_inventory_slots_bonus = 0
@@ -49,7 +33,7 @@ function clear_bonuses(player)
 	player.character_item_drop_distance_bonus = 0
 
 end
-
+--[[
 -- The below function is from the Multiblocks mod by WildWolf
 function TM.CreateMultiblock(event) -- on_built_entity, on_robot_built_entity // only shared is created_entity
 
@@ -75,6 +59,25 @@ function TM.CreateMultiblock(event) -- on_built_entity, on_robot_built_entity //
 	end
 
 end
+
+
+script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
+script.on_event(defines.events.on_robot_built_entity, TM.CreateMultiblock(event))
+]]--
+-- placed equipment
+script.on_event(defines.events.on_player_placed_equipment, function(event)
+
+	local player = game.players[event.player_index]
+	local inventory_slots = player.character_inventory_slots_bonus
+	local inv_bonus = in_inv_list(event.equipment.name)
+	
+	-- check if the item affects inventory size
+	if inv_bonus ~= nil then
+		player.character_inventory_slots_bonus = inventory_slots + inv_bonus
+		--player.print("Bonus inventory slots: +" .. player.character_inventory_slots_bonus)
+	end
+
+end)
 
 -- removed equipment
 script.on_event(defines.events.on_player_removed_equipment, function(event)

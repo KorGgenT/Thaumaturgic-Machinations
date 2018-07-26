@@ -3,12 +3,12 @@ data:extend({
 {
 	type = "ammo",
 	name = "fireball",
-	icon = "__base__/graphics/icons/rocket.png",
+	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/fireball.png",
 	icon_size = 32,
 	flags = {"goes-to-main-inventory"},
 	ammo_type =
 	{
-		category = "rocket",
+		category = "magic",
 		action =
 		{
 		type = "direct",

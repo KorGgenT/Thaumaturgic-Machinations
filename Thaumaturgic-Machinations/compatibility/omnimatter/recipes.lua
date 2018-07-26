@@ -1,0 +1,1 @@
+TM.item_add_aspect("omnite","Ignis",10)
