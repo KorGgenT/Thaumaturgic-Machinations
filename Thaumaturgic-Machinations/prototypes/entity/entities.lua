@@ -1181,7 +1181,8 @@ data:extend {
         {type = "input-output", position = {-2, 0.5}},
         {type = "input-output", position = {2, 0.5}}
       },
-      production_type = "input-output"
+      production_type = "input-output",
+	  filter = "Ignis"
     },
     output_fluid_box =
     {
