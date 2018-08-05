@@ -18,7 +18,7 @@ end
 
 createAspect("Aer", {r=1, g=1, b=0.4}, {r=1, g=1, b=0.4})
 createAspect("Aqua", {r=0.2, g=0.8, b=1}, {r=0.2, g=0.8, b=1})
-createAspect("Ignis", {r=1, g=0, b=0}, {r=1, g=0, b=0}, "130J")
+createAspect("Ignis", {r=1, g=0, b=0}, {r=1, g=0, b=0}, "1300J")
 createAspect("Ordo", {r=0.9, g=0.9, b=0.9}, {r=0.9, g=0.9, b=0.9})
 createAspect("Perditio", {r=0.2, g=0.2, b=0.2}, {r=0.2, g=0.2, b=0.2})
 createAspect("Terra", {r=0, g=1, b=0}, {r=0, g=1, b=0})

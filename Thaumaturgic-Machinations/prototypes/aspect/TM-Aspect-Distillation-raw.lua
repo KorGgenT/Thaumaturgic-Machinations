@@ -24,9 +24,14 @@ local extraction = {
 	{"uranium-ore", "Radio", 100},
 	{"iron-chest", "Vacuous", 150},
 	{"raw-fish", "Vitae", 200},
+	{"heavy-armor", "Praemundio", 2500},
+	{"light-armor", "Praemundio", 1000},
+	{"iron-axe", "Instrumentum", 100},
+	{"steel-axe", "Instrumentum", 250}
 }
 for i,v in pairs(extraction) do
-	TM.item_add_aspect(v[1],v[2],v[3],v[4])
+	TM.item_add_aspect(v[1],v[2],v[3],v[4]);
+	blacklist[v[1]] = true;
 end
 
 
