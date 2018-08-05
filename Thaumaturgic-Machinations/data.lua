@@ -48,6 +48,8 @@ require("prototypes.item.gun")
 
 require("prototypes.tile.tiles")
 
+require("prototypes.entity.enemies")
+
 if creatio_enabled then
 	require("prototypes.aspect.TM-Creatio")
 end
