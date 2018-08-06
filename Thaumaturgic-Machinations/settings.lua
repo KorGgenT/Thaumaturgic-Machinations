@@ -1,6 +1,14 @@
 data:extend({
 	{
 		type = "bool-setting",
+		name = "inheritance-enable",
+		setting_type = "startup",
+		default_value = true,
+		per_user = false,
+		order = "aaa"
+	},
+	{
+		type = "bool-setting",
 		name = "creatio-enabled",
 		setting_type = "startup",
 		default_value = false,

@@ -1,16 +1,18 @@
---commented out because it makes the game take forever to load
-TM.debug_log("PREPARE FOR LOG DESTRUCTION (data-final-fixes)")
-if combine_seperate_modifier ~= 0 then
-	for i,v in pairs(data.raw.recipe) do
-		--log(i)
-		--log("\n" .. serpent.block(v))
-		if not inherited[v.name] and not blacklist[v.name] then TM.Inheritance(inherited, v) end
-		if v.name:find('aspect.extraction$') then TM.OrderRecipeResults(v) end
-		TM.icons_assign(v.name)
+--game takes a long time to load.
+if inheritance_enabled then
+	TM.debug_log("PREPARE FOR LOG DESTRUCTION (data-final-fixes)")
+	if combine_seperate_modifier ~= 0 then
+		for i,v in pairs(data.raw.recipe) do
+			--log(i)
+			--log("\n" .. serpent.block(v))
+			if not inherited[v.name] and not blacklist[v.name] then TM.Inheritance(inherited, v) end
+			if v.name:find('aspect.extraction$') then TM.OrderRecipeResults(v) end
+			TM.icons_assign(v.name)
+		end
 	end
+	inherited = nil -- clears up the inheritance table.
+	TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 end
-inherited = nil -- clears up the inheritance table.
-TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 
 
 --[[ *WIP* not sure if this would make loading faster anyway...

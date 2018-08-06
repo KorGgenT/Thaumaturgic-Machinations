@@ -18,6 +18,7 @@ creatio_primal_cost = settings.startup["creatio-primal-cost"].value
 creatio_recipe_time = settings.startup["creatio-recipe-time"].value
 creatio_multiplier = settings.startup["creatio-multiplier"].value
 combine_seperate_modifier = settings.startup["combine-seperate-modifier"].value
+inheritance_enabled = settings.startup["inheritance-enable"].value
 inherit_multiplier = 1.1 -- the amount of increase in aspects further down the inheritance tree
 asp_pow_max = 6 -- 10^asp_pow_max is the maximum of one type of aspect that can be on an item.
 
