@@ -6,7 +6,7 @@ local function createAspect(name, color, flow_color, heat_capacity, ratio)
 		heat_capacity = heat_capacity or "0.1KJ",
 		base_color = color,
 		flow_color = flow_color or color,
-		max_temperature = 100,
+		max_temperature = 750,
 		icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/"..name..".png",
 		icon_size = 32,
 		pressure_to_speed_ratio = 0.6,
