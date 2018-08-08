@@ -241,7 +241,8 @@ amount = amount or 1
 		return
 	end
 
-	if data.raw.recipe[item_AE] and data.raw.recipe[item_AE].results then
+	-- if the aspect is already in the item, it adds it to the aspect already in the results instead of adding another result
+	if dat_AE and dat_AE.results then
 	local ing = data.raw.recipe[item_AE].results
 		
 		for index,value in pairs(ing) do
@@ -255,10 +256,13 @@ amount = amount or 1
 		
 	end
 
+	-- if the extraction recipe exists, but the aspects don't match, it adds another results
 	if dat_AE and datum ~= nil and not asex then
-	dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
-	TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
-		else if not dat_AE and datum then
+		dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
+		TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
+	
+	-- if the extraction recipe does not already exist, it makes one
+	else if not dat_AE and datum then
 		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
 		
 		local ingredient_type = datum.type
@@ -392,6 +396,7 @@ This function "inherits" the aspects from its ingredients. Aspects will only be 
 ]]--
 function TM.inherit_aspects(recipe)
 	local dat_recipe = data.raw.recipe[recipe]
+	
 	if dat_recipe then
 		if dat_recipe.ingredients then
 			TM.inherit_helper(dat_recipe, recipe)

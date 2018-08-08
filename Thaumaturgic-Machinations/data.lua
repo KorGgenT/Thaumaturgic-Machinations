@@ -7,7 +7,7 @@ blacklist = {
 	["coal-liquefaction"] = true,
 	["uranium-processing"] = true,
 	["player-port"] = true,
-	["thaumic-tree-farm"] = true
+	["thaumic-tree-farm"] = true,
 }
 
 
