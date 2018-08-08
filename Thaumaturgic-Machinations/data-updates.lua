@@ -16,3 +16,9 @@ end
 if mods["angelsrefining"] then
 	require("compatibility.angelsrefining.recipes")
 end
+--[[
+if mods["CW-hydrogen-power"] then
+	TM.item_add_aspect("CW-pulse-laser", "Aversio", 200);
+	blacklist["CW-pulse-laser"] = true;
+	data.raw.recipe["CW-pulse-laser-aspect-extraction"].icons = {icon = "__Thaumaturgic-Machinations__/graphics/icons/blank.png"}
+end ]]--
