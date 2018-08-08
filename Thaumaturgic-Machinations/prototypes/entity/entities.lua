@@ -990,7 +990,7 @@ data:extend {
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     effectivity = 1,
-    fluid_usage_per_tick = 10/60, -- divided by UPS to get fluid/sec
+    fluid_usage_per_tick =250/60, -- divided by UPS to get fluid/sec
     maximum_temperature = 750,
     resistances =
     {
@@ -1191,14 +1191,14 @@ data:extend {
       },
       production_type = "output"
     },
-    energy_consumption = "2.05MW",
+    energy_consumption = "20MW",
     energy_source =
     {
       type = "burner",
       fuel_category = "Vis",
-      effectivity = 0.75,
+      effectivity = 10,
       fuel_inventory_size = 1,
-      emissions = 1 / 2050 * 18,
+      emissions = 1 / 10000,
       smoke =
       {
         {
