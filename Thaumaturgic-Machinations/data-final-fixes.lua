@@ -60,3 +60,8 @@ if combine_seperate_modifier > 0 then
 	TM.debug_log("LOG DESTRUCTION CONCLUDED. (data-final-fixes)")
 end
 ]]--
+
+if mods["CW-hydrogen-power"] then
+	data.raw.recipe["CW-pulse-laser-aspect-extraction"].icons = nil
+	data.raw.recipe["CW-pulse-laser-aspect-extraction"].icon = "__Thaumaturgic-Machinations__/graphics/icons/blank.png"
+end
