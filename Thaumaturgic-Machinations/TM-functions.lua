@@ -424,7 +424,7 @@ function TM.GetType(string)
 			local c = v[string].type
 			--		** This blacklist seems to return a lot of errors. I might change this to a whitelist. **
 			local blacklist = { -- even though these items may be correct types, most are unusable in the way this mod uses them.
-				"recipe", -- only for priority reasons
+				"recipe", -- you can't have a recipe as an ingredient for a recipe
 				"resource",
 				"noise-layer",
 				"item", -- only for priority reasons
