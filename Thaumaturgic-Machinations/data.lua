@@ -58,3 +58,5 @@ require("prototypes.entity.enemies")
 if creatio_enabled then
 	require("prototypes.aspect.TM-Creatio")
 end
+
+require("compatibility")
