@@ -422,11 +422,12 @@ function TM.GetType(string)
 	for i,v in pairs(data.raw) do
 		if v[string] ~= nil then
 			local c = v[string].type
+			--		** This blacklist seems to return a lot of errors. I might change this to a whitelist. **
 			local blacklist = { -- even though these items may be correct types, most are unusable in the way this mod uses them.
-				"recipe",
+				"recipe", -- only for priority reasons
 				"resource",
 				"noise-layer",
-				"item",
+				"item", -- only for priority reasons
 				"autoplace-control",
 				"projectile",
 				"ammo-category",
@@ -445,6 +446,71 @@ function TM.GetType(string)
 				"equipment-grid",
 				"technology",
 				"night-vision-equipment",
+				"fuel-category",
+				"explosion",
+				"selection-tool",
+				"item-with-label",
+				"simple-entity",
+				"simple-entity-with-force"
+			}
+			local whitelist = {
+				"tool",
+				"ammo",
+				"fluid",
+				"transport-belt",
+				"lamp",
+				"assembling-machine",
+				"container",
+				"capsule",
+				"armor",
+				"mining-tool",
+				"gun",
+				"solar-panel",
+				"inserter",
+				"rail-planner", -- this is the rail item.
+				"cargo-wagon",
+				"storage-tank",
+				"fluid-wagon",
+				"artillery-wagon",
+				"train-stop",
+				"rail-signal",
+				"rail-chain-signal",
+				"wall",
+				"land-mine",
+				"underground-belt",
+				"loader",
+				"splitter",
+				"logistic-container",
+				"rocket-silo",
+				"accumulator",
+				"arithmetic-combinator",
+				"decider-combinator",
+				"constant-combinator",
+				"power-switch",
+				"programmable-speaker",
+				"electric-energy-interface", -- maybe not
+				"reactor",
+				"boiler",
+				"heat-pipe",
+				"generator",
+				"fluid-turret",
+				"car",
+				"ammo-turret",
+				"furnace",
+				"mining-drill",
+				"logistic-robot",
+				"module",
+				"beacon",
+				"roboport",
+				"construction-robot",
+				"electric-pole",
+				"pipe",
+				"pipe-to-ground",
+				"artillery-turret",
+				"lab",
+				"radar",
+				"gate",
+				"programmable-speaker",
 			}
 			if not TM.InList(blacklist, c) then
 				TM.debug_log(t .. v[string].type)
