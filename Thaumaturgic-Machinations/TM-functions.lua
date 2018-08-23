@@ -591,6 +591,8 @@ function TM.CompressExtract(item)
 end
 --[[
 This function assigns the most prominent aspect of an extraction recipe the correct aspect icon and locale.
+
+note: 	needs to check if it declares its own localised_name
 ]]--
 function TM.icons_assign(recipe)
 	local match_value = recipe:find('aspect.extraction')
@@ -615,6 +617,7 @@ function TM.icons_assign(recipe)
 				input_type = "item-name."
 				if data.raw.item[input] and data.raw.item[input].place_result then
 					input_type = "entity-name."
+					input = data.raw.item[input].place_result
 				end
 			end
 			recipe_obj.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
