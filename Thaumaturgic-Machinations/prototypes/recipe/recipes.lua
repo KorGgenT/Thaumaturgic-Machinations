@@ -976,4 +976,18 @@ data:extend({
 	result = "wand",
 	result_count = 1,
 },
+{
+	type = "recipe",
+	name = "tm-electronic-circuit-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 13,
+	ingredients = {
+		{"vis-diode", 1},
+		{"earth-shard", 1},
+		{type = "fluid", name = "Electrum", amount = 250},
+	},
+	result = "electronic-circuit",
+	result_count = 6,
+},
 })
