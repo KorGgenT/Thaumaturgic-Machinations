@@ -451,7 +451,8 @@ function TM.GetType(string)
 				"selection-tool",
 				"item-with-label",
 				"simple-entity",
-				"simple-entity-with-force"
+				"simple-entity-with-force",
+				"virtual-signal"
 			}
 			local whitelist = {
 				"tool",
