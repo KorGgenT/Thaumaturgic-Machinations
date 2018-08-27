@@ -990,4 +990,17 @@ data:extend({
 	result = "electronic-circuit",
 	result_count = 6,
 },
+{
+	type = "recipe",
+	name = "tm-battery-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 8,
+	ingredients = {
+		{"vis-diode", 1},
+		{type = "fluid", name = "Potentia", amount = 500}
+	},
+	result = "battery",
+	result_count = 1,
+},
 })
