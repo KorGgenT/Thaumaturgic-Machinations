@@ -31,7 +31,7 @@ local extraction = {
 }
 for i,v in pairs(extraction) do
 	TM.item_add_aspect(v[1],v[2],v[3],v[4]);
-	blacklist[v[1]] = true;
+	TM.blacklist[v[1]] = true;
 end
 
 

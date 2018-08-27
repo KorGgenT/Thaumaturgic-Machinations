@@ -1,6 +1,6 @@
 if not TM then TM = {} end
 if not inherited then inherited = {} end
-blacklist = {
+TM.blacklist = {
 	["grow-silverwood"] = true,
 	["grow-wood"] = true,
 	["TM-seedling"] = true,
