@@ -47,10 +47,10 @@ data:extend({
     normal =
     {
       enabled = false,
-      energy_required = 1,
-      ingredients = {{"raw-wood", 2}},
+      energy_required = .5,
+      ingredients = {{"raw-wood", 1}},
       result = "vis-infused-wood",
-	  result_count = 5,
+	  result_count = 2,
     },
     expensive =
     {
@@ -125,9 +125,10 @@ data:extend({
 	energy_required = 1,
 	ingredients = {
 		{"coal", 1},
-		{type="fluid", name="Ignis", amount=40},
+		{type="fluid", name="Ignis", amount=80},
 	},
 	result = "alumentum",
+	result_count = 2,
 },
 {
 	type = "recipe",
