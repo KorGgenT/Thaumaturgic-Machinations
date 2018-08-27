@@ -703,7 +703,7 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 	end
 	
 	if not recipe_name then log("ERROR!!\n" .. serpent.block(recipe_obj)); return list; end
-	if TM.MatchList(recipe_name) then
+	if TM.MatchList(recipe_name) or TM.blacklist[recipe_name] then
 		list[recipe_name] = true
 		return list
 	end
