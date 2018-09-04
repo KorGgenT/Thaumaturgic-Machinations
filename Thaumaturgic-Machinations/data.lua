@@ -8,6 +8,9 @@ TM.blacklist = {
 	["uranium-processing"] = true,
 	["player-port"] = true,
 	["thaumic-tree-farm"] = true,
+	["tm-electronic-circuit-1"] = true,
+	["tm-battery-1"] = true,
+	["cursed-generator"] = true,
 }
 
 

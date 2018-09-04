@@ -221,7 +221,7 @@ local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
 local datum = TM.GetType(item) -- if it's an item, you get data.raw.item[item]
 local dat_AE = data.raw.recipe[item_AE] -- local reference.
-if count > 10^asp_pow_max then count = 10^asp_pow_max; log("ERROR 0492: " .. item .. " aspect count exceeded maximum.") end
+if count > 10^asp_pow_max then count = 10^asp_pow_max; log("Warning: " .. item .. " aspect count exceeded maximum.") end
 
 amount = amount or 1
 	if tier == nil then return end
@@ -236,8 +236,8 @@ amount = amount or 1
 		}
 	end
 
-	if datum == nil then
-		log(item .. " item not found. No aspect extraction recipe initialized.")
+	if datum == nil or datum.isvalid == false then
+		log(item .. " item not found. No aspect extraction recipe initialized.") -- this does not actually appear to work correctly.
 		return
 	end
 
@@ -697,7 +697,8 @@ Recursive. Tries to inherit from all ingredients in list, and if an ingredient i
 ]]--
 function TM.Inheritance(list, recipe_obj, recipe_list)
 	local recipe_list = recipe_list or {}
-	local recipe_name = recipe_obj["name"]
+	local recipe_name = recipe_obj["name"]	
+	
 	if list[recipe_name] then
 		return list
 	end
@@ -711,7 +712,7 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 		list[recipe_name] = true
 		return list
 	end
-	TM.debug_log(recipe_name)
+	TM.debug_log("Name: " .. recipe_name)
 	TM.debug_log("Checking ingredients: ")
 	for i,v in pairs(recipe_obj.ingredients) do
 		local ing_name = v.name or v[1]
