@@ -33,7 +33,7 @@ require("TM-functions")
 
 -- adds a couple aspects to the flamethrower turret ammo
 local flamethrower_turret_ammo = data.raw["fluid-turret"]["flamethrower-turret"].attack_parameters.fluids
-flamethrower_turret_ammo[#flamethrower_turret_ammo + 1] = {type = "Ignis", damage_modifier = 2}
+flamethrower_turret_ammo[#flamethrower_turret_ammo + 1] = {type = "Ignis", damage_modifier = 1.2}
 flamethrower_turret_ammo[#flamethrower_turret_ammo + 1] = {type = "Infernus", damage_modifier = 4}
 
 if combine_seperate_modifier ~= 0 then
