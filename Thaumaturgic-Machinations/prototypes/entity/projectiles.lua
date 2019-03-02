@@ -167,5 +167,48 @@ data:extend({
       shift = {-0.09, 0.395}
     },
     rotatable = false
+  },
+{
+    type = "corpse",
+    name = "acid-splash-purple",
+    flags = {"not-on-map"},
+    time_before_removed = 60 * 30,
+    final_render_layer = "corpse",
+    splash =
+    {
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-1.png",
+        line_length = 5,
+        width = 199,
+        height = 159,
+        frame_count = 20,
+        shift = {0.484375, -0.171875}
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
+        line_length = 5,
+        width = 238,
+        height = 157,
+        frame_count = 20,
+        shift = {0.8125, -0.15625}
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
+        line_length = 5,
+        width = 240,
+        height = 162,
+        frame_count = 20,
+        shift = {0.71875, -0.09375}
+      },
+      {
+        filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
+        line_length = 5,
+        width = 241,
+        height = 146,
+        frame_count = 20,
+        shift = {0.703125, -0.375}
+      }
+    },
+    splash_speed = 0.03
   }
 })
