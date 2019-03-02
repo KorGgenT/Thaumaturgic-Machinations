@@ -119,19 +119,19 @@ data:extend({
             sound =
             {
               {
-                filename = "__base__/sound/creatures/projectile-acid-burn-1.ogg",
+                filename = "__Thaumaturgic-Machinations__/sounds/projectile-acid-burn-1.ogg",
                 volume = 0.8
               },
               {
-                filename = "__base__/sound/creatures/projectile-acid-burn-2.ogg",
+                filename = "__Thaumaturgic-Machinations__/sounds/projectile-acid-burn-2.ogg",
                 volume = 0.8
               },
               {
-                filename = "__base__/sound/creatures/projectile-acid-burn-long-1.ogg",
+                filename = "__Thaumaturgic-Machinations__/sounds/projectile-acid-burn-long-1.ogg",
                 volume = 0.8
               },
               {
-                filename = "__base__/sound/creatures/projectile-acid-burn-long-2.ogg",
+                filename = "__Thaumaturgic-Machinations__/sounds/projectile-acid-burn-long-2.ogg",
                 volume = 0.8
               }
             }
@@ -149,7 +149,7 @@ data:extend({
     },
     animation =
     {
-      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple.png",
+      filename = "__Thaumaturgic-Machinations__/graphics/entity/projectile/acid-projectile-purple/acid-projectile-purple.png",
       line_length = 5,
       width = 16,
       height = 18,
@@ -158,7 +158,7 @@ data:extend({
     },
     shadow =
     {
-      filename = "__base__/graphics/entity/acid-projectile-purple/acid-projectile-purple-shadow.png",
+      filename = "__Thaumaturgic-Machinations__/graphics/entity/projectile/acid-projectile-purple/acid-projectile-purple-shadow.png",
       line_length = 5,
       width = 28,
       height = 16,
@@ -177,7 +177,7 @@ data:extend({
     splash =
     {
       {
-        filename = "__base__/graphics/entity/acid-splash-purple/splash-1.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/acid-splash-purple/splash-1.png",
         line_length = 5,
         width = 199,
         height = 159,
@@ -185,7 +185,7 @@ data:extend({
         shift = {0.484375, -0.171875}
       },
       {
-        filename = "__base__/graphics/entity/acid-splash-purple/splash-2.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/acid-splash-purple/splash-2.png",
         line_length = 5,
         width = 238,
         height = 157,
@@ -193,7 +193,7 @@ data:extend({
         shift = {0.8125, -0.15625}
       },
       {
-        filename = "__base__/graphics/entity/acid-splash-purple/splash-3.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/acid-splash-purple/splash-3.png",
         line_length = 5,
         width = 240,
         height = 162,
@@ -201,7 +201,7 @@ data:extend({
         shift = {0.71875, -0.09375}
       },
       {
-        filename = "__base__/graphics/entity/acid-splash-purple/splash-4.png",
+        filename = "__Thaumaturgic-Machinations__/graphics/entity/acid-splash-purple/splash-4.png",
         line_length = 5,
         width = 241,
         height = 146,
