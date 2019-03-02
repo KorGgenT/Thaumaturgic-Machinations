@@ -5,7 +5,6 @@ data:extend({
 	name = "fireball",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/fireball.png",
 	icon_size = 32,
-	flags = {"goes-to-main-inventory"},
 	ammo_type =
 	{
 		category = "magic",
