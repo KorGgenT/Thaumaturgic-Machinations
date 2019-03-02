@@ -48,7 +48,7 @@ data:extend({
     {
       enabled = false,
       energy_required = .5,
-      ingredients = {{"raw-wood", 1}},
+      ingredients = {{"wood", 1}},
       result = "vis-infused-wood",
 	  result_count = 2,
     },
@@ -56,7 +56,7 @@ data:extend({
     {
       enabled = false,
       energy_required = 1,
-      ingredients = {{"raw-wood", 1}},
+      ingredients = {{"wood", 1}},
       result = "vis-infused-wood",
 	  result_count = 2,
     }
@@ -243,7 +243,7 @@ data:extend({
 	enabled = false,
 	energy_required = 1,
 	ingredients = {
-		{"raw-wood", 1},
+		{"wood", 1},
 		{type="fluid", name="Perditio", amount=10},
 	},
 	result = "seedling",
@@ -260,7 +260,7 @@ data:extend({
 		{type="fluid", name="Aqua", amount=50},
 		{type="fluid", name="Herba", amount=10},
 	},
-	result = "raw-wood",
+	result = "wood",
 	result_count = 4
 	
 },
