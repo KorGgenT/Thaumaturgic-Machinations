@@ -1845,8 +1845,8 @@ data:extend {
     },
     collision_box = {{-0.15, -0.15}, {0.15, 0.15}},
     selection_box = {{-0.4, -0.35}, {0.4, 0.45}},
-    energy_per_movement = 120000,
-    energy_per_rotation = 120000,
+    energy_per_movement = "300kW",
+    energy_per_rotation = "300kW",
     energy_source =
     {
       type = "burner",
