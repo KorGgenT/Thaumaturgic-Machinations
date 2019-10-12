@@ -104,7 +104,7 @@ end)
 script.on_event(defines.events.on_player_armor_inventory_changed, function(event)
  
   	local player = game.players[event.player_index]
-	local armor = player.get_inventory(defines.inventory.player_armor)
+	local armor = player.get_inventory(defines.inventory.character_armor)
 	
 	-- check if an armor is equiped, before we do anything
 	-- else we set the players inventory bonus count to zero
