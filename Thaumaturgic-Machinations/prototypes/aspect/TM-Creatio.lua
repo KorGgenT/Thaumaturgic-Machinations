@@ -251,7 +251,7 @@ data:extend({
 	name = "creatio-refinery",
 	icon = "__base__/graphics/icons/oil-refinery.png",
 	icon_size = 32,
-	flags = {"goes-to-quickbar"},
+	flags = {},
 	subgroup = "production-machine",
 	order = "d[refinery]",
 	place_result = "creatio-refinery",

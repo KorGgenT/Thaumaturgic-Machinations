@@ -356,7 +356,7 @@ function TM.inherit_helper(dat_recipe, recipe)
 		local tier = TM.GetTier(value.name)
 		if tier ~= nil and tier >= 0 then isaspect = " (is an aspect)" end
 		local result_amount = dat_recipe.result_count
-		if result_amount == nil or not next(dat_recipe.results) then 
+		if result_amount == nil or (dat_recipe.results ~= nil and not next(dat_recipe.results)) then 
 			if dat_recipe.results == nil then
 				result_amount = 1
 			else

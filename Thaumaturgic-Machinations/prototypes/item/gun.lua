@@ -6,7 +6,7 @@ data:extend({
 	name = "wand",
 	icon = "__Thaumaturgic-Machinations__/graphics/icons/item/wand.png",
 	icon_size = 32,
-	flags = {"goes-to-main-inventory"},
+	flags = {},
 	subgroup = "gun",
 	order = "d[rocket-launcher]",
 	attack_parameters =

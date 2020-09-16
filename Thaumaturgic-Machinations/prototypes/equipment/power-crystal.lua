@@ -101,7 +101,7 @@ for i, crys in pairs(crystal_list) do -- each object should be a tier/color
 				},
 				icon_size = 32,
 				placed_as_equipment_result = nm,
-				flags = {"goes-to-main-inventory"},
+				flags = {},
 				subgroup = "magic-equipment",
 				order = "b[energy-source]-" .. sz.tier .. "-" .. crys.tier,
 				stack_size = 20

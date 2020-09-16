@@ -8,7 +8,7 @@ local extraction = {
 	{"copper-ore", "Perditio", 50},
 	{"stone", "Terra", 50},
 	{"coal", "Ignis", 50},
-	{"raw-wood", "Aer", 50},
+	{"wood", "Aer", 50},
 	{"copper-plate", "Perditio", 100},
 	{"iron-plate", "Ordo", 100},
 	{"stone-brick", "Terra", 120},
