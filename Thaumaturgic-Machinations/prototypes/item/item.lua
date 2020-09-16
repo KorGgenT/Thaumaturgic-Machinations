@@ -122,7 +122,7 @@ data:extend({
 	type = "item",
 	name = "tm-filter-burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
-	icon_size = 32,
+	icon_size = 64,
 	flags = {},
 	subgroup = "inserter",
 	order = "a-f",
