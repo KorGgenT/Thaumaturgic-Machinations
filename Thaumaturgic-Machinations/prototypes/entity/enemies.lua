@@ -1,4 +1,5 @@
 require("prototypes.entity.guardian-animations")
+local sounds = require("__base__.prototypes.entity.demo-sounds")
 
 function guardian_attack_parameters(data)
   return
@@ -26,7 +27,6 @@ function guardian_attack_parameters(data)
         }
       }
     },
-    sound = make_spitter_roars(data.roarvolume),
     animation = TM.guardian_attack_animation(data.scale, data.tint)
   }
 end
@@ -70,8 +70,8 @@ data:extend(
     pollution_to_join_attack = 200,
     corpse = "small-spitter-corpse",
     dying_explosion = "blood-explosion-small",
-    working_sound = make_biter_calls(0.3),
-    dying_sound = make_spitter_dying_sounds(0.4),
+    working_sound = sounds.spitter_calls_big(0.46),
+    dying_sound = sounds.spitter_dying_big(0.71),
     run_animation = TM.guardian_run_animation(eldritch_guardian_scale, eldritch_guardian_tint)
 },
 
