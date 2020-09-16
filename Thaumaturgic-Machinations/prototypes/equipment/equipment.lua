@@ -298,6 +298,7 @@ energy_source =
 },
 energy_input = "10kW",
 tint = {r = 0.1, g = 0.5, b = 0.2, a = 0},
+color_lookup = {{0.5, "__core__/graphics/color_luts/nightvision.png"}},
 desaturation_params = 
 { 
 	smoothstep_min = 0.1,

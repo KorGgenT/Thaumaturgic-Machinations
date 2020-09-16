@@ -61,7 +61,7 @@ data:extend(
 	type = "item-group",
 	name = "barreling",
 	icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
-	icon_size = 32,
+	icon_size = 64,
 	order = "z",
 },
 {
@@ -76,7 +76,7 @@ data:extend(
 	type = "item-group",
 	name = "barreling",
 	icon = "__base__/graphics/icons/fluid/barreling/barrel-empty.png",
-	icon_size = 32,
+	icon_size = 64,
 	order = "z",
 },
 })
