@@ -697,6 +697,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "vis-diode"
 		},
+		{
+		type = "unlock-recipe",
+		recipe = "tm-electronic-circuit-1"
+		},
 	},
 	unit = {
 		count = 55,

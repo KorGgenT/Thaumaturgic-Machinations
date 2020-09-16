@@ -221,7 +221,7 @@ local asex = false -- does the aspect exist in the recipe already?
 local tier = TM.GetTier(aspect)
 local datum = TM.GetType(item) -- if it's an item, you get data.raw.item[item]
 local dat_AE = data.raw.recipe[item_AE] -- local reference.
-if count > 10^asp_pow_max then count = 10^asp_pow_max; log("ERROR 0492: " .. item .. " aspect count exceeded maximum.") end
+if count > 10^asp_pow_max then count = 10^asp_pow_max; log("Warning: " .. item .. " aspect count exceeded maximum.") end
 
 amount = amount or 1
 	if tier == nil then return end
@@ -236,12 +236,13 @@ amount = amount or 1
 		}
 	end
 
-	if datum == nil then
-		log(item .. " item not found. No aspect extraction recipe initialized.")
+	if datum == nil or datum.isvalid == false then
+		log(item .. " item not found. No aspect extraction recipe initialized.") -- this does not actually appear to work correctly.
 		return
 	end
 
-	if data.raw.recipe[item_AE] and data.raw.recipe[item_AE].results then
+	-- if the aspect is already in the item, it adds it to the aspect already in the results instead of adding another result
+	if dat_AE and dat_AE.results then
 	local ing = data.raw.recipe[item_AE].results
 		
 		for index,value in pairs(ing) do
@@ -255,10 +256,13 @@ amount = amount or 1
 		
 	end
 
+	-- if the extraction recipe exists, but the aspects don't match, it adds another results
 	if dat_AE and datum ~= nil and not asex then
-	dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
-	TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
-		else if not dat_AE and datum then
+		dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
+		TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
+	
+	-- if the extraction recipe does not already exist, it makes one
+	else if not dat_AE and datum then
 		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
 		
 		local ingredient_type = datum.type
@@ -392,6 +396,7 @@ This function "inherits" the aspects from its ingredients. Aspects will only be 
 ]]--
 function TM.inherit_aspects(recipe)
 	local dat_recipe = data.raw.recipe[recipe]
+	
 	if dat_recipe then
 		if dat_recipe.ingredients then
 			TM.inherit_helper(dat_recipe, recipe)
@@ -417,11 +422,12 @@ function TM.GetType(string)
 	for i,v in pairs(data.raw) do
 		if v[string] ~= nil then
 			local c = v[string].type
+			--		** This blacklist seems to return a lot of errors. I might change this to a whitelist. **
 			local blacklist = { -- even though these items may be correct types, most are unusable in the way this mod uses them.
-				"recipe",
+				"recipe", -- you can't have a recipe as an ingredient for a recipe
 				"resource",
 				"noise-layer",
-				"item",
+				"item", -- only for priority reasons
 				"autoplace-control",
 				"projectile",
 				"ammo-category",
@@ -440,6 +446,72 @@ function TM.GetType(string)
 				"equipment-grid",
 				"technology",
 				"night-vision-equipment",
+				"fuel-category",
+				"explosion",
+				"selection-tool",
+				"item-with-label",
+				"simple-entity",
+				"simple-entity-with-force",
+				"virtual-signal"
+			}
+			local whitelist = {
+				"tool",
+				"ammo",
+				"fluid",
+				"transport-belt",
+				"lamp",
+				"assembling-machine",
+				"container",
+				"capsule",
+				"armor",
+				"mining-tool",
+				"gun",
+				"solar-panel",
+				"inserter",
+				"rail-planner", -- this is the rail item.
+				"cargo-wagon",
+				"storage-tank",
+				"fluid-wagon",
+				"artillery-wagon",
+				"train-stop",
+				"rail-signal",
+				"rail-chain-signal",
+				"wall",
+				"land-mine",
+				"underground-belt",
+				"loader",
+				"splitter",
+				"logistic-container",
+				"rocket-silo",
+				"accumulator",
+				"arithmetic-combinator",
+				"decider-combinator",
+				"constant-combinator",
+				"power-switch",
+				"programmable-speaker",
+				"electric-energy-interface", -- maybe not
+				"reactor",
+				"boiler",
+				"heat-pipe",
+				"generator",
+				"fluid-turret",
+				"car",
+				"ammo-turret",
+				"furnace",
+				"mining-drill",
+				"logistic-robot",
+				"module",
+				"beacon",
+				"roboport",
+				"construction-robot",
+				"electric-pole",
+				"pipe",
+				"pipe-to-ground",
+				"artillery-turret",
+				"lab",
+				"radar",
+				"gate",
+				"programmable-speaker",
 			}
 			if not TM.InList(blacklist, c) then
 				TM.debug_log(t .. v[string].type)
@@ -520,6 +592,8 @@ function TM.CompressExtract(item)
 end
 --[[
 This function assigns the most prominent aspect of an extraction recipe the correct aspect icon and locale.
+
+note: 	needs to check if it declares its own localised_name
 ]]--
 function TM.icons_assign(recipe)
 	local match_value = recipe:find('aspect.extraction')
@@ -544,6 +618,7 @@ function TM.icons_assign(recipe)
 				input_type = "item-name."
 				if data.raw.item[input] and data.raw.item[input].place_result then
 					input_type = "entity-name."
+					input = data.raw.item[input].place_result
 				end
 			end
 			recipe_obj.localised_name = {"recipe-name.extract-recipe", {"fluid-name." .. aspect}, {input_type .. input}}
@@ -622,13 +697,14 @@ Recursive. Tries to inherit from all ingredients in list, and if an ingredient i
 ]]--
 function TM.Inheritance(list, recipe_obj, recipe_list)
 	local recipe_list = recipe_list or {}
-	local recipe_name = recipe_obj["name"]
+	local recipe_name = recipe_obj["name"]	
+	
 	if list[recipe_name] then
 		return list
 	end
 	
 	if not recipe_name then log("ERROR!!\n" .. serpent.block(recipe_obj)); return list; end
-	if TM.MatchList(recipe_name) then
+	if TM.MatchList(recipe_name) or TM.blacklist[recipe_name] then
 		list[recipe_name] = true
 		return list
 	end
@@ -636,7 +712,7 @@ function TM.Inheritance(list, recipe_obj, recipe_list)
 		list[recipe_name] = true
 		return list
 	end
-	TM.debug_log(recipe_name)
+	TM.debug_log("Name: " .. recipe_name)
 	TM.debug_log("Checking ingredients: ")
 	for i,v in pairs(recipe_obj.ingredients) do
 		local ing_name = v.name or v[1]

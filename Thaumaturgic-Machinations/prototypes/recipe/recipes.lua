@@ -50,7 +50,7 @@ data:extend({
       energy_required = 1,
       ingredients = {{"wood", 2}},
       result = "vis-infused-wood",
-	  result_count = 5,
+	  result_count = 2,
     },
     expensive =
     {
@@ -125,9 +125,10 @@ data:extend({
 	energy_required = 1,
 	ingredients = {
 		{"coal", 1},
-		{type="fluid", name="Ignis", amount=40},
+		{type="fluid", name="Ignis", amount=80},
 	},
 	result = "alumentum",
+	result_count = 2,
 },
 {
 	type = "recipe",
@@ -974,6 +975,33 @@ data:extend({
 		{"refined-silverwood", 5},
 	},
 	result = "wand",
+	result_count = 1,
+},
+{
+	type = "recipe",
+	name = "tm-electronic-circuit-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 13,
+	ingredients = {
+		{"vis-diode", 1},
+		{"earth-shard", 1},
+		{type = "fluid", name = "Electrum", amount = 250},
+	},
+	result = "electronic-circuit",
+	result_count = 6,
+},
+{
+	type = "recipe",
+	name = "tm-battery-1",
+	category = "aspect-crafting",
+	enabled = false,
+	energy_required = 8,
+	ingredients = {
+		{"vis-diode", 1},
+		{type = "fluid", name = "Potentia", amount = 500}
+	},
+	result = "battery",
 	result_count = 1,
 },
 })

@@ -845,8 +845,8 @@ data:extend {
     corpse = "big-remnants",
     dying_explosion = "medium-explosion",
     effectivity = 1,
-    fluid_usage_per_tick = 10/60,
-    maximum_temperature = 1000,
+    fluid_usage_per_tick =250/60, -- divided by UPS to get fluid/sec
+    maximum_temperature = 750,
     resistances =
     {
       {
@@ -873,13 +873,8 @@ data:extend {
         { type = "input-output", position = {0, -3} },
       },
       production_type = "input-output",
-	  filter = "Ignis"
-    },
-    fluid_input =
-    {
-      name = "Ignis",
-      amount = 0.0,
-      minimum_temperature = 400.0
+	  filter = "Ignis",
+	  minimum_temperature = 400
     },
     energy_source =
     {
@@ -1024,7 +1019,7 @@ data:extend {
     },
     collision_box = {{-1.29, -0.79}, {1.29, 0.79}},
     selection_box = {{-1.5, -1}, {1.5, 1}},
-    target_temperature = 1000,
+    target_temperature = 750,
     fluid_box =
     {
       base_area = 1,
@@ -1036,7 +1031,8 @@ data:extend {
         {type = "input-output", position = {-2, 0.5}},
         {type = "input-output", position = {2, 0.5}}
       },
-      production_type = "input-output"
+      production_type = "input-output",
+	  filter = "Ignis"
     },
     output_fluid_box =
     {
@@ -1050,24 +1046,14 @@ data:extend {
       },
       production_type = "output"
     },
-    fluid_input =
-    {
-      name = "Ignis",
-      amount = 0.0
-    },
-    fluid_output =
-    {
-      name = "Ignis",
-      amount = 0.0
-    },
-    energy_consumption = "2.05MW",
+    energy_consumption = "20MW",
     energy_source =
     {
       type = "burner",
       fuel_category = "Vis",
-      effectivity = 0.75,
+      effectivity = 10,
       fuel_inventory_size = 1,
-      emissions = 0.1 / 6.5,
+      emissions = 1 / 10000,
       smoke =
       {
         {

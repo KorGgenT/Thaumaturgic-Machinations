@@ -6,7 +6,7 @@ local function createAspect(name, color, flow_color, heat_capacity, ratio)
 		heat_capacity = heat_capacity or "0.1KJ",
 		base_color = color,
 		flow_color = flow_color or color,
-		max_temperature = 100,
+		max_temperature = 750,
 		icon = "__Thaumaturgic-Machinations__/graphics/icons/Aspect/"..name..".png",
 		icon_size = 32,
 		pressure_to_speed_ratio = 0.6,
@@ -18,14 +18,14 @@ end
 
 createAspect("Aer", {r=1, g=1, b=0.4}, {r=1, g=1, b=0.4})
 createAspect("Aqua", {r=0.2, g=0.8, b=1}, {r=0.2, g=0.8, b=1})
-createAspect("Ignis", {r=1, g=0, b=0}, {r=1, g=0, b=0}, "130J")
+createAspect("Ignis", {r=1, g=0, b=0}, {r=1, g=0, b=0}, "221.2J")
 createAspect("Ordo", {r=0.9, g=0.9, b=0.9}, {r=0.9, g=0.9, b=0.9})
 createAspect("Perditio", {r=0.2, g=0.2, b=0.2}, {r=0.2, g=0.2, b=0.2})
 createAspect("Terra", {r=0, g=1, b=0}, {r=0, g=1, b=0})
 
 -- Tier 1 Aspects
 
-createAspect("Gelum", {r=0.8, g=0.8, b=0.9}, {r=0.8, g=0.8, b=0.9}, "0.001KJ")
+createAspect("Gelum", {r=0.8, g=0.8, b=0.9}, {r=0.8, g=0.8, b=0.9}, "10J")
 createAspect("Lux", {r=1, g=1, b=0.8}, {r=1, g=1, b=0.8})
 createAspect("Metallum", {r=0.6, g=0.6, b=0.6}, {r=0.6, g=0.6, b=0.6})
 createAspect("Mortuus", {r=0.4, g=0.4, b=0.4}, {r=0.4, g=0.4, b=0.4})
