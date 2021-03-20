@@ -378,7 +378,7 @@ data:extend({
 			type = "unlock-recipe",
 			recipe = "TM-effectivity-module-3"
 		},
-		
+
 		{
 			type = "unlock-recipe",
 			recipe = "TM-prod-module-3"
@@ -422,7 +422,7 @@ data:extend({
 	type = "technology",
 	name = "magic-assembler-1",
 	prerequisites = {"magic-electronics", "automation-2"},
-	icon = "__base__/graphics/technology/automation.png",
+	icon = "__base__/graphics/technology/automation-1.png",
 	icon_size = 128,
 	effects = {
 		{
@@ -449,7 +449,7 @@ data:extend({
 	type = "technology",
 	name = "magic-assembler-2",
 	prerequisites = {"magic-assembler-1", "automation-3", "advanced-magic-electronics"},
-	icon = "__base__/graphics/technology/automation.png",
+	icon = "__base__/graphics/technology/automation-2.png",
 	icon_size = 128,
 	effects = {
 		{
