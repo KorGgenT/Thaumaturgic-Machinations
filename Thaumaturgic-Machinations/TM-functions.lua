@@ -26,7 +26,7 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 
 	if data.raw["item-subgroup"]["combine-aspect-" .. tier] == nil then
 		TM.debug_log("creating subgroup combine-aspect-" .. tier)
-		data.raw["item-subgroup"]["combine-aspect-" .. tier] =	
+		data.raw["item-subgroup"]["combine-aspect-" .. tier] =
 		{
 			type = "item-subgroup",
 			name = "combine-aspect-" .. tier,
@@ -36,7 +36,7 @@ function TM.new_aspect_combine(recipe, aspect1, aspect2)
 	end
 	if data.raw["item-subgroup"]["seperate-aspect-" .. tier] == nil then
 		TM.debug_log("creating subgroup seperate-aspect-" .. tier)
-		data.raw["item-subgroup"]["seperate-aspect-" .. tier] =	
+		data.raw["item-subgroup"]["seperate-aspect-" .. tier] =
 			{
 				type = "item-subgroup",
 				name = "seperate-aspect-" .. tier,
@@ -183,7 +183,7 @@ function TM.remove_result(recipe, result)
 			if res.name == result then
 				table.remove(recipe_obj.results, i)
 				--TM.debug_log(result .. " removed from " .. recipe .. " recipe result.")
-			end		
+			end
 		end
 	end
 end
@@ -211,7 +211,7 @@ end
 --[[
 Adds the ability to distill an additional aspect from the input item. Supports many item types.
 (string, string, number, optional:amount)
-examples: 
+examples:
 TM.item_add_aspect("iron-ore", "Ordo", 50)		-- adds 50 ordo to 1 iron ore
 TM.item_add_aspect("water", "Aqua", 50, 1000)	-- adds 50 Aqua to 1000 water
 ]]--
@@ -227,7 +227,7 @@ amount = amount or 1
 	if tier == nil then return end
 	if data.raw["item-subgroup"]["aspect-extraction-" .. tier] == nil then
 		TM.debug_log("creating subgroup aspect-extraction-" .. tier)
-		data.raw["item-subgroup"]["aspect-extraction-" .. tier] =	
+		data.raw["item-subgroup"]["aspect-extraction-" .. tier] =
 		{
 			type = "item-subgroup",
 			name = "aspect-extraction-" .. tier,
@@ -244,7 +244,7 @@ amount = amount or 1
 	-- if the aspect is already in the item, it adds it to the aspect already in the results instead of adding another result
 	if dat_AE and dat_AE.results then
 	local ing = data.raw.recipe[item_AE].results
-		
+
 		for index,value in pairs(ing) do
 			if value.name == aspect then
 				value.amount = count + value.amount
@@ -252,27 +252,34 @@ amount = amount or 1
 				asex = true
 				TM.debug_log("inserting " .. count .. " " .. aspect .. " to " .. item)
 			end
-		end 
-		
+		end
+
 	end
 
 	-- if the extraction recipe exists, but the aspects don't match, it adds another results
 	if dat_AE and datum ~= nil and not asex then
 		dat_AE.results[#dat_AE.results + 1] = {type = "fluid", name = aspect, amount = count / amount}
 		TM.debug_log(item_AE .. " found. inserting " .. count .. " " .. aspect .. " to " .. item)
-	
+
 	-- if the extraction recipe does not already exist, it makes one
 	else if not dat_AE and datum then
 		TM.debug_log("creating recipe " .. item_AE .. ": " .. amount .. " " .. item .. " ==> " .. count .. " " .. aspect)
-		
+
 		local ingredient_type = datum.type
-		if ingredient_type ~= "fluid" then 
-			ingredient_type = "item" 
+		if ingredient_type ~= "fluid" then
+			ingredient_type = "item"
 		end
 		local assign_icon = datum.icon
 		if assign_icon == nil and datum.icons then
 			assign_icon = datum.icons[1].icon
 			TM.debug_log("ERROR CODE 1456: Trying to assign nil to icon")
+		end
+		local assign_icon_size = datum.icon_size or 32
+		local scale
+		if assign_icon_size == 64 then
+			scale = 0.25
+		else
+			scale = 0.65
 		end
 		data.raw.recipe[item_AE] =
 		{
@@ -293,19 +300,22 @@ amount = amount or 1
 			icons = {
 				{
 					icon = "__Thaumaturgic-Machinations__/graphics/icons/blank.png",
+					icon_size = 32
 				},
 				{
 					icon = assign_icon,
-					scale = 0.65,
-					shift = {-8,-6}
+					scale = scale,
+					shift = {-8,-6},
+					icon_size = assign_icon_size
 				},
 				{
 					icon = data.raw.fluid[aspect].icon,
 					scale = 0.65,
-					shift = {8,6}
+					shift = {8,6},
+					icon_size = 32,
 				},
 			},
-			icon_size = 32,
+			--icon_size = 32,
 			subgroup = "aspect-extraction-" .. tier,
 			order = aspect .. "-" .. string.format(string_format, count),
 		}
@@ -336,8 +346,8 @@ function TM.GetTier(aspect)
 		return 0
 	end
 	local ing = data.raw.recipe[aspect .. "-create"]
-	if ing then 
-		ing = ing.ingredients 
+	if ing then
+		ing = ing.ingredients
 		return 1 + math.max(TM.GetTier(ing[1].name),TM.GetTier(ing[2].name))
 	end
 	return nil
@@ -360,7 +370,7 @@ function TM.inherit_helper(dat_recipe, recipe)
 		local tier = TM.GetTier(value.name)
 		if tier ~= nil and tier >= 0 then isaspect = " (is an aspect)" end
 		local result_amount = dat_recipe.result_count
-		if result_amount == nil or (dat_recipe.results ~= nil and not next(dat_recipe.results)) then 
+		if result_amount == nil or (dat_recipe.results ~= nil and not next(dat_recipe.results)) then
 			if dat_recipe.results == nil then
 				result_amount = 1
 			else
@@ -384,11 +394,11 @@ function TM.inherit_helper(dat_recipe, recipe)
 					TM.debug_log(value2.amount .. " " .. value2.name)
 					TM.item_add_aspect(recipe, value2.name, value2.amount / result_amount * inherit_multiplier * ct)
 				end
-			
+
 			else
 				TM.debug_log(na .. " has no aspects")
 			end
-		end	
+		end
 	end
 end
 --[[
@@ -396,7 +406,7 @@ This function "inherits" the aspects from its ingredients. Aspects will only be 
 ]]--
 function TM.inherit_aspects(recipe)
 	local dat_recipe = data.raw.recipe[recipe]
-	
+
 	if dat_recipe then
 		if dat_recipe.ingredients then
 			TM.inherit_helper(dat_recipe, recipe)
@@ -521,7 +531,7 @@ function TM.GetType(string)
 			elseif c == "recipe" then
 				rip = v[string]
 			end
-		else 
+		else
 		end
 	end
 	if it then
@@ -607,7 +617,7 @@ function TM.icons_assign(recipe)
 			recipe_obj.subgroup = "aspect-extraction-" .. TM.GetTier(aspect)
 			local input = recipe_obj.ingredients[1].name
 			local input_type = TM.GetType(input).type
-			if input_type == "recipe" then 
+			if input_type == "recipe" then
 				log("ERROR CODE 1246: recipe as ingredient: " .. recipe) -- rare error, is caused when recipe name and item name do not match
 				data.raw.recipe[recipe] = nil
 				return
@@ -627,7 +637,7 @@ function TM.icons_assign(recipe)
 		local rpl_bool = false
 		if data.raw.projectile[data_ing] then
 			rpl_bool = true
-			recipe_obj.icon = data.raw.projectile[data_ing].icon	
+			recipe_obj.icon = data.raw.projectile[data_ing].icon
 		elseif data.raw.tool[data_ing] then
 			rpl_bool = true
 			recipe_obj.icon = data.raw.tool[data_ing].icon
@@ -697,12 +707,12 @@ Recursive. Tries to inherit from all ingredients in list, and if an ingredient i
 ]]--
 function TM.Inheritance(list, recipe_obj, recipe_list)
 	local recipe_list = recipe_list or {}
-	local recipe_name = recipe_obj["name"]	
-	
+	local recipe_name = recipe_obj["name"]
+
 	if list[recipe_name] then
 		return list
 	end
-	
+
 	if not recipe_name then log("ERROR!!\n" .. serpent.block(recipe_obj)); return list; end
 	if TM.MatchList(recipe_name) or TM.blacklist[recipe_name] then
 		list[recipe_name] = true
@@ -746,7 +756,7 @@ function TM.AspectInherit(aspc_list, todo_list, i)
 	log(i)
 	local single = todo_list[i] -- a particular recipe in the todo_list. has real ingredients/results
 	if not single or not single.ingredients then
-		return aspc_list, todo_list 
+		return aspc_list, todo_list
 	end -- uh oh! somehow an empty ingredient made it through
 	for i2, v2 in pairs(single.ingredients) do
 		local amt = v2.amount or v2[2]
@@ -809,28 +819,3 @@ function TM.OrderRecipeResults(recipe_obj)
 		result_list[i] = nil
 	end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

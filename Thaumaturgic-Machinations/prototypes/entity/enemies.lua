@@ -1,5 +1,5 @@
 require("prototypes.entity.guardian-animations")
-local sounds = require("__base__.prototypes.entity.demo-sounds")
+local sounds = require("__base__.prototypes.entity.sounds")
 
 function guardian_attack_parameters(data)
   return
