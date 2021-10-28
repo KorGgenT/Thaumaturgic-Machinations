@@ -615,10 +615,6 @@ data:extend({
         type = "unlock-recipe",
         recipe = "manasteel"
 		},
-		{
-        type = "unlock-recipe",
-        recipe = "manasteel-axe"
-		},
 	},
 	unit = {
 		count = 50,
