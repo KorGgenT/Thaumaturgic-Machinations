@@ -647,23 +647,6 @@ data:extend({
 },
 {
 	type = "recipe",
-	name = "manasteel-axe",
-    icon = "__Thaumaturgic-Machinations__/graphics/icons/item/manasteel-axe.png",
-    icon_size = 32,
-	category = "crafting",
-	subgroup = "tool",
-	enabled = false,
-	energy_required = 0.5,
-	ingredients = {
-		{"manasteel", 5},
-		{"iron-stick", 4},
-	},
-	results = {
-		{name="manasteel-axe", amount=1},
-	},
-},
-{
-	type = "recipe",
 	name = "magic-assembling-machine-1",
     icon = "__Thaumaturgic-Machinations__/graphics/icons/item/magic-assembling-machine-1.png",
 	icon_size = 32,

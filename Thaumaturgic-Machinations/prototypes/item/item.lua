@@ -94,31 +94,6 @@ data:extend({
     stack_size = 50
   },
 {
-    type = "mining-tool",
-    name = "manasteel-axe",
-    icon = "__Thaumaturgic-Machinations__/graphics/icons/item/manasteel-axe.png",
-	icon_size = 32,
-    flags = {},
-    action =
-    {
-      type="direct",
-      action_delivery =
-      {
-        type = "instant",
-        target_effects =
-        {
-            type = "damage",
-            damage = { amount = 12 , type = "physical"}
-        }
-      }
-    },
-    durability = 4000,
-    subgroup = "tool",
-    order = "a[mining]-c[manasteel-axe]",
-    speed = 7.5,
-    stack_size = 20
-},
-{
 	type = "item",
 	name = "tm-filter-burner-inserter",
     icon = "__base__/graphics/icons/burner-inserter.png",
